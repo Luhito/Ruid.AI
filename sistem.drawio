@@ -1,9 +1,44 @@
 <mxfile host="app.diagrams.net">
-  <diagram name="ページ-1" id="HNpEjttpO1EICVabmbnO">
-    <mxGraphModel>
+  <diagram id="awAcCcHja_IrU6YgXmeA" name="システム図">
+    <mxGraphModel dx="376" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YgQitG4K9J62n05gaeSd-1" parent="1" style="whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="OpenAPI Generator" vertex="1">
+          <mxGeometry height="40" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-2" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" value="" vertex="1">
+          <mxGeometry height="320" width="160" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-3" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" value="" vertex="1">
+          <mxGeometry height="320" width="160" x="200" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-4" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" value="API部品(axios)" vertex="1">
+          <mxGeometry height="40" width="140" x="10" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-5" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" value="API部品(Express)" vertex="1">
+          <mxGeometry height="40" width="140" x="210" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-6" edge="1" parent="1" source="YgQitG4K9J62n05gaeSd-1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;strokeColor=#b85450;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fillColor=#f8cecc;" target="YgQitG4K9J62n05gaeSd-4" value="">
+          <mxGeometry relative="1" width="120" as="geometry">
+            <Array as="points" />
+            <mxPoint x="180" y="250" as="sourcePoint" />
+            <mxPoint x="300" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-7" edge="1" parent="1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;strokeColor=#b85450;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fillColor=#f8cecc;" target="YgQitG4K9J62n05gaeSd-5" value="">
+          <mxGeometry relative="1" width="120" as="geometry">
+            <Array as="points" />
+            <mxPoint x="180" y="40" as="sourcePoint" />
+            <mxPoint x="125" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-8" parent="1" style="whiteSpace=wrap;html=1;" value="フロント共通部品&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="140" x="10" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="YgQitG4K9J62n05gaeSd-9" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#b46504;fillColor=#fad7ac;" value="apiオブジェクト" vertex="1">
+          <mxGeometry height="20" width="100" x="30" y="180" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
