@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram id="awAcCcHja_IrU6YgXmeA" name="システム図">
-    <mxGraphModel dx="376" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="298" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,7 +8,7 @@
           <mxGeometry height="40" width="360" as="geometry" />
         </mxCell>
         <mxCell id="YgQitG4K9J62n05gaeSd-2" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" value="" vertex="1">
-          <mxGeometry height="320" width="160" y="80" as="geometry" />
+          <mxGeometry height="250" width="160" y="80" as="geometry" />
         </mxCell>
         <mxCell id="YgQitG4K9J62n05gaeSd-3" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" value="" vertex="1">
           <mxGeometry height="320" width="160" x="200" y="80" as="geometry" />
@@ -19,14 +19,14 @@
         <mxCell id="YgQitG4K9J62n05gaeSd-5" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" value="API部品(Express)" vertex="1">
           <mxGeometry height="40" width="140" x="210" y="90" as="geometry" />
         </mxCell>
-        <mxCell id="YgQitG4K9J62n05gaeSd-6" edge="1" parent="1" source="YgQitG4K9J62n05gaeSd-1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;strokeColor=#b85450;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fillColor=#f8cecc;" target="YgQitG4K9J62n05gaeSd-4" value="">
+        <mxCell id="YgQitG4K9J62n05gaeSd-6" edge="1" parent="1" source="YgQitG4K9J62n05gaeSd-1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="YgQitG4K9J62n05gaeSd-4" value="">
           <mxGeometry relative="1" width="120" as="geometry">
             <Array as="points" />
             <mxPoint x="180" y="250" as="sourcePoint" />
             <mxPoint x="300" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="YgQitG4K9J62n05gaeSd-7" edge="1" parent="1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;strokeColor=#b85450;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fillColor=#f8cecc;" target="YgQitG4K9J62n05gaeSd-5" value="">
+        <mxCell id="YgQitG4K9J62n05gaeSd-7" edge="1" parent="1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;fontSize=12;fontColor=#1A1A1A;startSize=8;endSize=8;curved=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="YgQitG4K9J62n05gaeSd-5" value="">
           <mxGeometry relative="1" width="120" as="geometry">
             <Array as="points" />
             <mxPoint x="180" y="40" as="sourcePoint" />
@@ -38,6 +38,28 @@
         </mxCell>
         <mxCell id="YgQitG4K9J62n05gaeSd-9" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#b46504;fillColor=#fad7ac;" value="apiオブジェクト" vertex="1">
           <mxGeometry height="20" width="100" x="30" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-1" parent="1" style="whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="80" width="140" x="10" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="React" vertex="1">
+          <mxGeometry height="20" width="50" x="10" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-3" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#b85450;fillColor=#f8cecc;" value="UI層" vertex="1">
+          <mxGeometry height="20" width="120" x="20" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-4" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#b85450;fillColor=#f8cecc;" value="logic層" vertex="1">
+          <mxGeometry height="20" width="120" x="20" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-5" parent="1" style="whiteSpace=wrap;html=1;strokeColor=#b85450;fillColor=#f8cecc;" value="hook層" vertex="1">
+          <mxGeometry height="20" width="120" x="20" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="FF6bedQ5IDZKCfZRSgoX-6" edge="1" parent="1" source="YgQitG4K9J62n05gaeSd-9" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="FF6bedQ5IDZKCfZRSgoX-5" value="">
+          <mxGeometry relative="1" width="120" as="geometry">
+            <Array as="points" />
+            <mxPoint x="110" y="320" as="sourcePoint" />
+            <mxPoint x="230" y="320" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
