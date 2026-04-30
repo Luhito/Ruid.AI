@@ -1,0 +1,50 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ページ-1" id="2b3wz_yrCU3h60nA3VEE">
+    <mxGraphModel dx="357" dy="525" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-1" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="A" vertex="1">
+          <mxGeometry height="54" width="69" x="79" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-2" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="B" vertex="1">
+          <mxGeometry height="54" width="69" x="20" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-3" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="C" vertex="1">
+          <mxGeometry height="54" width="70" x="139" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-4" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="D" vertex="1">
+          <mxGeometry height="54" width="70" x="79" y="228" as="geometry" />
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-5" edge="1" parent="1" source="iGzYaeN8YQsmLZSDJbvy-1" style="curved=1;startArrow=none;endArrow=block;exitX=0.06;exitY=1;entryX=0.5;entryY=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="iGzYaeN8YQsmLZSDJbvy-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="55" y="99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-6" edge="1" parent="1" source="iGzYaeN8YQsmLZSDJbvy-1" style="curved=1;startArrow=none;endArrow=block;exitX=0.96;exitY=1;entryX=0.5;entryY=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="iGzYaeN8YQsmLZSDJbvy-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="174" y="99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-7" edge="1" parent="1" source="iGzYaeN8YQsmLZSDJbvy-2" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.06;entryY=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="iGzYaeN8YQsmLZSDJbvy-4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="55" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iGzYaeN8YQsmLZSDJbvy-8" edge="1" parent="1" source="iGzYaeN8YQsmLZSDJbvy-3" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.95;entryY=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="iGzYaeN8YQsmLZSDJbvy-4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="174" y="203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
