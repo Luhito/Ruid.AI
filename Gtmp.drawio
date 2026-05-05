@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="G001-ログイン" id="S722mUA1QwenAaxWcmtO">
+    <mxGraphModel dx="446" dy="846" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zQ7BFWEPkJkrmx3Nq8T0-1" parent="1" style="whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="780" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="aVIO_8MDiifiFSeVl00r-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;" value="safe-area-inset-top" vertex="1">
+          <mxGeometry height="50" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="aVIO_8MDiifiFSeVl00r-2" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;" value="safe-area-inset-bottom" vertex="1">
+          <mxGeometry height="30" width="360" y="750" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
