@@ -26,7 +26,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="G001-ログイン" id="Z1h8dquPDhmT4ahfGa2H">
-    <mxGraphModel dx="420" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="420" dy="618" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="YcPtlo_hN4jQvksFwWot-0" />
         <mxCell id="YcPtlo_hN4jQvksFwWot-1" parent="YcPtlo_hN4jQvksFwWot-0" />
@@ -65,6 +65,9 @@
         </mxCell>
         <mxCell id="81tfYNaBAiEMLlDuyNd7-8" parent="YcPtlo_hN4jQvksFwWot-1" style="whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);" value="" vertex="1">
           <mxGeometry height="30" width="260" x="50" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="ufI8GjACJdKqooItxQuU-0" parent="YcPtlo_hN4jQvksFwWot-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#B9E0A5,#B9E0A5);fontSize=20;" value="&lt;span style=&quot;color: light-dark(rgb(255, 255, 255), rgb(0, 0, 0));&quot;&gt;ログイン&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="120" x="120" y="390" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
