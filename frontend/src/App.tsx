@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
-//import './App.css'
+import './App.css'
+import {Home} from './assets/pages/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -114,6 +115,8 @@ function App() {
       </section>
 
       <div className="ticks"></div>
+      <section id="spacer"></section>
+      <Home />
       <section id="spacer"></section>
     </>
   )
