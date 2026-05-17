@@ -1,0 +1,13 @@
+type: object
+
+required:
+  - token
+  - user
+
+properties:
+  token:
+    type: string
+    example: jwt-token-example
+
+  user:
+    $ref: '../openapi.yaml#/components/schemas/User'

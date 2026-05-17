@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Auth
+
+  summary: ユーザー登録
+
+  operationId: register
+
+  requestBody:
+    required: true
+
+    content:
+      application/json:
+        schema:
+          $ref: '../openapi.yaml#/components/schemas/RegisterRequest'
+
+  responses:
+    '201':
+      description: 登録成功
+
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/AuthResponse'
+
+    '400':
+      description: バリデーションエラー
+
+    '409':
+      description: ユーザー重複
