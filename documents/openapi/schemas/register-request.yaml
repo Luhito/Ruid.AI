@@ -1,0 +1,24 @@
+type: object
+
+required:
+  - username
+  - email
+  - password
+
+properties:
+  username:
+    type: string
+    minLength: 3
+    maxLength: 20
+    example: testuser
+
+  email:
+    type: string
+    format: email
+    example: test@example.com
+
+  password:
+    type: string
+    format: password
+    minLength: 8
+    example: password123

@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Auth
+
+  summary: ログイン
+
+  operationId: login
+
+  requestBody:
+    required: true
+
+    content:
+      application/json:
+        schema:
+          $ref: '../openapi.yaml#/components/schemas/LoginRequest'
+
+  responses:
+    '200':
+      description: ログイン成功
+
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/AuthResponse'
+
+    '400':
+      description: バリデーションエラー
+
+    '401':
+      description: 認証失敗

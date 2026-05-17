@@ -1,13 +1,17 @@
-FROM node:18-alpine
+FROM node:22-alpine
 
+# 作業ディレクトリ
 WORKDIR /app
 
+# package.jsonコピー
 COPY package*.json ./
 
+# 依存インストール
 RUN npm install
 
 COPY . .
 
 EXPOSE 3000
 
+# 起動コマンド（Dockerfileではデフォルトの挙動としてstart固定、docker-compose側で上書きする）
 CMD ["npm", "run", "start"]
