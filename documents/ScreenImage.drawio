@@ -1,26 +1,26 @@
 <mxfile host="app.diagrams.net" pages="5">
   <diagram name="G000-テンプレート" id="S722mUA1QwenAaxWcmtO">
-    <mxGraphModel dx="846" dy="672" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="376" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="zQ7BFWEPkJkrmx3Nq8T0-1" value="" style="whiteSpace=wrap;html=1;rounded=1;arcSize=9;" parent="1" vertex="1">
-          <mxGeometry width="360" height="780" as="geometry" />
+        <mxCell id="zQ7BFWEPkJkrmx3Nq8T0-1" parent="1" style="whiteSpace=wrap;html=1;rounded=1;arcSize=9;" value="" vertex="1">
+          <mxGeometry height="780" width="360" as="geometry" />
         </mxCell>
-        <mxCell id="588Fdgz_NcGzjMWDRItu-1" value="safe-area-inset-top" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=light-dark(#FFFFFF,#000000);" parent="1" vertex="1">
-          <mxGeometry x="120" y="7" width="120" height="30" as="geometry" />
+        <mxCell id="588Fdgz_NcGzjMWDRItu-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=light-dark(#FFFFFF,#000000);" value="safe-area-inset-top" vertex="1">
+          <mxGeometry height="30" width="120" x="120" y="7" as="geometry" />
         </mxCell>
-        <mxCell id="aVIO_8MDiifiFSeVl00r-1" value="" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;fillStyle=cross-hatch;" parent="1" vertex="1">
-          <mxGeometry width="360" height="50" as="geometry" />
+        <mxCell id="aVIO_8MDiifiFSeVl00r-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;fillStyle=cross-hatch;" value="" vertex="1">
+          <mxGeometry height="50" width="360" as="geometry" />
         </mxCell>
-        <mxCell id="588Fdgz_NcGzjMWDRItu-3" value="12:00🔔" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" parent="1" vertex="1">
-          <mxGeometry x="20" y="7" width="80" height="30" as="geometry" />
+        <mxCell id="588Fdgz_NcGzjMWDRItu-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="12:00🔔" vertex="1">
+          <mxGeometry height="30" width="80" x="20" y="7" as="geometry" />
         </mxCell>
-        <mxCell id="588Fdgz_NcGzjMWDRItu-4" value="il 🛜🔋" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" parent="1" vertex="1">
-          <mxGeometry x="260" y="7" width="80" height="30" as="geometry" />
+        <mxCell id="588Fdgz_NcGzjMWDRItu-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="📶 🛜🔋" vertex="1">
+          <mxGeometry height="30" width="80" x="260" y="7" as="geometry" />
         </mxCell>
-        <mxCell id="oBOyvNitzLyXobDxXJtm-1" value="safe-area-inset-bottom" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry y="750" width="360" height="30" as="geometry" />
+        <mxCell id="oBOyvNitzLyXobDxXJtm-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" value="safe-area-inset-bottom" vertex="1">
+          <mxGeometry height="30" width="360" y="750" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -170,8 +170,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram name="G004-問題を解く" id="QYaR997ncZVKOPBFliqo">
-    <mxGraphModel dx="549" dy="808" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <diagram name="G004-出題" id="QYaR997ncZVKOPBFliqo">
+    <mxGraphModel dx="475" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="xkTuRqiTNICBa2jiup35-0" />
         <mxCell id="xkTuRqiTNICBa2jiup35-1" parent="xkTuRqiTNICBa2jiup35-0" />
@@ -187,11 +187,51 @@
         <mxCell id="xkTuRqiTNICBa2jiup35-5" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="12:00🔔" vertex="1">
           <mxGeometry height="30" width="80" x="20" y="7" as="geometry" />
         </mxCell>
-        <mxCell id="xkTuRqiTNICBa2jiup35-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="il 🛜🔋" vertex="1">
-          <mxGeometry height="30" width="80" x="260" y="7" as="geometry" />
+        <mxCell id="xkTuRqiTNICBa2jiup35-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="📶 🛜🔋" vertex="1">
+          <mxGeometry height="33" width="80" x="260" y="7" as="geometry" />
         </mxCell>
         <mxCell id="xkTuRqiTNICBa2jiup35-7" parent="xkTuRqiTNICBa2jiup35-1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" value="safe-area-inset-bottom" vertex="1">
           <mxGeometry height="30" width="360" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="5feqdEiN-CEkO9o6xPVX-0" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="《 戻る" vertex="1">
+          <mxGeometry height="60" width="80" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-0" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=16;align=left;fontColor=light-dark(#000000,#7F7F7F);fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&amp;nbsp;　単語の解説…" vertex="1">
+          <mxGeometry height="50" width="320" x="20" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-1" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="30" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-2" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="110" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-3" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="190" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-4" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="270" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-5" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="答えを見る" vertex="1">
+          <mxGeometry height="60" width="130" x="230" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-6" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=20;fillColor=none;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="➡️" vertex="1">
+          <mxGeometry height="40" width="40" x="290" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-7" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontStyle=1" value="○○(ユーザー入力のジャンル)" vertex="1">
+          <mxGeometry height="50" width="320" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-8" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに問題文が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;" vertex="1">
+          <mxGeometry height="290" width="320" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-0" edge="1" parent="xkTuRqiTNICBa2jiup35-1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=8;endSize=8;curved=1;endArrow=none;endFill=0;" value="">
+          <mxGeometry relative="1" width="120" as="geometry">
+            <Array as="points" />
+            <mxPoint x="30" y="260" as="sourcePoint" />
+            <mxPoint x="330" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　クリックでダイアログ表示&lt;div&gt;　　｢正解を表示します。よろしいですか？｣&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="350" x="350" y="37" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
