@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net">
+<mxfile host="app.diagrams.net" pages="2">
   <diagram name="M000-テンプレート" id="S722mUA1QwenAaxWcmtO">
-    <mxGraphModel dx="549" dy="808" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="416" dy="618" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -24,6 +24,41 @@
         </mxCell>
         <mxCell id="oBOyvNitzLyXobDxXJtm-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" value="safe-area-inset-bottom" vertex="1">
           <mxGeometry height="30" width="360" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="0yym5STzoQi3OSxisRWl-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" value="‪✕‬" vertex="1">
+          <mxGeometry height="40" width="40" x="300" y="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="M001-単語解説" id="ZXxDb3H-V4kfYjVyN-p5">
+    <mxGraphModel dx="397" dy="583" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-0" />
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-1" parent="dHZZx_mZw_dDVMhhusAw-0" />
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-2" parent="dHZZx_mZw_dDVMhhusAw-1" style="whiteSpace=wrap;html=1;rounded=1;arcSize=9;" value="" vertex="1">
+          <mxGeometry height="780" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-3" parent="dHZZx_mZw_dDVMhhusAw-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=light-dark(#FFFFFF,#000000);" value="safe-area-inset-top" vertex="1">
+          <mxGeometry height="30" width="120" x="120" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-4" parent="dHZZx_mZw_dDVMhhusAw-1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;fillStyle=cross-hatch;" value="" vertex="1">
+          <mxGeometry height="50" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-5" parent="dHZZx_mZw_dDVMhhusAw-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="12:00🔔" vertex="1">
+          <mxGeometry height="30" width="80" x="20" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-6" parent="dHZZx_mZw_dDVMhhusAw-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="📶 🛜🔋" vertex="1">
+          <mxGeometry height="30" width="80" x="260" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-7" parent="dHZZx_mZw_dDVMhhusAw-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=9;fillColor=light-dark(#FFFFFF,#060606);glass=0;" value="" vertex="1">
+          <mxGeometry height="710" width="360" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dHZZx_mZw_dDVMhhusAw-8" parent="dHZZx_mZw_dDVMhhusAw-1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" value="safe-area-inset-bottom" vertex="1">
+          <mxGeometry height="30" width="360" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="-QIkE6HgjWwtOf8IaqY9-0" parent="dHZZx_mZw_dDVMhhusAw-1" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" value="‪✕‬" vertex="1">
+          <mxGeometry height="40" width="40" x="300" y="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
