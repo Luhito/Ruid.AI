@@ -171,7 +171,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="G004-出題" id="QYaR997ncZVKOPBFliqo">
-    <mxGraphModel dx="476" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="595" dy="875" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="xkTuRqiTNICBa2jiup35-0" />
         <mxCell id="xkTuRqiTNICBa2jiup35-1" parent="xkTuRqiTNICBa2jiup35-0" />
@@ -199,17 +199,8 @@
         <mxCell id="bTmPhd-1JKKc5sDVDGzS-0" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=16;align=left;fontColor=light-dark(#000000,#7F7F7F);fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&amp;nbsp;　単語の解説…" vertex="1">
           <mxGeometry height="50" width="320" x="20" y="620" as="geometry" />
         </mxCell>
-        <mxCell id="bTmPhd-1JKKc5sDVDGzS-1" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-1" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;fontSize=25;fontStyle=1" value="ア" vertex="1">
           <mxGeometry height="60" width="60" x="30" y="680" as="geometry" />
-        </mxCell>
-        <mxCell id="bTmPhd-1JKKc5sDVDGzS-2" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
-          <mxGeometry height="60" width="60" x="110" y="680" as="geometry" />
-        </mxCell>
-        <mxCell id="bTmPhd-1JKKc5sDVDGzS-3" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
-          <mxGeometry height="60" width="60" x="190" y="680" as="geometry" />
-        </mxCell>
-        <mxCell id="bTmPhd-1JKKc5sDVDGzS-4" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;" value="" vertex="1">
-          <mxGeometry height="60" width="60" x="270" y="680" as="geometry" />
         </mxCell>
         <mxCell id="bTmPhd-1JKKc5sDVDGzS-5" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="答えを見る" vertex="1">
           <mxGeometry height="60" width="130" x="230" y="50" as="geometry" />
@@ -230,7 +221,7 @@
             <mxPoint x="330" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CQILtAssuT2_ymYSGIWV-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　クリックでダイアログ表示&lt;div&gt;　　｢正答を表示します。よろしいですか？｣&lt;/div&gt;" vertex="1">
+        <mxCell id="CQILtAssuT2_ymYSGIWV-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　クリックでダイアログ表示&lt;div&gt;　　｢正答を表示します。よろしいですか？｣&lt;/div&gt;&lt;div&gt;　　OKなら正答表示&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="350" x="350" y="37" as="geometry" />
         </mxCell>
         <mxCell id="CQILtAssuT2_ymYSGIWV-7" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　線以下は回答後に表示" vertex="1">
@@ -241,6 +232,24 @@
         </mxCell>
         <mxCell id="CQILtAssuT2_ymYSGIWV-9" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに解説が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="300" x="30" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-10" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　タップでモーダル表示：M001-単語解説" vertex="1">
+          <mxGeometry height="60" width="350" x="350" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-11" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;fontSize=25;fontStyle=1" value="エ" vertex="1">
+          <mxGeometry height="60" width="60" x="270" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-13" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;fontSize=25;fontStyle=1" value="イ" vertex="1">
+          <mxGeometry height="60" width="60" x="110" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-14" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;fontSize=25;fontStyle=1" value="ウ" vertex="1">
+          <mxGeometry height="60" width="60" x="190" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-15" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　タップで回答　上から〇‪✕‬表示" vertex="1">
+          <mxGeometry height="60" width="350" x="350" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-16" parent="xkTuRqiTNICBa2jiup35-1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#FF0000,#FF0000);strokeWidth=10;" value="" vertex="1">
+          <mxGeometry height="50" width="50" x="35" y="685" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
