@@ -233,8 +233,8 @@
         <mxCell id="CQILtAssuT2_ymYSGIWV-9" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに解説が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="300" x="30" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="CQILtAssuT2_ymYSGIWV-10" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　タップでモーダル表示：M001-単語解説" vertex="1">
-          <mxGeometry height="60" width="350" x="350" y="615" as="geometry" />
+        <mxCell id="CQILtAssuT2_ymYSGIWV-10" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　タップでモーダル表示：M001-単語解説&lt;div&gt;　　影つける&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="350" x="350" y="625" as="geometry" />
         </mxCell>
         <mxCell id="CQILtAssuT2_ymYSGIWV-11" parent="xkTuRqiTNICBa2jiup35-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#008A00,#97D077);fontColor=#ffffff;strokeColor=#005700;fontSize=25;fontStyle=1" value="エ" vertex="1">
           <mxGeometry height="60" width="60" x="270" y="680" as="geometry" />
