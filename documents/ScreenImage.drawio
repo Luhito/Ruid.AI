@@ -171,7 +171,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="G004-出題" id="QYaR997ncZVKOPBFliqo">
-    <mxGraphModel dx="475" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="476" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="xkTuRqiTNICBa2jiup35-0" />
         <mxCell id="xkTuRqiTNICBa2jiup35-1" parent="xkTuRqiTNICBa2jiup35-0" />
@@ -218,20 +218,29 @@
           <mxGeometry height="40" width="40" x="290" y="625" as="geometry" />
         </mxCell>
         <mxCell id="bTmPhd-1JKKc5sDVDGzS-7" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontStyle=1" value="○○(ユーザー入力のジャンル)" vertex="1">
-          <mxGeometry height="50" width="320" x="20" y="110" as="geometry" />
+          <mxGeometry height="50" width="320" x="20" y="97" as="geometry" />
         </mxCell>
-        <mxCell id="bTmPhd-1JKKc5sDVDGzS-8" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに問題文が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;" vertex="1">
-          <mxGeometry height="290" width="320" x="20" y="170" as="geometry" />
+        <mxCell id="bTmPhd-1JKKc5sDVDGzS-8" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに問題文が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ア&lt;/div&gt;&lt;div&gt;イ&lt;/div&gt;&lt;div&gt;ウ&lt;/div&gt;&lt;div&gt;エ&lt;/div&gt;" vertex="1">
+          <mxGeometry height="103" width="300" x="30" y="147" as="geometry" />
         </mxCell>
         <mxCell id="CQILtAssuT2_ymYSGIWV-0" edge="1" parent="xkTuRqiTNICBa2jiup35-1" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=8;endSize=8;curved=1;endArrow=none;endFill=0;" value="">
           <mxGeometry relative="1" width="120" as="geometry">
             <Array as="points" />
-            <mxPoint x="30" y="260" as="sourcePoint" />
-            <mxPoint x="330" y="260" as="targetPoint" />
+            <mxPoint x="30" y="310" as="sourcePoint" />
+            <mxPoint x="330" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CQILtAssuT2_ymYSGIWV-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　クリックでダイアログ表示&lt;div&gt;　　｢正解を表示します。よろしいですか？｣&lt;/div&gt;" vertex="1">
+        <mxCell id="CQILtAssuT2_ymYSGIWV-6" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　クリックでダイアログ表示&lt;div&gt;　　｢正答を表示します。よろしいですか？｣&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="350" x="350" y="37" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-7" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　線以下は回答後に表示" vertex="1">
+          <mxGeometry height="110" width="350" x="350" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-8" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontStyle=1" value="解説" vertex="1">
+          <mxGeometry height="50" width="90" x="10" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="CQILtAssuT2_ymYSGIWV-9" parent="xkTuRqiTNICBa2jiup35-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="ここに解説が表示される&lt;div&gt;マークダウンも対応すべき&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="300" x="30" y="370" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
