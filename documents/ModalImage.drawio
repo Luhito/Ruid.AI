@@ -1,0 +1,28 @@
+<mxfile host="app.diagrams.net" pages="5">
+  <diagram name="G000-テンプレート" id="S722mUA1QwenAaxWcmtO">
+    <mxGraphModel dx="376" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zQ7BFWEPkJkrmx3Nq8T0-1" parent="1" style="whiteSpace=wrap;html=1;rounded=1;arcSize=9;" value="" vertex="1">
+          <mxGeometry height="780" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="588Fdgz_NcGzjMWDRItu-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=light-dark(#FFFFFF,#000000);" value="safe-area-inset-top" vertex="1">
+          <mxGeometry height="30" width="120" x="120" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="aVIO_8MDiifiFSeVl00r-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;fillStyle=cross-hatch;" value="" vertex="1">
+          <mxGeometry height="50" width="360" as="geometry" />
+        </mxCell>
+        <mxCell id="588Fdgz_NcGzjMWDRItu-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="12:00🔔" vertex="1">
+          <mxGeometry height="30" width="80" x="20" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="588Fdgz_NcGzjMWDRItu-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=16;" value="📶 🛜🔋" vertex="1">
+          <mxGeometry height="30" width="80" x="260" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="oBOyvNitzLyXobDxXJtm-1" parent="1" style="whiteSpace=wrap;html=1;dashed=1;dashPattern=1 1;rounded=0;fillColor=none;" value="safe-area-inset-bottom" vertex="1">
+          <mxGeometry height="30" width="360" y="750" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
