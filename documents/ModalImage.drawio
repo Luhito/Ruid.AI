@@ -32,7 +32,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="M001-単語解説" id="ZXxDb3H-V4kfYjVyN-p5">
-    <mxGraphModel dx="397" dy="583" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="595" dy="875" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="dHZZx_mZw_dDVMhhusAw-0" />
         <mxCell id="dHZZx_mZw_dDVMhhusAw-1" parent="dHZZx_mZw_dDVMhhusAw-0" />
@@ -59,6 +59,15 @@
         </mxCell>
         <mxCell id="-QIkE6HgjWwtOf8IaqY9-0" parent="dHZZx_mZw_dDVMhhusAw-1" style="ellipse;whiteSpace=wrap;html=1;fontSize=20;" value="‪✕‬" vertex="1">
           <mxGeometry height="40" width="40" x="300" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rH2NSFPPAZvL4A-07jN5-0" parent="dHZZx_mZw_dDVMhhusAw-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=16;align=left;fontColor=light-dark(#000000,#7F7F7F);fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&amp;nbsp;　単語の解説…" vertex="1">
+          <mxGeometry height="50" width="320" x="20" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="rH2NSFPPAZvL4A-07jN5-1" parent="dHZZx_mZw_dDVMhhusAw-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="←　【画面下部固定】モーダルOPEN時、元の位置から下がる&lt;div&gt;　　影ついてる+その動きするので、&lt;/div&gt;&lt;div&gt;　　浮いてるみたいに見えると思う&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="470" x="350" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="rH2NSFPPAZvL4A-07jN5-2" parent="dHZZx_mZw_dDVMhhusAw-1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontSize=20;fillColor=none;strokeColor=light-dark(#000000,#000000);fontColor=light-dark(#000000,#000000);" value="➡️" vertex="1">
+          <mxGeometry height="40" width="40" x="290" y="685" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
