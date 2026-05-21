@@ -1,3 +1,6 @@
 {
-  "login-loginpage-title": "ログイン"
+  "login-loginpage-title": "ログイン",
+  "home-title": "ホーム",
+  "home-question-capital-france": "フランスの首都はどこですか？",
+  "home-question-score": "スコア: {{score}}"
 }

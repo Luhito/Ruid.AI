@@ -1,8 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 const Home = () => {
+    const { t } = useTranslation();
+
     return (
         <>
-            Home
-            <QuestionComponent questionName="What is the capital of France?" score={85} />
+            {t('home-title')}
+            <QuestionComponent questionName={t('home-question-capital-france')} score={85} />
         </>
     )
 }
@@ -14,10 +18,12 @@ type QuestionComponentType = {
     score: number
 }
 const QuestionComponent = (props: QuestionComponentType) => {
+    const { t } = useTranslation();
+
     return (
         <div>
             <h2>{props.questionName}</h2>
-            <p>Score: {props.score}</p>
+            <p>{t('home-question-score', { score: props.score })}</p>
         </div>
     )
 }
