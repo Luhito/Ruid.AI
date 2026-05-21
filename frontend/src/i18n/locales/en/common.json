@@ -1,3 +1,6 @@
 {
-  "login-loginpage-title": "Login"
+  "login-loginpage-title": "Login",
+  "home-title": "Home",
+  "home-question-capital-france": "What is the capital of France?",
+  "home-question-score": "Score: {{score}}"
 }
