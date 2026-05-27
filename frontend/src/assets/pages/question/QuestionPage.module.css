@@ -14,8 +14,64 @@ header {
   justify-content: space-between;
 }
 
-
-
-body {
+main {
   padding-top: 60px;
+  width: 100%;
+}
+
+.subject {
+  text-align: left;
+  font-size: 25px;
+  margin: 10px 30px;
+  width: 90%;
+}
+
+.md-text {
+  text-align: left;
+  font-size: 18px;
+  margin: 10px 30px;
+  width: 90%;
+}
+
+.md-text p {
+  margin: 5px auto;
+}
+
+li {
+  list-style: none;
+}
+
+.question-choices {
+  text-align: left;
+}
+
+.question-choices p {
+  font-size: 15px;
+  margin: 5px auto;
+}
+
+.question-choice-content {
+  margin-left: 10px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  justify-content: center;
+}
+
+.new-description-textbox {
+  width: 70%;
+  height: 50px;
+  display: inline-block;
+  margin: 10px auto;
+  padding: 0 20px;
+  background-color: rgb(235, 235, 235);
+  color: black;
+  border-radius: 999px;
+  font-size: 15px;
 }

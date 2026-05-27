@@ -32,7 +32,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #e6ffdf;
+    --text: #f7fff5;
     --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;
@@ -51,7 +51,7 @@
 }
 
 #root {
-  width: 1126px;
+  width: 800px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -70,7 +70,6 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
 }
 
 h1 {
@@ -108,4 +107,9 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+button {
+  font-size: 16px;
+  padding: 8px, 12px;
 }
