@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import type { QuestionPageState } from './QuestionPage.state';
+import type { QuestionPageActions } from './QuestionPage.state';
 
-export const useQuestionPageLogic = (states: QuestionPageState) => {
+export const useQuestionPageLogic = (actions: QuestionPageActions) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
     const correct_answer_index = 1;
@@ -13,7 +13,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
             return;
         }
 
-
+        actions.setOpenAnswer(true);
     }
 
     const onClick_back = () => {
@@ -21,7 +21,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
     }
 
     const onClick_answer = (index: number) => {
-        states.setOpenAnswer(true);
+        actions.setOpenAnswer(true);
         if (index === correct_answer_index) {
             alert("correct");
         }

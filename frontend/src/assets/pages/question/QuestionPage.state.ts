@@ -5,9 +5,13 @@ export const useQuestionPageState = () => {
 
     return {
         states : {
-            isOpenAnswer, setOpenAnswer
+            isOpenAnswer
+        },
+        actions: {
+            setOpenAnswer
         }
     }
 }
 
 export type QuestionPageState = ReturnType<typeof useQuestionPageState>["states"];
+export type QuestionPageActions = ReturnType<typeof useQuestionPageState>["actions"];

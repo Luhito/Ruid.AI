@@ -7,8 +7,8 @@ import { Line } from '@/shared-components/Line'
 
 const QuestionPage = () => {
     const { t } = useTranslation("question");
-    const { states } = useQuestionPageState();
-    const { logics } = useQuestionPageLogic(states);
+    const { states, actions } = useQuestionPageState();
+    const { logics } = useQuestionPageLogic(actions);
 
     const testArr = ['A', 'B', 'C', 'D'];
     const testArr2 = ['choice1', 'choice2', 'choice3', 'choice4'];

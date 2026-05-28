@@ -1,9 +1,8 @@
 header {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  width: 800px;
+  max-width: 100%;
   z-index: 1000;
 }
 
@@ -57,9 +56,8 @@ li {
 footer {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  width: 800px;
+  max-width: 100%;
   z-index: 1000;
   justify-content: center;
 }
@@ -74,4 +72,19 @@ footer {
   color: black;
   border-radius: 999px;
   font-size: 15px;
+}
+
+.choices {
+  margin-bottom: calc(env(safe-area-inset-bottom) + 15px);
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.choice-tag {
+  width: calc(100% / 5);
+  max-width: 100px;
+  aspect-ratio: 1 / 1;
+  max-height: 100px;
+  margin: min(calc(100% / 40), 10px);
 }
