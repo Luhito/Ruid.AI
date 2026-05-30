@@ -112,4 +112,10 @@ code {
 button {
   font-size: 16px;
   padding: 8px, 12px;
+  background-color: transparent;
+  border-color: var(--accent-border);
+  border-width: 3px;
+  color: var(--text);
+  border-radius: 10px;
+  cursor: pointer;
 }

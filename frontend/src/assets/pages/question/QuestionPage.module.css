@@ -7,10 +7,17 @@ header {
 }
 
 .header-buttons {
-  margin-top: env(safe-area-inset-top);
-  padding: 15px 15px;
+  margin: env(safe-area-inset-top);
   display: flex;
   justify-content: space-between;
+}
+
+.button-back {
+  padding: 15px;
+}
+
+.button-show-description {
+  padding: 15px;
 }
 
 main {
@@ -86,5 +93,6 @@ footer {
   max-width: 100px;
   aspect-ratio: 1 / 1;
   max-height: 100px;
-  margin: min(calc(100% / 40), 10px);
+  margin: 8px;
+  font-size: 3vh;
 }
