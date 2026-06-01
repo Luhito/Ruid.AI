@@ -7,6 +7,15 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
     const { t } = useTranslation("question");
     const correct_answer_index = 1;
 
+    const getQuestion = () => {
+        return {
+            correct_answer_index: 1,
+            choiceTags: ['A', 'B', 'C', 'D'],
+            choiceTexts: ['choice1', 'choice2', 'choice3', 'choice4'],
+            question_test: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**"
+        }
+    }
+
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
 
@@ -24,7 +33,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
 
     const onClick_answer = (index: number) => {
         if (states.isOpenAnswer) return;
-        
+
         states.setOpenAnswer(true);
         if (index === correct_answer_index) {
             alert("correct");
@@ -36,6 +45,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
 
     return {
         logics: {
+            getQuestion,
             onClick_viewAnswer,
             onClick_back,
             onClick_answer

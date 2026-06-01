@@ -9,11 +9,7 @@ const QuestionPage = () => {
     const { t } = useTranslation("question");
     const { states } = useQuestionPageState();
     const { logics } = useQuestionPageLogic(states);
-
-    const testArr = ['A', 'B', 'C', 'D'];
-    const testArr2 = ['choice1', 'choice2', 'choice3', 'choice4'];
-
-    const question_test = "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**";
+    const question = logics.getQuestion();
 
     return (
         <>
@@ -29,11 +25,13 @@ const QuestionPage = () => {
                     </div>
 
                     {/**「解説を見る」ボタン  */}
-                    <span className={styles["header-buttons-right"]}>
-                        <button className={styles["button-show-description"]} onClick={() => logics.onClick_viewAnswer()}>
-                            {t('view answer')}
-                        </button>
-                    </span>
+                    {!states.isOpenAnswer && (
+                        <span className={styles["header-buttons-right"]}>
+                            <button className={styles["button-show-description"]} onClick={() => logics.onClick_viewAnswer()}>
+                                {t('view answer')}
+                            </button>
+                        </span>
+                    )}
                 </div>
             </header>
 
@@ -46,20 +44,20 @@ const QuestionPage = () => {
 
                 {/** 問題文 */}
                 <div className={styles["md-text"]}>
-                    <MD>{question_test}</MD>
+                    <MD>{question.question_test}</MD>
                 </div>
 
                 {/** 選択肢 */}
                 <div className={styles["question-choices"]}>
                     <ul>
-                        {testArr.map((value, index) => {
+                        {question.choiceTags.map((value, index) => {
                             return (
                                 <li key={"choice" + index}>
                                     <span className={styles["question-choice-tag"]}>
                                         {value}
                                     </span>
                                     <span className={styles["question-choice-content"]}>
-                                        {testArr2[index]}
+                                        {question.choiceTexts[index]}
                                     </span>
                                 </li>
                             )
@@ -94,15 +92,29 @@ const QuestionPage = () => {
                         placeholder="単語に関する質問を入力..."
                     />
                 </div>
-                <div className={styles["choices"]}>
-                    {testArr.map((value, index) => {
-                        return (
-                            <button className={styles["choice-tag"]} onClick={() => logics.onClick_answer(index)} key={`choice-${index}`}>
-                                {value}
-                            </button>
-                        )
-                    })}
-                </div>
+
+                {/** 選択肢（未回答時のみ表示） */}
+                {!states.isOpenAnswer && (
+                    <div className={styles["choices"]}>
+                        {question.choiceTags.map((value, index) => {
+                            return (
+                                <button className={styles["choice-tag"]} onClick={() => logics.onClick_answer(index)} key={`choice-${index}`}>
+                                    {value}
+                                </button>
+                            )
+                        })}
+                    </div>
+                )}
+
+                {/** 「次へ」ボタン（回答後のみ表示） */}
+                {states.isOpenAnswer && (
+                    <div className={styles["button-next-container"]}>
+                        <button className={styles["button-next"]}>
+                            次へ
+                        </button>
+                    </div>
+                )}
+
             </footer>
         </>
     )
