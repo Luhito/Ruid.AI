@@ -39,5 +39,7 @@ components:
     User:
       $ref: './schemas/user.yaml'
 
-    GetQuestionRequest:
-      $ref: './schemas/getQuestion-request.yaml'
+    QuestionRequest:
+      $ref: './schemas/question-request.yaml'
+
+    

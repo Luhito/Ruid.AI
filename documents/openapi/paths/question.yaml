@@ -12,11 +12,11 @@ get:
     content:
       application/json:
         schema:
-          $ref: '../openapi.yaml#/components/schemas/RegisterRequest'
+          $ref: '../openapi.yaml#/components/schemas/QuestionRequest'
 
   responses:
     '201':
-      description: 登録成功
+      description: 取得成功
 
       content:
         application/json:
