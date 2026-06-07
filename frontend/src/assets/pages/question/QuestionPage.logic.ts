@@ -12,7 +12,8 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
             correct_answer_index: 1,
             choiceTags: ['A', 'B', 'C', 'D'],
             choiceTexts: ['choice1', 'choice2', 'choice3', 'choice4'],
-            question_test: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**"
+            question_test: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**",
+            explanation_test: "ここに説明が表示されるはずです\n\n**それも、マークダウンで！**"
         }
     }
 

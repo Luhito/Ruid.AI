@@ -77,7 +77,7 @@ const QuestionPage = () => {
 
                     {/** */}
                     <div className={styles['md-text']}>
-                        <MD>explanation</MD>
+                        <MD>{question.explanation_test}</MD>
                     </div>
                 </>)}
             </main>
@@ -89,7 +89,7 @@ const QuestionPage = () => {
                     <input
                         type="text"
                         className={styles['new-description-textbox']}
-                        placeholder="単語に関する質問を入力..."
+                        placeholder={t("textbox placeholder")}
                     />
                 </div>
 

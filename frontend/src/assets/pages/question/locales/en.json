@@ -3,5 +3,6 @@
     "view answer": "View answer",
     "view answer message": "Reveal the answer?",
     "question": "Question.",
-    "explanation": "Explanation"
+    "explanation": "Explanation",
+    "textbox placeholder": "Enter anythings about question above..."
 }

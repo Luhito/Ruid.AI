@@ -3,5 +3,6 @@
     "view answer": "解説を見る",
     "view answer message": "解答を表示します。よろしいですか？",
     "question": "問題",
-    "explanation": "解説"
+    "explanation": "解説",
+    "textbox placeholder": "単語に関する質問を入力..."
 }
