@@ -3,7 +3,7 @@ openapi: 3.0.3
 info:
   title: Ruid.ai API
   version: 1.0.0
-  description: Ruid.ai API
+  description: Ruid.ai API一覧
 
 servers:
   - url: http://localhost:8080
@@ -12,12 +12,18 @@ tags:
   - name: Auth
     description: 認証API
 
+  - name: Question
+    description: 問題取得API
+
 paths:
   /auth/login:
     $ref: './paths/login.yaml'
 
   /auth/register:
     $ref: './paths/register.yaml'
+
+  /question:
+    $ref: './paths/question.yaml'
 
 components:
   schemas:
@@ -32,3 +38,6 @@ components:
 
     User:
       $ref: './schemas/user.yaml'
+
+    GetQuestionRequest:
+      $ref: './schemas/getQuestion-request.yaml'
