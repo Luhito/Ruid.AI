@@ -42,4 +42,7 @@ components:
     QuestionRequest:
       $ref: './schemas/question-request.yaml'
 
+    GetQuestionResponse:
+      $ref: './schemas/get-question-response.yaml'
+
     
