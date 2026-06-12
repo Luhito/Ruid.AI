@@ -3,19 +3,32 @@ get:
     - Question
 
   summary: 問題取得
-
   operationId: getQuestion
 
-  requestBody:
-    required: true
+  parameters:
+    - in: query
+      name: qid
+      schema:
+        type: string
+        format: UUID
+      required: true
+      description: 問題ID(UUID)
 
-    content:
-      application/json:
-        schema:
-          $ref: '../openapi.yaml#/components/schemas/QuestionRequest'
+    - in: header
+      name: User-Agent
+      schema:
+        type: string
+      required: true
+      description: クライアントのブラウザとOS情報
 
+    - in: header
+      name: Accept-Language 
+      schema:
+        type: string
+      description: 受け入れ可能な自然言語
+      
   responses:
-    '201':
+    '200':
       description: 取得成功
 
       content:

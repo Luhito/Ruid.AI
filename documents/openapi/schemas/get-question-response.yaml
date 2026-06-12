@@ -1,24 +1,38 @@
 type: object
 
 required:
+  - question_text
+  - choices
   - correct_answer_index
-  - choiceTags
-  - choiceTexts
-  - question_test
-  - explanation_test
+  - explanation_text
 
 properties:
+  question_text:
+    type: string
+    description: 問題文
+    example: テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**
+
+  choices:
+    description: 選択肢
+    type: array
+    items:
+      type: object
+      properties:
+        tag:
+          type: string
+          description: 選択肢を表す記号
+          example: A
+        text:
+          type: string
+          description: 選択肢の本文
+          example: choice1
+
   correct_answer_index:
     description: 選択肢の中で、正解のインデックス
     type: integer
     example: 1
 
-  choiceTags:
-    description: 選択肢の記号
-    type: array
-    example: ['A', 'B', 'C', 'D']
-            # correct_answer_index: 1,
-            # choiceTags: ['A', 'B', 'C', 'D'],
-            # choiceTexts: ['choice1', 'choice2', 'choice3', 'choice4'],
-            # question_test: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**",
-            # explanation_test: "ここに説明が表示されるはずです\n\n**それも、マークダウンで！**"
+  explanation_text:
+    type: string
+    description: 解説文
+    example: ここに説明が表示されるはずです\n\n**それも、マークダウンで！**
