@@ -32,7 +32,22 @@ properties:
     type: integer
     example: 1
 
-  explanation_text:
+  choiceTags:
+    description: 選択肢の記号
+    type: array
+    example: ['A', 'B', 'C', 'D']
+
+  choiceTexts:
+    description: 選択肢の内容
+    type: array
+    example: ['choice1', 'choice2', 'choice3', 'choice4']
+
+  question_test:
+    description: 問題文
     type: string
+    example: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**"
+
+  explanation_test: 
     description: 解説文
-    example: ここに説明が表示されるはずです\n\n**それも、マークダウンで！**
+    type: string
+    example: "ここに説明が表示されるはずです\n\n**それも、マークダウンで！**"
