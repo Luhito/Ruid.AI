@@ -9,7 +9,7 @@ const QuestionPage = () => {
     const { t } = useTranslation("question");
     const { states } = useQuestionPageState();
     const { logics } = useQuestionPageLogic(states);
-    const question = logics.getQuestion();
+    const question = logics.question;
 
     return (
         <>
@@ -44,20 +44,20 @@ const QuestionPage = () => {
 
                 {/** 問題文 */}
                 <div className={styles["md-text"]}>
-                    <MD>{question.question_test}</MD>
+                    {question && <MD>{question.question_text}</MD>}
                 </div>
 
                 {/** 選択肢 */}
                 <div className={styles["question-choices"]}>
                     <ul>
-                        {question.choiceTags.map((value, index) => {
+                        {question?.choices?.map((choice, index) => {
                             return (
                                 <li key={"choice" + index}>
                                     <span className={styles["question-choice-tag"]}>
-                                        {value}
+                                        {choice.tag || ''}
                                     </span>
                                     <span className={styles["question-choice-content"]}>
-                                        {question.choiceTexts[index]}
+                                        {choice.text || ''}
                                     </span>
                                 </li>
                             )
@@ -77,7 +77,7 @@ const QuestionPage = () => {
 
                     {/** */}
                     <div className={styles['md-text']}>
-                        <MD>{question.explanation_test}</MD>
+                        <MD>{question?.explanation_text || ''}</MD>
                     </div>
                 </>)}
             </main>
@@ -96,10 +96,10 @@ const QuestionPage = () => {
                 {/** 選択肢（未回答時のみ表示） */}
                 {!states.isOpenAnswer && (
                     <div className={styles["choices"]}>
-                        {question.choiceTags.map((value, index) => {
+                        {question?.choices?.map((choice, index) => {
                             return (
                                 <button className={styles["choice-tag"]} onClick={() => logics.onClick_answer(index)} key={`choice-${index}`}>
-                                    {value}
+                                    {choice.tag || ''}
                                 </button>
                             )
                         })}

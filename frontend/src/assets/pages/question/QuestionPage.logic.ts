@@ -1,21 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageState } from './QuestionPage.state';
+import type { GetQuestionResponse } from '@/api/generated/api';
+import { useQuery } from '@tanstack/react-query';
+import { API } from '@/api/wrappers/api';
 
 export const useQuestionPageLogic = (states: QuestionPageState) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
+    const api = new API();
     const correct_answer_index = 1;
 
-    const getQuestion = () => {
-        return {
-            correct_answer_index: 1,
-            choiceTags: ['A', 'B', 'C', 'D'],
-            choiceTexts: ['choice1', 'choice2', 'choice3', 'choice4'],
-            question_test: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**",
-            explanation_test: "ここに説明が表示されるはずです\n\n**それも、マークダウンで！**"
-        }
-    }
+    const qid = "sample";
+    const userAgent = "default";
+    const acceptLanguage = "default";
+
+    const {status, data} = useQuery<GetQuestionResponse>({
+        queryKey: [ "question", qid, acceptLanguage ],
+        queryFn: () => api.getQuestion(qid, userAgent, acceptLanguage)
+    })
 
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
@@ -46,7 +49,8 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
 
     return {
         logics: {
-            getQuestion,
+            status: status,
+            question: data,
             onClick_viewAnswer,
             onClick_back,
             onClick_answer

@@ -1,0 +1,16 @@
+type: object
+
+required:
+  - token
+  - questionId
+
+properties:
+  token:
+    type: string
+    description: 認証APIで発行されたJWTトークン
+    example: jwt-token-example
+
+  questionId:
+    type: string
+    description: 問題のUUID
+    format: uuid
