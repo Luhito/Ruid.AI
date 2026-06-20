@@ -3,17 +3,14 @@
 // import type { GetQuestionResponse } from '@/api/generated/api';
 // import { useQuery } from '@tanstack/react-query';
 
-export const useQuestionAPI = () => {
+/** 現在はスタブ */
+export const useQuestion = (qid: string, userAgent: string, acceptLanguage: string) => {
     // const configuration = new Configuration();
     // const apiInstance = new QuestionApi(configuration);
 
-    // const qid = "sample";
-    // const userAgent = "default";
-    // const acceptLanguage = "default";
-
     // const {status, data} = useQuery<GetQuestionResponse>({
-    //     queryKey: [ "question", qid, acceptLanguage ],
-    //     queryFn: () => api.getQuestion(qid, userAgent, acceptLanguage)
+    //     queryKey: ["question", qid, acceptLanguage],
+    //     queryFn: () => apiInstance.getQuestion(qid, userAgent, acceptLanguage).then(response => response.data)
     // })
 
     const status = "stub"
@@ -28,12 +25,6 @@ export const useQuestionAPI = () => {
         explanation_text: "サンプル解説文",
         correct_answer_index: 1
     }
-    
-    const getQuestion = () => {
-        return { status, data }
-    }
 
-    return {
-        getQuestion
-    }
+    return { status, data }
 }

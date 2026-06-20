@@ -1,33 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageState } from './QuestionPage.state';
-import { useQuestionAPI } from './QuestionPage.api';
+import { useQuestion } from '@/api/schemas/question/useQuestion';
 
 export const useQuestionPageLogic = (states: QuestionPageState) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
-    const api = useQuestionAPI();
-
-    // const qid = "sample";
-    // const userAgent = "default";
-    // const acceptLanguage = "default";
-
-    // const {status, data} = useQuery<GetQuestionResponse>({
-    //     queryKey: [ "question", qid, acceptLanguage ],
-    //     queryFn: () => api.getQuestion(qid, userAgent, acceptLanguage)
-    // })
-    const status = "stub"
-    const data = {
-        question_text: "サンプル問題文",
-        choices: [
-            {tag: "A", text: "サンプル選択肢1"},
-            {tag: "B", text: "サンプル選択肢2"},
-            {tag: "C", text: "サンプル選択肢3"},
-            {tag: "D", text: "サンプル選択肢4"},
-        ],
-        explanation_text: "サンプル解説文",
-        correct_answer_index: 1
-    }
+    const question = useQuestion("sample", "default", "default");
 
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
@@ -48,7 +27,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
         if (states.isOpenAnswer) return;
 
         states.setOpenAnswer(true);
-        if (index === data.correct_answer_index) {
+        if (index === question.data.correct_answer_index) {
             alert("correct");
         }
         else {
@@ -58,8 +37,8 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
 
     return {
         logics: {
-            status: status,
-            question: data,
+            status: question.status,
+            question: question.data,
             onClick_viewAnswer,
             onClick_back,
             onClick_answer
