@@ -1,14 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageState } from './QuestionPage.state';
-// import type { GetQuestionResponse } from '@/api/generated/api';
-// import { useQuery } from '@tanstack/react-query';
-// import { API } from '@/api/wrappers/api';
+import { useQuestionAPI } from './QuestionPage.api';
 
 export const useQuestionPageLogic = (states: QuestionPageState) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
-    // const api = new API();
+    const api = useQuestionAPI();
 
     // const qid = "sample";
     // const userAgent = "default";
