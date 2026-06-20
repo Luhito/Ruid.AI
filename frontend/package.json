@@ -11,7 +11,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:api": "npx openapi-generator-cli generate -i openapi/openapi.yaml -g typescript-axios -o ../frontend/src/api/generated"
+    "generate:api": "npx openapi-generator-cli generate -i ../documents/openapi/openapi.yaml -g typescript-axios -o src/api/generated"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.32.0",

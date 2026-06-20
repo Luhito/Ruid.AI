@@ -41,9 +41,21 @@ export interface GetQuestionResponse {
      */
     'correct_answer_index': number;
     /**
+     * 選択肢の記号
+     */
+    'choiceTags'?: Array<string>;
+    /**
+     * 選択肢の内容
+     */
+    'choiceTexts'?: Array<string>;
+    /**
+     * 問題文
+     */
+    'question_test'?: string;
+    /**
      * 解説文
      */
-    'explanation_text': string;
+    'explanation_test'?: string;
 }
 export interface GetQuestionResponseChoicesInner {
     /**
@@ -60,7 +72,14 @@ export interface LoginRequest {
     'password': string;
 }
 export interface QuestionRequest {
+    /**
+     * 認証APIで発行されたJWTトークン
+     */
     'token': string;
+    /**
+     * 問題のUUID
+     */
+    'questionId': string;
 }
 export interface RegisterRequest {
     'username': string;

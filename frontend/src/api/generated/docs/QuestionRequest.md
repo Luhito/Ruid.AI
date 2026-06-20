@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**token** | **string** |  | [default to undefined]
+**token** | **string** | 認証APIで発行されたJWTトークン | [default to undefined]
+**questionId** | **string** | 問題のUUID | [default to undefined]
 
 ## Example
 
@@ -14,6 +15,7 @@ import { QuestionRequest } from './api';
 
 const instance: QuestionRequest = {
     token,
+    questionId,
 };
 ```
 
