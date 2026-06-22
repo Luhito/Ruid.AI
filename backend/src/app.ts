@@ -1,13 +1,19 @@
 import express from "express";
+import questionRouter from "./routes/questionRouter.js";
+import cors from "cors";
 
 const app = express();
 
-app.get("/hello", (_, res) => {
+app.use(cors({
+  origin: "http://localhost:5173"
+}))
+
+app.get("/", (_, res) => {
   res.json({
-    message: "Hello World",
+    message: "this is a Ruid.AI server.",
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server started");
-});
+app.use("/question", questionRouter)
+
+export default app;
