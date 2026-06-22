@@ -6,7 +6,7 @@ import { useQuestion } from '@/api/schemas/question/useQuestion';
 export const useQuestionPageLogic = (states: QuestionPageState) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
-    const question = useQuestion("sample", "default", "default");
+    const question = useQuestion("sample", "default");
 
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
@@ -27,7 +27,7 @@ export const useQuestionPageLogic = (states: QuestionPageState) => {
         if (states.isOpenAnswer) return;
 
         states.setOpenAnswer(true);
-        if (index === question.data.correct_answer_index) {
+        if (question.data && index === question.data.correct_answer_index) {
             alert("correct");
         }
         else {
