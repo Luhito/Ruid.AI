@@ -272,16 +272,13 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
-         * @param {string} userAgent クライアントのブラウザとOS情報
          * @param {string} [acceptLanguage] 受け入れ可能な自然言語
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getQuestion: async (qid: string, userAgent: string, acceptLanguage?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getQuestion: async (qid: string, acceptLanguage?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'qid' is not null or undefined
             assertParamExists('getQuestion', 'qid', qid)
-            // verify required parameter 'userAgent' is not null or undefined
-            assertParamExists('getQuestion', 'userAgent', userAgent)
             const localVarPath = `/question`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -300,9 +297,6 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
-            if (userAgent != null) {
-                localVarHeaderParameter['User-Agent'] = String(userAgent);
-            }
             if (acceptLanguage != null) {
                 localVarHeaderParameter['Accept-Language'] = String(acceptLanguage);
             }
@@ -328,13 +322,12 @@ export const QuestionApiFp = function(configuration?: Configuration) {
          * 
          * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
-         * @param {string} userAgent クライアントのブラウザとOS情報
          * @param {string} [acceptLanguage] 受け入れ可能な自然言語
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getQuestion(qid: string, userAgent: string, acceptLanguage?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getQuestion(qid, userAgent, acceptLanguage, options);
+        async getQuestion(qid: string, acceptLanguage?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getQuestion(qid, acceptLanguage, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuestionApi.getQuestion']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -352,13 +345,12 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
          * 
          * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
-         * @param {string} userAgent クライアントのブラウザとOS情報
          * @param {string} [acceptLanguage] 受け入れ可能な自然言語
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getQuestion(qid: string, userAgent: string, acceptLanguage?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestionResponse> {
-            return localVarFp.getQuestion(qid, userAgent, acceptLanguage, options).then((request) => request(axios, basePath));
+        getQuestion(qid: string, acceptLanguage?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestionResponse> {
+            return localVarFp.getQuestion(qid, acceptLanguage, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -371,13 +363,12 @@ export class QuestionApi extends BaseAPI {
      * 
      * @summary 問題取得
      * @param {string} qid 問題ID(UUID)
-     * @param {string} userAgent クライアントのブラウザとOS情報
      * @param {string} [acceptLanguage] 受け入れ可能な自然言語
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public getQuestion(qid: string, userAgent: string, acceptLanguage?: string, options?: RawAxiosRequestConfig) {
-        return QuestionApiFp(this.configuration).getQuestion(qid, userAgent, acceptLanguage, options).then((request) => request(this.axios, this.basePath));
+    public getQuestion(qid: string, acceptLanguage?: string, options?: RawAxiosRequestConfig) {
+        return QuestionApiFp(this.configuration).getQuestion(qid, acceptLanguage, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

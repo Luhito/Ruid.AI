@@ -15,13 +15,6 @@ get:
       description: 問題ID(UUID)
 
     - in: header
-      name: User-Agent
-      schema:
-        type: string
-      required: true
-      description: クライアントのブラウザとOS情報
-
-    - in: header
       name: Accept-Language 
       schema:
         type: string

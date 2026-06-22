@@ -12,7 +12,7 @@ export const useQuestion = (qid: string, userAgent: string, acceptLanguage: stri
         queryFn: () => apiInstance.getQuestion(qid, userAgent, acceptLanguage).then(response => response.data)
     })
 
-    console.log(`${status}, ${data}`)
+    console.log(data)
 
     return { status, data }
 }

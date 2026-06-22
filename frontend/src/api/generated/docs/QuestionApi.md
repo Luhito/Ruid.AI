@@ -22,12 +22,10 @@ const configuration = new Configuration();
 const apiInstance = new QuestionApi(configuration);
 
 let qid: string; //問題ID(UUID) (default to undefined)
-let userAgent: string; //クライアントのブラウザとOS情報 (default to undefined)
 let acceptLanguage: string; //受け入れ可能な自然言語 (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getQuestion(
     qid,
-    userAgent,
     acceptLanguage
 );
 ```
@@ -37,7 +35,6 @@ const { status, data } = await apiInstance.getQuestion(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **qid** | [**string**] | 問題ID(UUID) | defaults to undefined|
-| **userAgent** | [**string**] | クライアントのブラウザとOS情報 | defaults to undefined|
 | **acceptLanguage** | [**string**] | 受け入れ可能な自然言語 | (optional) defaults to undefined|
 
 
