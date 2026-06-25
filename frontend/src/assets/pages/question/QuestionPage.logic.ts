@@ -3,11 +3,10 @@ import { useTranslation } from 'react-i18next';
 import type { QuestionPageState } from './QuestionPage.state';
 import { useQuestion } from '@/api/schemas/question/useQuestion';
 
-export const useQuestionPageLogic = (states: QuestionPageState) => {
+export const useQuestionPageLogic = (questionId: string, states: QuestionPageState) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
-    const question = useQuestion("sample", "default");
-
+    const question = useQuestion(questionId, "default");
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
 

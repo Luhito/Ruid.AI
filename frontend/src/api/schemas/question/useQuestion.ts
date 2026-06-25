@@ -12,7 +12,7 @@ export const useQuestion = (qid: string, acceptLanguage: string) => {
         queryFn: () => apiInstance.getQuestion(qid, acceptLanguage).then(response => response.data)
     })
 
-    // console.log(data)
+    // console.log(data);
 
     return { status, data }
 }

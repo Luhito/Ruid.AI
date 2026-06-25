@@ -4,12 +4,19 @@ import { useQuestionPageLogic } from './QuestionPage.logic'
 import { useQuestionPageState } from './QuestionPage.state'
 import styles from './QuestionPage.module.css'
 import { Line } from '@/shared-components/Line'
+import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
 
-const QuestionPage = () => {
+const QuestionPage = (arg: {questionId: string}) => {
+
     const { t } = useTranslation("question");
     const { states } = useQuestionPageState();
-    const { logics } = useQuestionPageLogic(states);
+    const { logics } = useQuestionPageLogic(arg.questionId, states);
     const question = logics.question;
+
+    if (!arg.questionId) {
+        console.error("questionId is not specified. check your request parameter.");
+        return (<ErrorQuestionPage />)
+    }
 
     return (
         <>
@@ -77,7 +84,7 @@ const QuestionPage = () => {
 
                     {/** */}
                     <div className={styles['md-text']}>
-                        <MD>{question?.explanation_text || ''}</MD>
+                        <MD>{question?.explanation_test || ''}</MD>
                     </div>
                 </>)}
             </main>

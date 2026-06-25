@@ -4,7 +4,7 @@ export const getQuestion = (
     req: Request,
     res: Response
 ) => {
-    // qid: string, userAgent: string, acceptLanguage: string
+    // qid: string, acceptLanguage: string
     // const qid = 
 
     const stub_res = {

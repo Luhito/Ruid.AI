@@ -4,8 +4,9 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import { Home } from './assets/pages/Home'
+import { HomePage } from './assets/pages/home/HomePage'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { QuestionPage } from './assets/pages/question/QuestionPage';
+import { QuestionPageContainer } from './assets/pages/QuestionPageContainer/QuestionPageContainer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -124,8 +125,8 @@ function App() {
         <section id="spacer"></section>
         <button onClick={() => navigate("/question")}>Question Page</button>
       </>} />
-      <Route path="/home" element={<Home />}/>
-      <Route path="/question" element={<QuestionPage />}/>
+      <Route path="/home" element={<HomePage />}/>
+      <Route path="/question" element={<QuestionPageContainer />}/>
     </Routes>
   )
 }
