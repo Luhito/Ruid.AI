@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "strict": true,
+    "erasableSyntaxOnly": false
+  },
+  "include": ["**/*.ts"]
+}
