@@ -20,7 +20,7 @@ export default defineConfig([
     },
   },
   {
-    files: ["src/generated/**/*.ts"],
+    files: ["src/api/generated/**/*.ts"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "off",
