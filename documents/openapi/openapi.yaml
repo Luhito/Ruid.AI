@@ -6,7 +6,7 @@ info:
   description: Ruid.ai API一覧
 
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:3030
 
 tags:
   - name: Auth

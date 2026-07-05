@@ -10,7 +10,7 @@ get:
       name: qid
       schema:
         type: string
-        format: UUID
+        format: uuid
       required: true
       description: 問題ID(UUID)
       
