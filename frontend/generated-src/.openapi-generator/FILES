@@ -1,11 +1,13 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 api.ts
 base.ts
 common.ts
 configuration.ts
 docs/AuthApi.md
 docs/AuthResponse.md
+docs/ErrorResponse.md
 docs/GetQuestionResponse.md
 docs/GetQuestionResponseChoicesInner.md
 docs/LoginRequest.md

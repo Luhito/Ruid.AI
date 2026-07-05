@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'generated', 'generated-src']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -17,14 +17,6 @@ export default defineConfig([
     ],
     languageOptions: {
       globals: globals.browser,
-    },
-  },
-  {
-    files: ["generated/**/*.ts"],
-    rules: {
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
     },
   },
 ])

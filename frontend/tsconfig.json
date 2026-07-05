@@ -1,9 +1,9 @@
 {
   "files": [],
   "references": [
+    { "path": "./tsconfig.generated.json" },
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.generated.json" }
+    { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
@@ -11,7 +11,8 @@
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "gen/*": ["generated/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },

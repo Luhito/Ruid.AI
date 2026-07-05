@@ -7,11 +7,12 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run build:generated && vite",
     "build": "tsc -b && vite build",
+    "build:generated": "tsc -b tsconfig.generated.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:api": "npx openapi-generator-cli generate -i ../documents/openapi/openapi.yaml -g typescript-axios -o generated"
+    "generate:api": "openapi-generator-cli generate -c openapi-generator-config.yaml && npm run build:generated"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.32.0",

@@ -2,7 +2,7 @@ get:
   tags:
     - Question
 
-  summary: 問題取得
+  description: 問題取得
   operationId: getQuestion
 
   parameters:
@@ -13,12 +13,6 @@ get:
         format: UUID
       required: true
       description: 問題ID(UUID)
-
-    - in: header
-      name: Accept-Language 
-      schema:
-        type: string
-      description: 受け入れ可能な自然言語
       
   responses:
     '200':
@@ -31,6 +25,28 @@ get:
 
     '400':
       description: バリデーションエラー
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
 
-    '409':
-      description: ユーザー重複
+    '401':
+      description: 認証エラー
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
+
+    '404':
+      description: 問題が存在しない
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
+            
+    '500':
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'

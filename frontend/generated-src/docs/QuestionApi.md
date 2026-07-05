@@ -4,11 +4,12 @@ All URIs are relative to *http://localhost:3000*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getQuestion**](#getquestion) | **GET** /question | 問題取得|
+|[**getQuestion**](#getquestion) | **GET** /question | |
 
 # **getQuestion**
 > GetQuestionResponse getQuestion()
 
+問題取得
 
 ### Example
 
@@ -22,11 +23,9 @@ const configuration = new Configuration();
 const apiInstance = new QuestionApi(configuration);
 
 let qid: string; //問題ID(UUID) (default to undefined)
-let acceptLanguage: string; //受け入れ可能な自然言語 (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getQuestion(
-    qid,
-    acceptLanguage
+    qid
 );
 ```
 
@@ -35,7 +34,6 @@ const { status, data } = await apiInstance.getQuestion(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **qid** | [**string**] | 問題ID(UUID) | defaults to undefined|
-| **acceptLanguage** | [**string**] | 受け入れ可能な自然言語 | (optional) defaults to undefined|
 
 
 ### Return type
@@ -57,7 +55,9 @@ No authorization required
 |-------------|-------------|------------------|
 |**200** | 取得成功 |  -  |
 |**400** | バリデーションエラー |  -  |
-|**409** | ユーザー重複 |  -  |
+|**401** | 認証エラー |  -  |
+|**404** | 問題が存在しない |  -  |
+|**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
