@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:3030*
 # **getQuestion**
 > GetQuestionResponse getQuestion()
 
-問題取得
+作成済みの問題を取得
 
 ### Example
 

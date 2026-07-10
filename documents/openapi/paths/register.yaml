@@ -21,7 +21,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/AuthResponse'
+            $ref: '../openapi.yaml#/components/responses/AuthResponse'
 
     '400':
       description: バリデーションエラー

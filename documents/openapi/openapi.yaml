@@ -26,6 +26,10 @@ paths:
     $ref: './paths/question.yaml'
 
 components:
+  parameters:
+    Qid:
+      $ref: './parameters/qid.yaml'
+
   schemas:
     RegisterRequest:
       $ref: './schemas/register-request.yaml'
@@ -33,19 +37,15 @@ components:
     LoginRequest:
       $ref: './schemas/login-request.yaml'
 
-    AuthResponse:
-      $ref: './schemas/auth-response.yaml'
-
-    ErrorResponse:
-      $ref: './schemas/error-response.yaml'
-
     User:
       $ref: './schemas/user.yaml'
 
-    QuestionRequest:
-      $ref: './schemas/question-request.yaml'
-
+  responses:
+    ErrorResponse:
+      $ref: './responses/errorResponse.yaml'
+      
+    AuthResponse:
+      $ref: './responses/authResponse.yaml'
+      
     GetQuestionResponse:
-      $ref: './schemas/get-question-response.yaml'
-
-    
+      $ref: './responses/getQuestionResponse.yaml'

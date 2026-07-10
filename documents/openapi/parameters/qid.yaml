@@ -1,0 +1,7 @@
+name: qid
+in: query
+description: 問題ID(UUID)
+required: true
+schema:
+  type: string
+  format: uuid

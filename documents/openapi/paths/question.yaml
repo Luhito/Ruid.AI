@@ -2,17 +2,11 @@ get:
   tags:
     - Question
 
-  description: 問題取得
+  description: 作成済みの問題を取得
   operationId: getQuestion
 
   parameters:
-    - in: query
-      name: qid
-      schema:
-        type: string
-        format: uuid
-      required: true
-      description: 問題ID(UUID)
+    - $ref: '../openapi.yaml#/components/parameters/Qid'
       
   responses:
     '200':
@@ -21,32 +15,20 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/GetQuestionResponse'
+            $ref: '../openapi.yaml#/components/responses/GetQuestionResponse'
 
     '400':
       description: バリデーションエラー
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
+            $ref: '../openapi.yaml#/components/responses/ErrorResponse'
 
     '401':
       description: 認証エラー
-      content:
-        application/json:
-          schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
 
     '404':
       description: 問題が存在しない
-      content:
-        application/json:
-          schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'
             
     '500':
       description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorResponse'

@@ -81,16 +81,6 @@ export interface LoginRequest {
     'email': string;
     'password': string;
 }
-export interface QuestionRequest {
-    /**
-     * 認証APIで発行されたJWTトークン
-     */
-    'token': string;
-    /**
-     * 問題のUUID
-     */
-    'questionId': string;
-}
 export interface RegisterRequest {
     'username': string;
     'email': string;
@@ -279,7 +269,7 @@ export class AuthApi extends BaseAPI {
 export const QuestionApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 問題取得
+         * 作成済みの問題を取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -324,7 +314,7 @@ export const QuestionApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = QuestionApiAxiosParamCreator(configuration)
     return {
         /**
-         * 問題取得
+         * 作成済みの問題を取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -345,7 +335,7 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = QuestionApiFp(configuration)
     return {
         /**
-         * 問題取得
+         * 作成済みの問題を取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -361,7 +351,7 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
  */
 export class QuestionApi extends BaseAPI {
     /**
-     * 問題取得
+     * 作成済みの問題を取得
      * @param {string} qid 問題ID(UUID)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
