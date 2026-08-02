@@ -1,3 +1,4 @@
+# 今は実装しない
 type: object
 
 required:
@@ -10,4 +11,4 @@ properties:
     example: jwt-token-example
 
   user:
-    $ref: '../openapi.yaml#/components/schemas/User'
+    # $ref: '../openapi.yaml#/components/schemas/User'

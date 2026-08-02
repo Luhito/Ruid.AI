@@ -1,0 +1,4 @@
+description: 作成したリソースのURI
+schema:
+  type: string
+  format: uri

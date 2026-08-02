@@ -1,0 +1,17 @@
+description: 問題を作成しました。
+headers:
+  Location:
+    $ref: '../openapi.yaml#/components/headers/Location'
+
+content:
+  application/json:
+    schema:
+      type: object
+
+      required:
+        - qid
+
+      properties:
+        qid:
+          type: string
+          format: uuid

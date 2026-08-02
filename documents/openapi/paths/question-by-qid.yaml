@@ -1,23 +1,25 @@
-post:
+get:
   tags:
     - Question
 
-  summary: 問題作成
+  summary: 問題取得
   description: |
-    指定された条件をもとに新しい問題を作成します。
+        指定した問題IDに対応する問題を取得します。
 
-    リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。
+        - 問題文
+        - 選択肢
+        - 解説
+        を返します。
 
-    作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
+        問題が存在しない場合は404を返します。
+  operationId: getQuestion
 
-  operationId: postQuestion
-
-  requestBody:
-    $ref: '../openapi.yaml#/components/requestBodies/Qprompt'
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/Qid'
       
   responses:
-    '201':
-      $ref: '../openapi.yaml#/components/responses/CreateQuestionResponse'
+    '200':
+      $ref: '../openapi.yaml#/components/responses/GetQuestionResponse'
 
     '400':
       description: バリデーションエラー

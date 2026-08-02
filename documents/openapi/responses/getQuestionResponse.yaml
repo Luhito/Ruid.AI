@@ -1,53 +1,51 @@
-type: object
+description: 問題を取得しました。
 
-required:
-  - question_text
-  - choices
-  - correct_answer_index
-  - explanation_text
-
-properties:
-  question_text:
-    type: string
-    description: 問題文
-    example: テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**
-
-  choices:
-    description: 選択肢
-    type: array
-    items:
+content:
+  application/json:
+    schema:
       type: object
+      required:
+        - question_text
+        - choices
+        - correct_answer_index
+        - explanation_text
+
       properties:
-        tag:
+        question_text:
           type: string
-          description: 選択肢を表す記号
-          example: A
-        text:
+          description: 問題文（Markdown）
+          example: |
+            テスト用問題文
+            改行もあるよ
+            **how's the bold letter?**
+
+        choices:
+          type: array
+          description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+          items:
+            type: object
+            required:
+              - tag
+              - text
+            properties:
+              tag:
+                type: string
+              text:
+                type: string
+          example:
+            - tag: A
+              text: choice1
+            - tag: B
+              text: choice2
+
+        correct_answer_index:
+          type: integer
+          description: 選択肢の中で、正解のインデックス
+          example: 1
+
+        explanation_text:
           type: string
-          description: 選択肢の本文
-          example: choice1
-
-  correct_answer_index:
-    description: 選択肢の中で、正解のインデックス
-    type: integer
-    example: 1
-
-  choiceTags:
-    description: 選択肢の記号
-    type: array
-    example: ['A', 'B', 'C', 'D']
-
-  choiceTexts:
-    description: 選択肢の内容
-    type: array
-    example: ['choice1', 'choice2', 'choice3', 'choice4']
-
-  question_test:
-    description: 問題文
-    type: string
-    example: "テスト用問題文\n\n改行もあるよ\n\n**how's the bold letter?**"
-
-  explanation_test: 
-    description: 解説文
-    type: string
-    example: "ここに説明が表示されるはずです\n\n**それも、マークダウンで！**"
+          description: 解説文（Markdown）
+          example: |
+            ここに説明が表示されるはずです
+            **それも、マークダウンで！**

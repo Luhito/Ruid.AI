@@ -23,10 +23,6 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-export interface AuthResponse {
-    'token': string;
-    'user': User;
-}
 export interface ErrorResponse {
     /**
      * エラーコード
@@ -37,231 +33,34 @@ export interface ErrorResponse {
      */
     'message': string;
 }
-export interface GetQuestionResponse {
+export interface GetQuestion200Response {
     /**
-     * 問題文
+     * 問題文（Markdown）
      */
     'question_text': string;
     /**
-     * 選択肢
+     * 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
      */
-    'choices': Array<GetQuestionResponseChoicesInner>;
+    'choices': Array<GetQuestion200ResponseChoicesInner>;
     /**
      * 選択肢の中で、正解のインデックス
      */
     'correct_answer_index': number;
     /**
-     * 選択肢の記号
+     * 解説文（Markdown）
      */
-    'choiceTags'?: Array<string>;
-    /**
-     * 選択肢の内容
-     */
-    'choiceTexts'?: Array<string>;
-    /**
-     * 問題文
-     */
-    'question_test'?: string;
-    /**
-     * 解説文
-     */
-    'explanation_test'?: string;
+    'explanation_text': string;
 }
-export interface GetQuestionResponseChoicesInner {
-    /**
-     * 選択肢を表す記号
-     */
-    'tag'?: string;
-    /**
-     * 選択肢の本文
-     */
-    'text'?: string;
+export interface GetQuestion200ResponseChoicesInner {
+    'tag': string;
+    'text': string;
 }
-export interface LoginRequest {
-    'email': string;
-    'password': string;
+export interface PostQuestion201Response {
+    'qid': string;
 }
-export interface RegisterRequest {
-    'username': string;
-    'email': string;
-    'password': string;
+export interface PostQuestionRequest {
+    'prompt': string;
 }
-export interface User {
-    'id': number;
-    'username': string;
-    'email': string;
-}
-
-/**
- * AuthApi - axios parameter creator
- */
-export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary ログイン
-         * @param {LoginRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        login: async (body: LoginRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('login', 'body', body)
-            const localVarPath = `/auth/login`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary ユーザー登録
-         * @param {RegisterRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        register: async (body: RegisterRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('register', 'body', body)
-            const localVarPath = `/auth/register`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * AuthApi - functional programming interface
- */
-export const AuthApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @summary ログイン
-         * @param {LoginRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async login(body: LoginRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.login(body, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AuthApi.login']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary ユーザー登録
-         * @param {RegisterRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async register(body: RegisterRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.register(body, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AuthApi.register']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * AuthApi - factory interface
- */
-export const AuthApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = AuthApiFp(configuration)
-    return {
-        /**
-         * 
-         * @summary ログイン
-         * @param {LoginRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        login(body: LoginRequest, options?: RawAxiosRequestConfig): AxiosPromise<AuthResponse> {
-            return localVarFp.login(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary ユーザー登録
-         * @param {RegisterRequest} body 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        register(body: RegisterRequest, options?: RawAxiosRequestConfig): AxiosPromise<AuthResponse> {
-            return localVarFp.register(body, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * AuthApi - object-oriented interface
- */
-export class AuthApi extends BaseAPI {
-    /**
-     * 
-     * @summary ログイン
-     * @param {LoginRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    public login(body: LoginRequest, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).login(body, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary ユーザー登録
-     * @param {RegisterRequest} body 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    public register(body: RegisterRequest, options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).register(body, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
 
 /**
  * QuestionApi - axios parameter creator
@@ -269,7 +68,8 @@ export class AuthApi extends BaseAPI {
 export const QuestionApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 作成済みの問題を取得
+         * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
+         * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -277,7 +77,7 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
         getQuestion: async (qid: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'qid' is not null or undefined
             assertParamExists('getQuestion', 'qid', qid)
-            const localVarPath = `/question`;
+            const localVarPath = `/question/{qid}`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -304,6 +104,41 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary 問題作成
+         * @param {PostQuestionRequest} postQuestionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postQuestion: async (postQuestionRequest: PostQuestionRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postQuestionRequest' is not null or undefined
+            assertParamExists('postQuestion', 'postQuestionRequest', postQuestionRequest)
+            const localVarPath = `/question`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postQuestionRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -314,15 +149,29 @@ export const QuestionApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = QuestionApiAxiosParamCreator(configuration)
     return {
         /**
-         * 作成済みの問題を取得
+         * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
+         * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getQuestion(qid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestionResponse>> {
+        async getQuestion(qid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestion200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getQuestion(qid, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuestionApi.getQuestion']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary 問題作成
+         * @param {PostQuestionRequest} postQuestionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostQuestion201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postQuestion(postQuestionRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['QuestionApi.postQuestion']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -335,13 +184,24 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = QuestionApiFp(configuration)
     return {
         /**
-         * 作成済みの問題を取得
+         * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
+         * @summary 問題取得
          * @param {string} qid 問題ID(UUID)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getQuestion(qid: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestionResponse> {
+        getQuestion(qid: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestion200Response> {
             return localVarFp.getQuestion(qid, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary 問題作成
+         * @param {PostQuestionRequest} postQuestionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig): AxiosPromise<PostQuestion201Response> {
+            return localVarFp.postQuestion(postQuestionRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -351,13 +211,25 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
  */
 export class QuestionApi extends BaseAPI {
     /**
-     * 作成済みの問題を取得
+     * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
+     * @summary 問題取得
      * @param {string} qid 問題ID(UUID)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getQuestion(qid: string, options?: RawAxiosRequestConfig) {
         return QuestionApiFp(this.configuration).getQuestion(qid, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+     * @summary 問題作成
+     * @param {PostQuestionRequest} postQuestionRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig) {
+        return QuestionApiFp(this.configuration).postQuestion(postQuestionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

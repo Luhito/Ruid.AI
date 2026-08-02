@@ -1,13 +1,13 @@
 import { Configuration } from 'gen/configuration';
 import { QuestionApi } from 'gen/api';
-import type { GetQuestionResponse } from 'gen/api';
+import type { GetQuestion200Response } from 'gen/api';
 import { useQuery } from '@tanstack/react-query';
 
 export const useQuestion = (qid: string, acceptLanguage: string) => {
     const configuration = new Configuration();
     const apiInstance = new QuestionApi(configuration);
 
-    const {status, data} = useQuery<GetQuestionResponse>({
+    const {status, data} = useQuery<GetQuestion200Response>({
         queryKey: ["question", qid, acceptLanguage],
         queryFn: () => apiInstance.getQuestion(qid, {
             headers: {

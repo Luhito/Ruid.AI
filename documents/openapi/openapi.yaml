@@ -9,18 +9,21 @@ servers:
   - url: http://localhost:3030
 
 tags:
-  - name: Auth
-    description: 認証API
+  # - name: Auth
+  #   description: 認証API
 
   - name: Question
     description: 問題取得API
 
 paths:
-  /auth/login:
-    $ref: './paths/login.yaml'
+  # /auth/login:
+  #   $ref: './paths/login.yaml'
 
-  /auth/register:
-    $ref: './paths/register.yaml'
+  # /auth/register:
+  #   $ref: './paths/register.yaml'
+
+  /question/{qid}:
+    $ref: './paths/question-by-qid.yaml'
 
   /question:
     $ref: './paths/question.yaml'
@@ -31,21 +34,47 @@ components:
       $ref: './parameters/qid.yaml'
 
   schemas:
-    RegisterRequest:
-      $ref: './schemas/register-request.yaml'
+    ErrorSchema:
+      $ref: './responses/errorResponse.yaml'
+  #   RegisterRequest:
+  #     $ref: './schemas/register-request.yaml'
 
-    LoginRequest:
-      $ref: './schemas/login-request.yaml'
+  #   LoginRequest:
+  #     $ref: './schemas/login-request.yaml'
 
-    User:
-      $ref: './schemas/user.yaml'
+  #   User:
+  #     $ref: './schemas/user.yaml'
+  
+  requestBodies:
+    Qprompt:
+      $ref: './requestBodies/qprompt.yaml'
 
   responses:
-    ErrorResponse:
-      $ref: './responses/errorResponse.yaml'
+    # ErrorResponse:
+    #   $ref: './responses/errorResponse.yaml'
       
-    AuthResponse:
-      $ref: './responses/authResponse.yaml'
+    # AuthResponse:
+    #   $ref: './responses/authResponse.yaml'
       
     GetQuestionResponse:
       $ref: './responses/getQuestionResponse.yaml'
+    
+    CreateQuestionResponse:
+      $ref: './responses/createQuestionResponse.yaml'
+    
+  headers:
+    Location:
+      $ref: './headers/location.yaml'
+    
+    SetCookie:
+      $ref: './headers/set-cookie.yaml'
+    
+    WWWAuthenticate:
+      $ref: './headers/www-authenticate.yaml'
+
+  # securitySchemes:
+    # BearerAuth:
+    #   type: http
+    #   scheme: bearer
+    #   bearerFormat: JWT
+

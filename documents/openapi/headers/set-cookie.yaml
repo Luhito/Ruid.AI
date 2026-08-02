@@ -1,0 +1,6 @@
+description: >
+  Cookieを設定する。
+  HttpOnly、Secure、SameSite=Laxなどの属性を含む。
+
+schema:
+  type: string

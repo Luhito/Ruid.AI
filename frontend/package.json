@@ -12,22 +12,25 @@
     "build:generated": "tsc -b tsconfig.generated.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:api": "openapi-generator-cli generate -c openapi-generator-config.yaml && npm run build:generated"
+    "bundle:openapi": "npx @redocly/cli bundle ../documents/openapi/openapi.yaml -o ./generated-src/openapi-bundled.yaml",
+    "generate:openapi": "openapi-generator-cli generate -i ./generated-src/openapi-bundled.yaml -c openapi-generator-config.yaml",
+    "generate": "npm run bundle:openapi && npm run generate:openapi && npm run build:generated"
   },
   "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.32.0",
     "@tanstack/react-query": "^5.101.0",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.18.1",
     "i18next": "^26.1.0",
     "i18next-browser-languagedetector": "^8.2.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-i18next": "^17.0.7",
     "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.15.0"
+    "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@openapitools/openapi-generator-cli": "^2.40.1",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -36,8 +39,11 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
-    "typescript": "~6.0.2",
+    "typescript": "^5.9.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10"
+  },
+  "allowScripts": {
+    "react-router@7.18.2": true
   }
 }
