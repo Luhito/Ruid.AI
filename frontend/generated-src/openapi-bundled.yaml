@@ -100,7 +100,7 @@ components:
       $ref: '#/components/parameters/qid'
     qid:
       name: qid
-      in: query
+      in: path
       description: 問題ID(UUID)
       required: true
       schema:

@@ -1,5 +1,5 @@
 name: qid
-in: query
+in: path
 description: 問題ID(UUID)
 required: true
 schema:

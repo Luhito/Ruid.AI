@@ -14,8 +14,9 @@ export const getQuestion = async (
     //     SELECT EXISTS (
     //         SELECT 1 FROM questions WHERE qid = $1
     //     )`
-    /** リクエストパラメータから受け取った問題ID */
-    const qid = req.query.qid;
+    /** パスパラメータから受け取った問題ID */
+    const {qid} = req.params;
+    
     /** リクエストヘッダから受け取った言語 */
     // const acceptLanguage = req.get("Accept-Language") ? req.get("Accept-Language") : "ja";
 

@@ -77,7 +77,8 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
         getQuestion: async (qid: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'qid' is not null or undefined
             assertParamExists('getQuestion', 'qid', qid)
-            const localVarPath = `/question/{qid}`;
+            const localVarPath = `/question/{qid}`
+                .replace('{qid}', encodeURIComponent(String(qid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -88,10 +89,6 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (qid !== undefined) {
-                localVarQueryParameter['qid'] = qid;
-            }
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
