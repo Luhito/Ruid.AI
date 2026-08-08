@@ -1,0 +1,9 @@
+generatorName: typescript
+
+inputSpec: documents/openapi/openapi.yaml
+
+outputDir: backend/generated-src
+
+globalProperty:
+  models: ""
+  supportingFiles: ""

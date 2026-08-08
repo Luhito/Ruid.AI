@@ -84,7 +84,7 @@ const QuestionPage = (arg: {questionId: string}) => {
 
                     {/** */}
                     <div className={styles['md-text']}>
-                        <MD>{question?.explanation_test || ''}</MD>
+                        <MD>{question?.explanation_text || ''}</MD>
                     </div>
                 </>)}
             </main>

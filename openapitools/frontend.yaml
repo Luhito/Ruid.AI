@@ -1,0 +1,11 @@
+generatorName: typescript-axios
+
+inputSpec: documents/openapi/openapi.yaml
+
+outputDir: frontend/generated-src
+
+globalProperty:
+  models: ""
+
+additionalProperties:
+  modelPropertyNaming: original

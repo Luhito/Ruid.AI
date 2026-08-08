@@ -8,7 +8,6 @@ docs/ErrorResponse.md
 docs/GetQuestion200Response.md
 docs/GetQuestion200ResponseChoicesInner.md
 docs/PostQuestion201Response.md
-docs/PostQuestionRequest.md
 docs/QuestionApi.md
 git_push.sh
 index.ts

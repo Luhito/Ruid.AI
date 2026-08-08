@@ -63,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postQuestion**
-> PostQuestion201Response postQuestion(postQuestionRequest)
+> PostQuestion201Response postQuestion()
 
 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
 
@@ -72,25 +72,17 @@ No authorization required
 ```typescript
 import {
     QuestionApi,
-    Configuration,
-    PostQuestionRequest
+    Configuration
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new QuestionApi(configuration);
 
-let postQuestionRequest: PostQuestionRequest; //
-
-const { status, data } = await apiInstance.postQuestion(
-    postQuestionRequest
-);
+const { status, data } = await apiInstance.postQuestion();
 ```
 
 ### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **postQuestionRequest** | **PostQuestionRequest**|  | |
+This endpoint does not have any parameters.
 
 
 ### Return type
@@ -103,7 +95,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

@@ -9,12 +9,8 @@
   "scripts": {
     "dev": "npm run build:generated && vite",
     "build": "tsc -b && vite build",
-    "build:generated": "tsc -b tsconfig.generated.json",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "bundle:openapi": "npx @redocly/cli bundle ../documents/openapi/openapi.yaml -o ./generated-src/openapi-bundled.yaml",
-    "generate:openapi": "openapi-generator-cli generate -i ./generated-src/openapi-bundled.yaml -c openapi-generator-config.yaml",
-    "generate": "npm run bundle:openapi && npm run generate:openapi && npm run build:generated"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",

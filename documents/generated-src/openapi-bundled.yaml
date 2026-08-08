@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: Ruid.ai API
+  version: 1.0.0
+  description: Ruid.ai API一覧
+servers:
+  - url: http://localhost:3030
+tags:
+  - name: Question
+    description: 問題取得API
+paths:
+  /question/{qid}:
+    get:
+      tags:
+        - Question
+      summary: 問題取得
+      description: |
+        指定した問題IDに対応する問題を取得します。
+
+        - 問題文
+        - 選択肢
+        - 解説
+        を返します。
+
+        問題が存在しない場合は404を返します。
+      operationId: getQuestion
+      parameters:
+        - $ref: '#/components/parameters/qid'
+      responses:
+        '200':
+          $ref: '#/components/responses/getQuestionResponse'
+        '400':
+          description: バリデーションエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '404':
+          description: 問題が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+  /question:
+    post:
+      tags:
+        - Question
+      summary: 問題作成
+      description: |
+        指定された条件をもとに新しい問題を作成します。
+
+        リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。
+
+        作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
+      operationId: postQuestion
+      requestBody:
+        $ref: '#/components/requestBodies/qprompt'
+      responses:
+        '201':
+          $ref: '#/components/responses/createQuestionResponse'
+        '400':
+          description: バリデーションエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '404':
+          description: 問題が存在しない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  parameters:
+    Qid:
+      $ref: '#/components/parameters/qid'
+    qid:
+      name: qid
+      in: path
+      description: 問題ID(UUID)
+      required: true
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ErrorSchema:
+      $ref: '#/components/schemas/errorResponse'
+    errorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: エラーコード
+          example: VALIDATION_ERROR
+        message:
+          type: string
+          description: エラーメッセージ
+          example: qidはUUID形式で指定してください。
+  requestBodies:
+    Qprompt:
+      $ref: '#/components/requestBodies/qprompt'
+    qprompt:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - prompt
+            properties:
+              prompt:
+                type: string
+  responses:
+    GetQuestionResponse:
+      $ref: '#/components/responses/getQuestionResponse'
+    CreateQuestionResponse:
+      $ref: '#/components/responses/createQuestionResponse'
+    getQuestionResponse:
+      description: 問題を取得しました。
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - question_text
+              - choices
+              - correct_answer_index
+              - explanation_text
+            properties:
+              question_text:
+                type: string
+                description: 問題文（Markdown）
+                example: |
+                  テスト用問題文
+                  改行もあるよ
+                  **how's the bold letter?**
+              choices:
+                type: array
+                description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+                items:
+                  type: object
+                  required:
+                    - tag
+                    - text
+                  properties:
+                    tag:
+                      type: string
+                    text:
+                      type: string
+                example:
+                  - tag: A
+                    text: choice1
+                  - tag: B
+                    text: choice2
+              correct_answer_index:
+                type: integer
+                description: 選択肢の中で、正解のインデックス
+                example: 1
+              explanation_text:
+                type: string
+                description: 解説文（Markdown）
+                example: |
+                  ここに説明が表示されるはずです
+                  **それも、マークダウンで！**
+    createQuestionResponse:
+      description: 問題を作成しました。
+      headers:
+        Location:
+          $ref: '#/components/headers/location'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - qid
+            properties:
+              qid:
+                type: string
+                format: uuid
+  headers:
+    Location:
+      $ref: '#/components/headers/location'
+    SetCookie:
+      $ref: '#/components/headers/set-cookie'
+    WWWAuthenticate:
+      $ref: '#/components/headers/www-authenticate'
+    location:
+      description: 作成したリソースのURI
+      schema:
+        type: string
+        format: uri
+    set-cookie:
+      description: |
+        Cookieを設定する。 HttpOnly、Secure、SameSite=Laxなどの属性を含む。
+      schema:
+        type: string
+    www-authenticate:
+      description: 認証方式と認証エラー情報
+      schema:
+        type: string

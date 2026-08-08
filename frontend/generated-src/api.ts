@@ -58,9 +58,6 @@ export interface GetQuestion200ResponseChoicesInner {
 export interface PostQuestion201Response {
     'qid': string;
 }
-export interface PostQuestionRequest {
-    'prompt': string;
-}
 
 /**
  * QuestionApi - axios parameter creator
@@ -104,13 +101,10 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
          * @summary 問題作成
-         * @param {PostQuestionRequest} postQuestionRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postQuestion: async (postQuestionRequest: PostQuestionRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'postQuestionRequest' is not null or undefined
-            assertParamExists('postQuestion', 'postQuestionRequest', postQuestionRequest)
+        postQuestion: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/question`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -123,13 +117,11 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(postQuestionRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -161,12 +153,11 @@ export const QuestionApiFp = function(configuration?: Configuration) {
         /**
          * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
          * @summary 問題作成
-         * @param {PostQuestionRequest} postQuestionRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostQuestion201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postQuestion(postQuestionRequest, options);
+        async postQuestion(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostQuestion201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postQuestion(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuestionApi.postQuestion']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -193,12 +184,11 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
         /**
          * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
          * @summary 問題作成
-         * @param {PostQuestionRequest} postQuestionRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig): AxiosPromise<PostQuestion201Response> {
-            return localVarFp.postQuestion(postQuestionRequest, options).then((request) => request(axios, basePath));
+        postQuestion(options?: RawAxiosRequestConfig): AxiosPromise<PostQuestion201Response> {
+            return localVarFp.postQuestion(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -221,12 +211,11 @@ export class QuestionApi extends BaseAPI {
     /**
      * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
      * @summary 問題作成
-     * @param {PostQuestionRequest} postQuestionRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public postQuestion(postQuestionRequest: PostQuestionRequest, options?: RawAxiosRequestConfig) {
-        return QuestionApiFp(this.configuration).postQuestion(postQuestionRequest, options).then((request) => request(this.axios, this.basePath));
+    public postQuestion(options?: RawAxiosRequestConfig) {
+        return QuestionApiFp(this.configuration).postQuestion(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

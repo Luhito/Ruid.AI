@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "bundle:openapi": "npx @redocly/cli bundle documents/openapi/openapi.yaml -o documents/generated-src/openapi-bundled.yaml",
+    "generate:frontend": "openapi-generator-cli generate -c openapitools/frontend.yaml",
+    "generate:backend": "npx openapi-typescript documents/openapi/openapi.yaml -o backend/generated-src/openapi.d.ts",
+    "generate": "npm run bundle:openapi && npm run generate:frontend && npm run generate:backend",
+    "build:frontend": "cd frontend && tsc -b tsconfig.generated.json",
+    "regen": "npm run generate && npm run build:frontend"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.13.0"
+  }
+}

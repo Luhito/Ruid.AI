@@ -11,6 +11,7 @@ let label = 0;
 
 // Expressインスタンス作成
 const app = express();
+app.use(express.json());
 
 try {
   // CORSの設定
