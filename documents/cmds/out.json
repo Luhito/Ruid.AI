@@ -1,0 +1,39 @@
+{
+    "id": "v1_ChdHUU4zYXIzUUtLNzIxZThQMDVYYTZBbxIXR1FOM2FyM1FLSzcyMWU4UDA1WGE2QW8",
+    "status": "completed",
+    "usage": {
+        "total_tokens": 387,
+        "total_input_tokens": 9,
+        "input_tokens_by_modality": [
+            {
+                "modality": "text",
+                "tokens": 9
+            }
+        ],
+        "total_cached_tokens": 0,
+        "total_output_tokens": 11,
+        "total_tool_use_tokens": 0,
+        "total_thought_tokens": 367,
+        "raw_prompt_token": 40
+    },
+    "created": "2026-08-08T10:21:13Z",
+    "updated": "2026-08-08T10:21:13Z",
+    "service_tier": "standard",
+    "steps": [
+        {
+            "signature": "EvYKCvMKARFNMg+oRZ5dnXiwGMTF7y/6OiPDNHkdrG1BVOTLspLXS1wqksufUgibiB1Zyxj5GPHNHW6N6HuwwERMlOTcgyrueSWckN6y+X/cYt2o5yY1o9tAQWGLNGu/XacrridfnKx/8i8q2RfU9FMeDLXVJXzwnp7aTtCu8P0TNrrBL290MgN3r25L0TOd6FoHPSFXOL14JDstwAqT3nPtYYNWX/H4G3Vn67p+myJopejitMaKtP+VX/AfHUhDUaOSdH6VxlxeU6NO3yTth+0clW8Z95RRf6cPB/rGWjYc34JdIxhoIT5MsdwZaNWNfnHu0gOOmwsckC8O1zAwi6q/duuvxjflT/TNf/IrdGeuy3NdNEtIQ8SVkn2q0UcOOi5zfqMtTh20j1bnzy3W/RwFXhaaxATMSIBSMF5CSxGfEeSmQUY07qyUIYKBsHlnG4CwLhhFVMZZK4OalIORpFucivRUm5595jH4q2ASlJfJhttbmtAo4kq8hPtgniqtM8mHsJnTJRFYF1/Oi98Rm0/bi+Iu47kibNTo7ExVAFy9WA/+6G7v2/Tgu0J9IEZUoX+AN/wXZVUDLWzKSJcLbcvSkiTrDC0UGPnRsOuhmg0XqF5ukv72gZCt16aan9agmmlNe9kI26Un+lRU/V4nVI4tkfGG0geCL0mpESKXaQJ6eZ5RLlDNupwAp3svlgbgy13G08jMhZaTUxD2ZrYWxTGFs3zNPZaAHDjhoguolH6G4qftdK8d4zgoD2ZRiTlG3d8AlZ6koI9abz39loB2Atg7qtSgjG7lVWn2dRynkF9JeYV8hOYs+ZxcAey/Mx58OSZUF+8zX0RuzddNRdkzl1yI3oWD53rbJ2UE1df58bUliEtfeChoMAeTOgwLxTyJIgOeLjlgWYbkFDZavkhEe5ntYyDxHcZX0MXJe067ZaZQ7wZfKKLNu1/q8DrmNyGvob4QOTXW/xt7y0nHo4b70s0GjHBMsYIg1Gyd79OMHXtJ0fS9bQxJxLQeGwl/nkAD0C6qi39xcGl2uOGLbARr4TTkpRJwVQXLwRO13ezFbCmxmJF8MATNbew6N65F8VgwNIqbkq7gDHWqwlJUwoV5kpNYwvsHWq+esNgpXi0g0O+/s3vfRAMUVgwBEBa8j68/WaJX2NbACDveFFQKOnC9tnM1aQsQNJe0PWkOvLWGULPIzom+yHR1NphlZnOU0OsMFF53kwt3mU9Ro4lk9eNxBBpkY4h9KWSIkgH9yy3T8cwubEx6urIsCMZU/w5M8d7dIiBvAR0GnRhXfynDgLrkRM3T3JZCZQUzVIIScgMgICawMLgdN3rF9foyzxSpDdFLoTcXwpoppE1Q/aBCK/YtFM8oJ51q4CFkrdlS08ojFVb0CZb7M3pgrp2eD2N6SlkfYVClmrXAe3oSgWmjGhDSHaCPuCdzW9iP0N0VB4LOkK2o9o3NkjGipuworTs0MOoOyNKisM2+kLj1sFGBSNtWUGW/TI2ACoS0rFZjY/gyKk/jU3pSyZafStJuzMQixsykY7y78L/XrkhySPBsCNw26/hfvWi9rWfhUAR7R/HwVpgCI05LtIoqWfOQuoYHaR0OjUCb78WOdIMFyvaEvPj3sAmEImcZZD7CfZ+lsiFtrGZGdMMnjw1BtgnxWq4RmjpNbyitlcHCf6hTt+y+vl/E3LzEi5J5ag7vMYCywLGjercoP1owsJKfvLeSxvlkXH639QIDeCAGb09LlCJ6DHj1zHomQxYtx+4/1iC62A5wSWmXQJs5WSNsdw5SHGopBPPlU8OPeKlXvmBYVtz5VuuyHe9dZ8vSzrt6kWdt6aq6/poRim6DXV0gzb5E2mQhOH+mYpiDI1fVaRqI",
+            "type": "thought"
+        },
+        {
+            "content": [
+                {
+                    "text": "AI learns from data to find patterns and make decisions.",
+                    "type": "text"
+                }
+            ],
+            "type": "model_output"
+        }
+    ],
+    "object": "interaction",
+    "model": "gemini-3.5-flash"
+}
