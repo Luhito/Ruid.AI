@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import type { QuestionPageState } from './QuestionPage.state';
-import { useQuestion } from '@/api/schemas/question/useQuestion';
+import type { QuestionPageStates, QuestionPageStateSetters } from './QuestionPage.state';
+import { useQuestionAPI } from '@/api/schemas/question/useQuestionAPI';
 
-export const useQuestionPageLogic = (questionId: string, states: QuestionPageState) => {
+export const useQuestionPageLogic = (questionId: string, states: QuestionPageStates, stateSetters: QuestionPageStateSetters) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
-    const question = useQuestion(questionId, "default");
+    const question = useQuestionAPI(questionId, "default");
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
 
@@ -15,7 +15,7 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
             return;
         }
 
-        states.setOpenAnswer(true);
+        stateSetters.setOpenAnswer(true);
     }
 
     const onClick_back = () => {
@@ -25,12 +25,12 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
     const onClick_answer = (index: number) => {
         if (states.isOpenAnswer) return;
 
-        states.setOpenAnswer(true);
+        stateSetters.setOpenAnswer(true);
         if (question.data && index === question.data.correct_answer_index) {
-            alert("correct");
+            stateSetters.setCorrect(true);
         }
         else {
-            alert("incorrect");
+            stateSetters.setCorrect(false);
         }
     }
 

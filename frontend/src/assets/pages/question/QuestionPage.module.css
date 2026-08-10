@@ -109,3 +109,16 @@ footer {
   height: 80px;
   width: 100px;
 }
+
+.labelCorrectIncorrect {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.correct {
+  color: #db3232;
+}
+
+.incorrect {
+  color: #3776ff;
+}

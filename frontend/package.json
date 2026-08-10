@@ -7,7 +7,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "npm run build:generated && vite",
+    "dev": "npm run build && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

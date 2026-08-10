@@ -11,7 +11,7 @@
     "strict": true,
     "declaration": true,
     "rootDir": "./generated-src",
-    "outDir": "./generated",
+    "outDir": "./src/api/generated",
     "noEmit": false,
     "erasableSyntaxOnly": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.generated.tsbuildinfo"

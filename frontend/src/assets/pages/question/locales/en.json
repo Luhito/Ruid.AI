@@ -4,5 +4,7 @@
     "view answer message": "Reveal the answer?",
     "question": "Question.",
     "explanation": "Explanation",
-    "textbox placeholder": "Enter anythings about question above..."
+    "textbox placeholder": "Enter anythings about question above...",
+    "correct": "✅correct",
+    "incorrect": "✖incorrect"
 }

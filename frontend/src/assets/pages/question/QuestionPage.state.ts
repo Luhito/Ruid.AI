@@ -1,14 +1,20 @@
 import { useState } from "react";
 
-export const useQuestionPageState = () => {
+export const useQuestionPageStates = () => {
     const [ isOpenAnswer, setOpenAnswer ] = useState(false);
+    const [ isCorrect, setCorrect ] = useState(false);
 
     return {
         states : {
             isOpenAnswer,
-            setOpenAnswer
+            isCorrect
+        },
+        stateSetters: {
+            setOpenAnswer,
+            setCorrect
         }
     }
 }
 
-export type QuestionPageState = ReturnType<typeof useQuestionPageState>["states"];
+export type QuestionPageStates = ReturnType<typeof useQuestionPageStates>["states"];
+export type QuestionPageStateSetters = ReturnType<typeof useQuestionPageStates>["stateSetters"];

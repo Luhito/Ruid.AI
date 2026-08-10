@@ -123,7 +123,7 @@ function App() {
         <section id="spacer"></section>
         <Home />
         <section id="spacer"></section>
-        <button onClick={() => navigate("/question")}>Question Page</button>
+        <button onClick={() => navigate("/question?id=rnd")}>Question Page</button>
       </>} />
       <Route path="/home" element={<HomePage />}/>
       <Route path="/question" element={<QuestionPageContainer />}/>

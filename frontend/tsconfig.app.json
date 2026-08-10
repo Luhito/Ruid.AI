@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
+    // "ignoreDeprecations": "6.0",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "es2023",
     "lib": ["ES2023", "DOM"],
@@ -24,7 +24,7 @@
     "paths": {
       "*": ["."],
       "@/*": ["./src/*"],
-      "gen/*": ["./generated/*"]
+      "@gen/*": ["./src/api/generated/*"]
     }
   },
   "include": ["src"],

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import MD from 'react-markdown'
 import { useQuestionPageLogic } from './QuestionPage.logic'
-import { useQuestionPageState } from './QuestionPage.state'
+import { useQuestionPageStates } from './QuestionPage.state'
 import styles from './QuestionPage.module.css'
 import { Line } from '@/shared-components/Line'
 import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
@@ -9,8 +9,8 @@ import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
 const QuestionPage = (arg: {questionId: string}) => {
 
     const { t } = useTranslation("question");
-    const { states } = useQuestionPageState();
-    const { logics } = useQuestionPageLogic(arg.questionId, states);
+    const { states, stateSetters } = useQuestionPageStates();
+    const { logics } = useQuestionPageLogic(arg.questionId, states, stateSetters);
     const question = logics.question;
 
     if (!arg.questionId) {
@@ -77,12 +77,24 @@ const QuestionPage = (arg: {questionId: string}) => {
                     {/** 線 */}
                     <Line />
 
-                    {/** */}
+                    {/** 「正解」or「不正解」 */}
+                    {states.isCorrect ? (<>
+                        <div className={`${styles.labelCorrectIncorrect} ${styles.correct}`}>
+                            {`${t("correct")}`}
+                        </div>
+                    </>) : (<>
+                        <div className={`${styles.labelCorrectIncorrect} ${styles.incorrect}`}>
+                            {`${t("incorrect")}`}
+                        </div>
+                    </>)}
+
+
+                    {/** 「解説」 */}
                     <h2 className={styles["subject"]}>
                         {`${t("explanation")}`}
                     </h2>
 
-                    {/** */}
+                    {/** 解説文 */}
                     <div className={styles['md-text']}>
                         <MD>{question?.explanation_text || ''}</MD>
                     </div>

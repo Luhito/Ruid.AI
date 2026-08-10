@@ -12,7 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "gen/*": ["generated/*"]
+      "@gen/*": ["src/generated/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
