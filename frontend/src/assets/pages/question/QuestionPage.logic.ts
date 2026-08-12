@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageStates, QuestionPageStateSetters } from './QuestionPage.state';
 import { useQuestionAPI } from '@/api/schemas/question/useQuestionAPI';
+import { useEffect } from 'react';
 
 export const useQuestionPageLogic = (questionId: string, states: QuestionPageStates, stateSetters: QuestionPageStateSetters) => {
     const navigate = useNavigate();
@@ -33,6 +34,17 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
             stateSetters.setCorrect(false);
         }
     }
+
+    // (テスト用)LLM生成待ち時間作成
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            stateSetters.setGenerating(false);
+            stateSetters.setGenerationCompleted(true);
+        }, 2000);
+        return () => {
+            clearTimeout(timer);
+        }
+    })
 
     return {
         logics: {

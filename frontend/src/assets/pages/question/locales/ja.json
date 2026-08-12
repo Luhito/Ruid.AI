@@ -6,5 +6,7 @@
     "explanation": "解説",
     "textbox placeholder": "単語に関する質問を入力...",
     "correct": "○正解",
-    "incorrect": "✖不正解"
+    "incorrect": "✖不正解",
+    "generating...": "生成中...",
+    "generated": "生成完了!"
 }

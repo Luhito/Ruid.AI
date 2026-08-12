@@ -20,22 +20,22 @@ export function NewQuestionModal(props: {
     >
       <form onSubmit={handleSubmit}>
         <h2>↓プロンプトを入力↓</h2>
-        <textarea className={styles["textarea-prompt"]}/>
+        <textarea className={styles["textarea-prompt"]} required/>
         <br />
 
         <div className={styles["radio-answer-type"]}>
           <label>
-            <input type="radio" name="answer-type" value="N"/>
+            <input type="radio" name="answer-type" value="N" required/>
             N者択一
           </label>
           <br />
           <label>
-            <input type="radio" name="answer-type" value="W"/>
+            <input type="radio" name="answer-type" value="W" required/>
             記述
           </label>
         </div>
 
-        <button type="submit">問題作成</button>
+        <button type="submit" className={styles.submitButton}>問題作成</button>
       </form>
       
     </BaseModal>

@@ -6,7 +6,7 @@ import styles from './QuestionPage.module.css'
 import { Line } from '@/shared-components/Line'
 import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
 
-const QuestionPage = (arg: {questionId: string}) => {
+const QuestionPage = (arg: { questionId: string }) => {
 
     const { t } = useTranslation("question");
     const { states, stateSetters } = useQuestionPageStates();
@@ -30,6 +30,18 @@ const QuestionPage = (arg: {questionId: string}) => {
                             {t('back')}
                         </button>
                     </div>
+
+                    {/** 「生成中」 or 「生成完了」 */}
+                    {states.isGenerating && (
+                        <span className={`${styles.generationStatText} ${styles.generating}`}>
+                            {t('generating...')}
+                        </span>
+                    )}
+                    {states.isGenerationCompleted && (
+                        <span className={`${styles.generationStatText} ${styles.generated}`}>
+                            {t('generated')}
+                        </span>
+                    )}
 
                     {/**「解説を見る」ボタン  */}
                     {!states.isOpenAnswer && (
@@ -55,7 +67,7 @@ const QuestionPage = (arg: {questionId: string}) => {
                 </div>
 
                 {/** 選択肢 */}
-                <div className={styles["question-choices"]}>
+                <div className={styles['question-choices']}>
                     <ul>
                         {question?.choices?.map((choice, index) => {
                             return (

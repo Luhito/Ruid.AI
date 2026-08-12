@@ -49,6 +49,8 @@ li {
 
 .question-choices {
   text-align: left;
+  margin: 10px 40px;
+  width: 90%;
 }
 
 .question-choices p {
@@ -78,7 +80,7 @@ footer {
   background-color: rgb(235, 235, 235);
   color: black;
   border-radius: 999px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .choices {
@@ -121,4 +123,44 @@ footer {
 
 .incorrect {
   color: #3776ff;
+}
+
+.generationStatText {
+  font-weight: bold;
+  font-size: 2lvh;
+  margin: auto auto;
+}
+
+.generating {
+  animation: generatingTextFade 2s ease-in-out infinite;
+}
+@keyframes generatingTextFade {
+  0% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.generated {
+  animation: generatedTextFade 3s ease-out forwards;
+}
+@keyframes generatedTextFade {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
