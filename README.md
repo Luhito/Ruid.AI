@@ -2,14 +2,28 @@
 類題出題アプリ
 
 ## 整備中
-## ドキュメント
+### 画面仕様
 
-- [要件定義](docs/requirements.md)
+- [ログイン画面](documents/screens/login.md)
 
-- [詳細仕様書](docs/specification.md)
+- [ホーム画面](documents/screens/home.md)
 
-- [システム構成](docs/architecture.md)
+- [問題画面](documents/screens/question.md)
 
-- [データベース設計](docs/database.md)
+### 機能仕様
 
-- [API仕様](docs/api.md)
+- [認証](documents/features/authentication.md)
+
+- [問題](documents/features/question.md)
+
+- [回答](documents/features/answer.md)
+
+### DB仕様
+
+- [テーブル定義](documents/database/tables.md)
+
+- [ER図](documents/database/er-diagram.md)
+
+### API仕様
+
+- [OpenAPI](documents/api/api.md)
