@@ -1,0 +1,18 @@
+ruidai-postgres  | The files belonging to this database system will be owned by user "postgres".
+ruidai-postgres  | This user must also own the server process.
+ruidai-postgres  | 
+ruidai-postgres  | The database cluster will be initialized with locale "en_US.utf8".
+ruidai-postgres  | The default database encoding has accordingly been set to "UTF8".
+ruidai-postgres  | The default text search configuration will be set to "english".
+ruidai-postgres  | 
+ruidai-postgres  | Data page checksums are disabled.
+ruidai-postgres  | 
+ruidai-postgres  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+ruidai-postgres  | creating subdirectories ... ok
+ruidai-postgres  | selecting dynamic shared memory implementation ... posix
+ruidai-postgres  | selecting default "max_connections" ... 100
+ruidai-postgres  | selecting default "shared_buffers" ... 128MB
+ruidai-postgres  | selecting default time zone ... Etc/UTC
+ruidai-postgres  | creating configuration files ... ok
+ruidai-postgres  | running bootstrap script ... ok
+ruidai-postgres  | performing post-bootstrap initialization ... ok
