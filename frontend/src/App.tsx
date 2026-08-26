@@ -8,6 +8,8 @@ import { HomePage } from './assets/pages/home/HomePage'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { QuestionPageContainer } from './assets/pages/QuestionPageContainer/QuestionPageContainer';
 
+const sampleQuestionId = '00000000-0000-0000-0001-000000000001';
+
 function App() {
   const [count, setCount] = useState(0)
   const navigate = useNavigate();
@@ -123,7 +125,7 @@ function App() {
         <section id="spacer"></section>
         <Home />
         <section id="spacer"></section>
-        <button onClick={() => navigate("/question?id=rnd")}>Question Page</button>
+        <button onClick={() => navigate(`/question?id=${sampleQuestionId}`)}>Question Page</button>
       </>} />
       <Route path="/home" element={<HomePage />}/>
       <Route path="/question" element={<QuestionPageContainer />}/>
