@@ -9,9 +9,15 @@ content:
       type: object
 
       required:
+        - statusCode
         - qid
 
       properties:
+        statusCode:
+          type: number
+          description: HTTPステータスコード（200）
+          example: 200
+
         qid:
           type: string
           format: uuid

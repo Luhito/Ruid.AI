@@ -106,23 +106,6 @@ components:
       schema:
         type: string
         format: uuid
-  schemas:
-    ErrorSchema:
-      $ref: '#/components/schemas/errorResponse'
-    errorResponse:
-      type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: string
-          description: エラーコード
-          example: VALIDATION_ERROR
-        message:
-          type: string
-          description: エラーメッセージ
-          example: qidはUUID形式で指定してください。
   requestBodies:
     Qprompt:
       $ref: '#/components/requestBodies/qprompt'
@@ -138,6 +121,8 @@ components:
               prompt:
                 type: string
   responses:
+    ErrorResponse:
+      $ref: '#/components/responses/errorResponse'
     GetQuestionResponse:
       $ref: '#/components/responses/getQuestionResponse'
     CreateQuestionResponse:
@@ -149,46 +134,57 @@ components:
           schema:
             type: object
             required:
-              - question_text
-              - choices
-              - correct_answer_index
-              - explanation_text
+              - statusCode
+              - content
             properties:
-              question_text:
-                type: string
-                description: 問題文（Markdown）
-                example: |
-                  テスト用問題文
-                  改行もあるよ
-                  **how's the bold letter?**
-              choices:
-                type: array
-                description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
-                items:
-                  type: object
-                  required:
-                    - tag
-                    - text
-                  properties:
-                    tag:
-                      type: string
-                    text:
-                      type: string
-                example:
-                  - tag: A
-                    text: choice1
-                  - tag: B
-                    text: choice2
-              correct_answer_index:
-                type: integer
-                description: 選択肢の中で、正解のインデックス
-                example: 1
-              explanation_text:
-                type: string
-                description: 解説文（Markdown）
-                example: |
-                  ここに説明が表示されるはずです
-                  **それも、マークダウンで！**
+              statusCode:
+                type: number
+                description: HTTPステータスコード（200）
+                example: 200
+              content:
+                type: object
+                description: 返却する検索結果
+                required:
+                  - question_text
+                  - choices
+                  - correct_answer_index
+                  - explanation_text
+                properties:
+                  question_text:
+                    type: string
+                    description: 問題文（Markdown）
+                    example: |
+                      テスト用問題文
+                      改行もあるよ
+                      **how's the bold letter?**
+                  choices:
+                    type: array
+                    description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+                    items:
+                      type: object
+                      required:
+                        - tag
+                        - text
+                      properties:
+                        tag:
+                          type: string
+                        text:
+                          type: string
+                    example:
+                      - tag: A
+                        text: choice1
+                      - tag: B
+                        text: choice2
+                  correct_answer_index:
+                    type: integer
+                    description: 選択肢の中で、正解のインデックス
+                    example: 1
+                  explanation_text:
+                    type: string
+                    description: 解説文（Markdown）
+                    example: |
+                      ここに説明が表示されるはずです
+                      **それも、マークダウンで！**
     createQuestionResponse:
       description: 問題を作成しました。
       headers:
@@ -199,11 +195,44 @@ components:
           schema:
             type: object
             required:
+              - statusCode
               - qid
             properties:
+              statusCode:
+                type: number
+                description: HTTPステータスコード（200）
+                example: 200
               qid:
                 type: string
                 format: uuid
+    errorResponse:
+      type: object
+      required:
+        - statusCode
+        - errorCode
+        - content
+      properties:
+        statusCode:
+          type: number
+          description: HTTPステータスコード
+          example: 500
+        errorCode:
+          type: string
+          description: エラーコード
+          example: VALIDATION_ERROR
+        headers:
+          type: object
+          description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+          example: ''
+        content:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: エラーメッセージ
+              example: qidはUUID形式で指定してください。
   headers:
     Location:
       $ref: '#/components/headers/location'
@@ -225,3 +254,32 @@ components:
       description: 認証方式と認証エラー情報
       schema:
         type: string
+  schemas:
+    errorResponse:
+      type: object
+      required:
+        - statusCode
+        - errorCode
+        - content
+      properties:
+        statusCode:
+          type: number
+          description: HTTPステータスコード
+          example: 500
+        errorCode:
+          type: string
+          description: エラーコード
+          example: VALIDATION_ERROR
+        headers:
+          type: object
+          description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+          example: ''
+        content:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: エラーメッセージ
+              example: qidはUUID形式で指定してください。

@@ -5,8 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **string** | エラーコード | [default to undefined]
-**message** | **string** | エラーメッセージ | [default to undefined]
+**statusCode** | **number** | HTTPステータスコード | [default to undefined]
+**errorCode** | **string** | エラーコード | [default to undefined]
+**headers** | **object** | ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる） | [optional] [default to undefined]
+**content** | [**ErrorResponseContent**](ErrorResponseContent.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +16,10 @@ Name | Type | Description | Notes
 import { ErrorResponse } from './api';
 
 const instance: ErrorResponse = {
-    code,
-    message,
+    statusCode,
+    errorCode,
+    headers,
+    content,
 };
 ```
 

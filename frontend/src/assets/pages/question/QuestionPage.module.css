@@ -16,7 +16,7 @@ header {
   padding: 15px;
 }
 
-.button-show-description {
+.button-show-explanation {
   padding: 15px;
 }
 
@@ -71,7 +71,7 @@ footer {
   justify-content: center;
 }
 
-.new-description-textbox {
+.new-question-textbox {
   width: 70%;
   height: 50px;
   display: inline-block;

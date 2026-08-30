@@ -1,16 +1,33 @@
 type: object
 
 required:
-  - code
-  - message
+  - statusCode
+  - errorCode
+  - content
 
 properties:
-  code:
+  statusCode:
+    type: number
+    description: HTTPステータスコード
+    example: 500
+
+  errorCode:
     type: string
     description: エラーコード
     example: VALIDATION_ERROR
 
-  message:
-    type: string
-    description: エラーメッセージ
-    example: qidはUUID形式で指定してください。
+  headers:
+    type: object
+    description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+    example: ""
+
+  content:
+    type: object
+    required:
+      - message
+    
+    properties:
+      message:
+        type: string
+        description: エラーメッセージ
+        example: qidはUUID形式で指定してください。

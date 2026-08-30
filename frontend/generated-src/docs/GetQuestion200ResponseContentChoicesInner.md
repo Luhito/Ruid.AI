@@ -1,21 +1,21 @@
-# PostQuestion201Response
+# GetQuestion200ResponseContentChoicesInner
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**statusCode** | **number** | HTTPステータスコード（200） | [default to undefined]
-**qid** | **string** |  | [default to undefined]
+**tag** | **string** |  | [default to undefined]
+**text** | **string** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { PostQuestion201Response } from './api';
+import { GetQuestion200ResponseContentChoicesInner } from './api';
 
-const instance: PostQuestion201Response = {
-    statusCode,
-    qid,
+const instance: GetQuestion200ResponseContentChoicesInner = {
+    tag,
+    text,
 };
 ```
 

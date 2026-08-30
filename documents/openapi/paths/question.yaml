@@ -24,25 +24,25 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorSchema'
+            $ref: '../openapi.yaml#/components/responses/ErrorResponse'
 
     '401':
       description: 認証エラー
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorSchema'
+            $ref: '../openapi.yaml#/components/responses/ErrorResponse'
 
     '404':
       description: 問題が存在しない
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorSchema'
+            $ref: '../openapi.yaml#/components/responses/ErrorResponse'
             
     '500':
       description: Internal server error
       content:
         application/json:
           schema:
-            $ref: '../openapi.yaml#/components/schemas/ErrorSchema'
+            $ref: '../openapi.yaml#/components/responses/ErrorResponse'

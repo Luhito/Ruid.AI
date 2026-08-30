@@ -59,21 +59,38 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        ErrorSchema: components["schemas"]["errorResponse"];
         errorResponse: {
+            /**
+             * @description HTTPステータスコード
+             * @example 500
+             */
+            statusCode: number;
             /**
              * @description エラーコード
              * @example VALIDATION_ERROR
              */
-            code: string;
+            errorCode: string;
             /**
-             * @description エラーメッセージ
-             * @example qidはUUID形式で指定してください。
+             * @description ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+             * @example
              */
-            message: string;
+            headers?: Record<string, never>;
+            content: {
+                /**
+                 * @description エラーメッセージ
+                 * @example qidはUUID形式で指定してください。
+                 */
+                message: string;
+            };
         };
     };
     responses: {
+        ErrorResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
+        };
         GetQuestionResponse: {
             headers: {
                 [name: string]: unknown;
@@ -94,40 +111,48 @@ export interface components {
             content: {
                 "application/json": {
                     /**
-                     * @description 問題文（Markdown）
-                     * @example テスト用問題文
-                     *     改行もあるよ
-                     *     **how's the bold letter?**
+                     * @description HTTPステータスコード（200）
+                     * @example 200
                      */
-                    question_text: string;
-                    /**
-                     * @description 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
-                     * @example [
-                     *       {
-                     *         "tag": "A",
-                     *         "text": "choice1"
-                     *       },
-                     *       {
-                     *         "tag": "B",
-                     *         "text": "choice2"
-                     *       }
-                     *     ]
-                     */
-                    choices: {
-                        tag: string;
-                        text: string;
-                    }[];
-                    /**
-                     * @description 選択肢の中で、正解のインデックス
-                     * @example 1
-                     */
-                    correct_answer_index: number;
-                    /**
-                     * @description 解説文（Markdown）
-                     * @example ここに説明が表示されるはずです
-                     *     **それも、マークダウンで！**
-                     */
-                    explanation_text: string;
+                    statusCode: number;
+                    /** @description 返却する検索結果 */
+                    content: {
+                        /**
+                         * @description 問題文（Markdown）
+                         * @example テスト用問題文
+                         *     改行もあるよ
+                         *     **how's the bold letter?**
+                         */
+                        question_text: string;
+                        /**
+                         * @description 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+                         * @example [
+                         *       {
+                         *         "tag": "A",
+                         *         "text": "choice1"
+                         *       },
+                         *       {
+                         *         "tag": "B",
+                         *         "text": "choice2"
+                         *       }
+                         *     ]
+                         */
+                        choices: {
+                            tag: string;
+                            text: string;
+                        }[];
+                        /**
+                         * @description 選択肢の中で、正解のインデックス
+                         * @example 1
+                         */
+                        correct_answer_index: number;
+                        /**
+                         * @description 解説文（Markdown）
+                         * @example ここに説明が表示されるはずです
+                         *     **それも、マークダウンで！**
+                         */
+                        explanation_text: string;
+                    };
                 };
             };
         };
@@ -139,10 +164,21 @@ export interface components {
             };
             content: {
                 "application/json": {
+                    /**
+                     * @description HTTPステータスコード（200）
+                     * @example 200
+                     */
+                    statusCode: number;
                     /** Format: uuid */
                     qid: string;
                 };
             };
+        };
+        errorResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
         };
     };
     parameters: {

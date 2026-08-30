@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **choiceTags** | **Array&lt;string&gt;** | 選択肢の記号 | [optional] [default to undefined]
 **choiceTexts** | **Array&lt;string&gt;** | 選択肢の内容 | [optional] [default to undefined]
 **question_test** | **string** | 問題文 | [optional] [default to undefined]
-**explanation_test** | **string** | 解説文 | [optional] [default to undefined]
+**explanation_text** | **string** | 解説文 | [optional] [default to undefined]
 
 ## Example
 
@@ -25,7 +25,7 @@ const instance: GetQuestionResponse = {
     choiceTags,
     choiceTexts,
     question_test,
-    explanation_test,
+    explanation_text,
 };
 ```
 

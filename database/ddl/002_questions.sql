@@ -8,7 +8,7 @@ CREATE TABLE questions (
     answer_type         CHAR(1)         NOT NULL,
     summary             TEXT            NOT NULL,
     question_text       TEXT            NOT NULL,
-    description_text    TEXT            NOT NULL,
+    explanation_text    TEXT            NOT NULL,
     tokenct_all         INTEGER,
     tokenct_in          INTEGER,
     tokenct_out         INTEGER,

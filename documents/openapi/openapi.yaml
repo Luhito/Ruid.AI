@@ -33,9 +33,7 @@ components:
     Qid:
       $ref: './parameters/qid.yaml'
 
-  schemas:
-    ErrorSchema:
-      $ref: './responses/errorResponse.yaml'
+  # schemas:
   #   RegisterRequest:
   #     $ref: './schemas/register-request.yaml'
 
@@ -50,8 +48,8 @@ components:
       $ref: './requestBodies/qprompt.yaml'
 
   responses:
-    # ErrorResponse:
-    #   $ref: './responses/errorResponse.yaml'
+    ErrorResponse:
+      $ref: './responses/errorResponse.yaml'
       
     # AuthResponse:
     #   $ref: './responses/authResponse.yaml'

@@ -25,9 +25,20 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
 
 export interface ErrorResponse {
     /**
+     * HTTPステータスコード
+     */
+    'statusCode': number;
+    /**
      * エラーコード
      */
-    'code': string;
+    'errorCode': string;
+    /**
+     * ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+     */
+    'headers'?: object;
+    'content': ErrorResponseContent;
+}
+export interface ErrorResponseContent {
     /**
      * エラーメッセージ
      */
@@ -35,13 +46,23 @@ export interface ErrorResponse {
 }
 export interface GetQuestion200Response {
     /**
+     * HTTPステータスコード（200）
+     */
+    'statusCode': number;
+    'content': GetQuestion200ResponseContent;
+}
+/**
+ * 返却する検索結果
+ */
+export interface GetQuestion200ResponseContent {
+    /**
      * 問題文（Markdown）
      */
     'question_text': string;
     /**
      * 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
      */
-    'choices': Array<GetQuestion200ResponseChoicesInner>;
+    'choices': Array<GetQuestion200ResponseContentChoicesInner>;
     /**
      * 選択肢の中で、正解のインデックス
      */
@@ -51,11 +72,15 @@ export interface GetQuestion200Response {
      */
     'explanation_text': string;
 }
-export interface GetQuestion200ResponseChoicesInner {
+export interface GetQuestion200ResponseContentChoicesInner {
     'tag': string;
     'text': string;
 }
 export interface PostQuestion201Response {
+    /**
+     * HTTPステータスコード（200）
+     */
+    'statusCode': number;
     'qid': string;
 }
 

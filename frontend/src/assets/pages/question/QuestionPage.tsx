@@ -46,7 +46,7 @@ const QuestionPage = (arg: { questionId: string }) => {
                     {/**「解説を見る」ボタン  */}
                     {!states.isOpenAnswer && (
                         <span className={styles["header-buttons-right"]}>
-                            <button className={styles["button-show-description"]} onClick={() => logics.onClick_viewAnswer()}>
+                            <button className={styles["button-show-explanation"]} onClick={() => logics.onClick_viewAnswer()}>
                                 {t('view answer')}
                             </button>
                         </span>
@@ -116,10 +116,10 @@ const QuestionPage = (arg: { questionId: string }) => {
             {/** */}
             <footer>
                 {/** 質問入力欄 */}
-                <div className={styles["new-description-textbox-container"]}>
+                <div className={styles["new-question-textbox-container"]}>
                     <input
                         type="text"
-                        className={styles['new-description-textbox']}
+                        className={styles['new-question-textbox']}
                         placeholder={t("textbox placeholder")}
                     />
                 </div>

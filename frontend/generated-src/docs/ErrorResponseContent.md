@@ -1,21 +1,19 @@
-# PostQuestion201Response
+# ErrorResponseContent
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**statusCode** | **number** | HTTPステータスコード（200） | [default to undefined]
-**qid** | **string** |  | [default to undefined]
+**message** | **string** | エラーメッセージ | [default to undefined]
 
 ## Example
 
 ```typescript
-import { PostQuestion201Response } from './api';
+import { ErrorResponseContent } from './api';
 
-const instance: PostQuestion201Response = {
-    statusCode,
-    qid,
+const instance: ErrorResponseContent = {
+    message,
 };
 ```
 
