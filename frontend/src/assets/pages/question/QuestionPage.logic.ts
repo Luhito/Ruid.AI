@@ -27,7 +27,7 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         if (states.isOpenAnswer) return;
 
         stateSetters.setOpenAnswer(true);
-        if (question.data && index === question.data.correct_answer_index) {
+        if (question.data && index === question.data.content.correct_answer_index) {
             stateSetters.setCorrect(true);
         }
         else {

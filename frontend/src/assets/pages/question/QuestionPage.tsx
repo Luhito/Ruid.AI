@@ -63,13 +63,13 @@ const QuestionPage = (arg: { questionId: string }) => {
 
                 {/** 問題文 */}
                 <div className={styles["md-text"]}>
-                    {question && <MD>{question.question_text}</MD>}
+                    {question && <MD>{question.content.question_text}</MD>}
                 </div>
 
                 {/** 選択肢 */}
                 <div className={styles['question-choices']}>
                     <ul>
-                        {question?.choices?.map((choice, index) => {
+                        {question?.content.choices?.map((choice, index) => {
                             return (
                                 <li key={"choice" + index}>
                                     <span className={styles["question-choice-tag"]}>
@@ -108,7 +108,7 @@ const QuestionPage = (arg: { questionId: string }) => {
 
                     {/** 解説文 */}
                     <div className={styles['md-text']}>
-                        <MD>{question?.explanation_text || ''}</MD>
+                        <MD>{question?.content.explanation_text || ''}</MD>
                     </div>
                 </>)}
             </main>
@@ -127,7 +127,7 @@ const QuestionPage = (arg: { questionId: string }) => {
                 {/** 選択肢（未回答時のみ表示） */}
                 {!states.isOpenAnswer && (
                     <div className={styles["choices"]}>
-                        {question?.choices?.map((choice, index) => {
+                        {question?.content.choices?.map((choice, index) => {
                             return (
                                 <button className={styles["choice-tag"]} onClick={() => logics.onClick_answer(index)} key={`choice-${index}`}>
                                     {choice.tag || ''}
