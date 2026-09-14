@@ -4,7 +4,6 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "node:url";
 import SwaggerParser from "@apidevtools/swagger-parser";
-import { createError } from "./shared-components/error.js"
 
 /** サーバー起動処理 */
 let label = 0;
@@ -42,7 +41,7 @@ try {
   app.use("/question", questionRouter)  //問題取得用
 }
 catch(e) {
-  createError("サーバーの起動処理で例外が発生しました", label, e)
+  throw new Error("サーバーの起動処理で例外が発生しました")
 }
 
 export default app;

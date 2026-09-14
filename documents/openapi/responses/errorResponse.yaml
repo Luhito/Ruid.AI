@@ -1,16 +1,10 @@
 type: object
 
 required:
-  - statusCode
   - errorCode
   - content
 
 properties:
-  statusCode:
-    type: number
-    description: HTTPステータスコード
-    example: 500
-
   errorCode:
     type: string
     description: エラーコード

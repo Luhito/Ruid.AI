@@ -134,57 +134,46 @@ components:
           schema:
             type: object
             required:
-              - statusCode
-              - content
+              - question_text
+              - choices
+              - correct_answer_index
+              - explanation_text
             properties:
-              statusCode:
-                type: number
-                description: HTTPステータスコード（200）
-                example: 200
-              content:
-                type: object
-                description: 返却する検索結果
-                required:
-                  - question_text
-                  - choices
-                  - correct_answer_index
-                  - explanation_text
-                properties:
-                  question_text:
-                    type: string
-                    description: 問題文（Markdown）
-                    example: |
-                      テスト用問題文
-                      改行もあるよ
-                      **how's the bold letter?**
-                  choices:
-                    type: array
-                    description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
-                    items:
-                      type: object
-                      required:
-                        - tag
-                        - text
-                      properties:
-                        tag:
-                          type: string
-                        text:
-                          type: string
-                    example:
-                      - tag: A
-                        text: choice1
-                      - tag: B
-                        text: choice2
-                  correct_answer_index:
-                    type: integer
-                    description: 選択肢の中で、正解のインデックス
-                    example: 1
-                  explanation_text:
-                    type: string
-                    description: 解説文（Markdown）
-                    example: |
-                      ここに説明が表示されるはずです
-                      **それも、マークダウンで！**
+              question_text:
+                type: string
+                description: 問題文（Markdown）
+                example: |
+                  テスト用問題文
+                  改行もあるよ
+                  **how's the bold letter?**
+              choices:
+                type: array
+                description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+                items:
+                  type: object
+                  required:
+                    - tag
+                    - text
+                  properties:
+                    tag:
+                      type: string
+                    text:
+                      type: string
+                example:
+                  - tag: A
+                    text: choice1
+                  - tag: B
+                    text: choice2
+              correct_answer_index:
+                type: integer
+                description: 選択肢の中で、正解のインデックス
+                example: 1
+              explanation_text:
+                type: string
+                description: 解説文（Markdown）
+                example: |
+                  ここに説明が表示されるはずです
+                  **それも、マークダウンで！**
     createQuestionResponse:
       description: 問題を作成しました。
       headers:
@@ -195,27 +184,17 @@ components:
           schema:
             type: object
             required:
-              - statusCode
               - qid
             properties:
-              statusCode:
-                type: number
-                description: HTTPステータスコード（200）
-                example: 200
               qid:
                 type: string
                 format: uuid
     errorResponse:
       type: object
       required:
-        - statusCode
         - errorCode
         - content
       properties:
-        statusCode:
-          type: number
-          description: HTTPステータスコード
-          example: 500
         errorCode:
           type: string
           description: エラーコード
@@ -258,14 +237,9 @@ components:
     errorResponse:
       type: object
       required:
-        - statusCode
         - errorCode
         - content
       properties:
-        statusCode:
-          type: number
-          description: HTTPステータスコード
-          example: 500
         errorCode:
           type: string
           description: エラーコード

@@ -61,11 +61,6 @@ export interface components {
     schemas: {
         errorResponse: {
             /**
-             * @description HTTPステータスコード
-             * @example 500
-             */
-            statusCode: number;
-            /**
              * @description エラーコード
              * @example VALIDATION_ERROR
              */
@@ -111,48 +106,40 @@ export interface components {
             content: {
                 "application/json": {
                     /**
-                     * @description HTTPステータスコード（200）
-                     * @example 200
+                     * @description 問題文（Markdown）
+                     * @example テスト用問題文
+                     *     改行もあるよ
+                     *     **how's the bold letter?**
                      */
-                    statusCode: number;
-                    /** @description 返却する検索結果 */
-                    content: {
-                        /**
-                         * @description 問題文（Markdown）
-                         * @example テスト用問題文
-                         *     改行もあるよ
-                         *     **how's the bold letter?**
-                         */
-                        question_text: string;
-                        /**
-                         * @description 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
-                         * @example [
-                         *       {
-                         *         "tag": "A",
-                         *         "text": "choice1"
-                         *       },
-                         *       {
-                         *         "tag": "B",
-                         *         "text": "choice2"
-                         *       }
-                         *     ]
-                         */
-                        choices: {
-                            tag: string;
-                            text: string;
-                        }[];
-                        /**
-                         * @description 選択肢の中で、正解のインデックス
-                         * @example 1
-                         */
-                        correct_answer_index: number;
-                        /**
-                         * @description 解説文（Markdown）
-                         * @example ここに説明が表示されるはずです
-                         *     **それも、マークダウンで！**
-                         */
-                        explanation_text: string;
-                    };
+                    question_text: string;
+                    /**
+                     * @description 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+                     * @example [
+                     *       {
+                     *         "tag": "A",
+                     *         "text": "choice1"
+                     *       },
+                     *       {
+                     *         "tag": "B",
+                     *         "text": "choice2"
+                     *       }
+                     *     ]
+                     */
+                    choices: {
+                        tag: string;
+                        text: string;
+                    }[];
+                    /**
+                     * @description 選択肢の中で、正解のインデックス
+                     * @example 1
+                     */
+                    correct_answer_index: number;
+                    /**
+                     * @description 解説文（Markdown）
+                     * @example ここに説明が表示されるはずです
+                     *     **それも、マークダウンで！**
+                     */
+                    explanation_text: string;
                 };
             };
         };
@@ -164,11 +151,6 @@ export interface components {
             };
             content: {
                 "application/json": {
-                    /**
-                     * @description HTTPステータスコード（200）
-                     * @example 200
-                     */
-                    statusCode: number;
                     /** Format: uuid */
                     qid: string;
                 };

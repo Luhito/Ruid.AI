@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**statusCode** | **number** | HTTPステータスコード（200） | [default to undefined]
 **qid** | **string** |  | [default to undefined]
 
 ## Example
@@ -14,7 +13,6 @@ Name | Type | Description | Notes
 import { PostQuestion201Response } from './api';
 
 const instance: PostQuestion201Response = {
-    statusCode,
     qid,
 };
 ```

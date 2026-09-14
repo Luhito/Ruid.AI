@@ -9,6 +9,7 @@ CREATE TABLE questions (
     summary             TEXT            NOT NULL,
     question_text       TEXT            NOT NULL,
     explanation_text    TEXT            NOT NULL,
+    answered_at         BOOLEAN,
     tokenct_all         INTEGER,
     tokenct_in          INTEGER,
     tokenct_out         INTEGER,

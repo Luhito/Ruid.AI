@@ -5,60 +5,47 @@ content:
     schema:
       type: object
       required:
-        - statusCode
-        - content
+        - question_text
+        - choices
+        - correct_answer_index
+        - explanation_text
 
       properties:
-        statusCode:
-          type: number
-          description: HTTPステータスコード（200）
-          example: 200
+        question_text:
+          type: string
+          description: 問題文（Markdown）
+          example: |
+            テスト用問題文
+            改行もあるよ
+            **how's the bold letter?**
 
-        content:
-          type: object
-          description: 返却する検索結果
-          required:
-            - question_text
-            - choices
-            - correct_answer_index
-            - explanation_text
+        choices:
+          type: array
+          description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
+          items:
+            type: object
+            required:
+              - tag
+              - text
+            properties:
+              tag:
+                type: string
+              text:
+                type: string
+          example:
+            - tag: A
+              text: choice1
+            - tag: B
+              text: choice2
 
-          properties:
-            question_text:
-              type: string
-              description: 問題文（Markdown）
-              example: |
-                テスト用問題文
-                改行もあるよ
-                **how's the bold letter?**
+        correct_answer_index:
+          type: integer
+          description: 選択肢の中で、正解のインデックス
+          example: 1
 
-            choices:
-              type: array
-              description: 選択肢配列. 選択肢を表す記号と選択肢の本文のセット
-              items:
-                type: object
-                required:
-                  - tag
-                  - text
-                properties:
-                  tag:
-                    type: string
-                  text:
-                    type: string
-              example:
-                - tag: A
-                  text: choice1
-                - tag: B
-                  text: choice2
-
-            correct_answer_index:
-              type: integer
-              description: 選択肢の中で、正解のインデックス
-              example: 1
-
-            explanation_text:
-              type: string
-              description: 解説文（Markdown）
-              example: |
-                ここに説明が表示されるはずです
-                **それも、マークダウンで！**
+        explanation_text:
+          type: string
+          description: 解説文（Markdown）
+          example: |
+            ここに説明が表示されるはずです
+            **それも、マークダウンで！**

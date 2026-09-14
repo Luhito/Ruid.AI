@@ -10,19 +10,17 @@ type ErrorResponse =
 type PostQuestion201Response = 
     components["responses"]["createQuestionResponse"];
 
-export const postQuestion = async (testbool: boolean) => {
+export const postQuestion = async (prompt: string) => {
     const stub_header: PostQuestion201ResponseHeader = {
         Location: "question/tsetqid"
     }
 
     const stub_content: PostQuestion201ResponseContent = {
-        statusCode: 201,
         qid: "tsetqid"
     }
 
-    if (!testbool) {
+    if (!prompt) {
         return {
-            statusCode: 500,
             errorCode: "POST_QUESTION_TEST_ERROR",
             content: {
                 message: "this is post question test"
@@ -31,8 +29,9 @@ export const postQuestion = async (testbool: boolean) => {
     }
 
     return {
-        statusCode: 201,
         headers: stub_header,
-        content: stub_content
-    }
+        content: {
+            "application/json": stub_content
+        }
+    } satisfies PostQuestion201Response
 }
