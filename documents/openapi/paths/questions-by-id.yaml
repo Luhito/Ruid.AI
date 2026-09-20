@@ -1,0 +1,36 @@
+get:
+  tags:
+    - Question
+
+  summary: 問題取得
+  description: |
+        指定した問題IDに対応する問題を取得します。
+
+        - 問題文
+        - 選択肢
+        - 解説
+        を返します。
+
+        問題が存在しない場合は404を返します。
+  operationId: getQuestion
+
+  parameters:
+    - name: question_id
+      description: パスパラメータ内のquestion_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      
+  responses:
+    '200':
+      $ref: '../openapi.yaml#/components/responses/GetQuestionResponse'
+    '400':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '401':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '404':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '500':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'

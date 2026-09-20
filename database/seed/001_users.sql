@@ -4,7 +4,7 @@ INSERT INTO users (
     password_hash,
     user_name
 ) VALUES (
-    '00000000-0000-0000-0000-000000000001',
+    '01a09db5-6b0f-7b2c-b215-c1a99a0589af',
     'test1@example.com',
     'test-password-hash-1',
     'テストユーザー1'

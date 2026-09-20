@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src --exec tsx src/server.ts",
+    "dev": "eslint . && nodemon --watch src --exec tsx src/server.ts",
     "build": "tsc",
     "start": "node src/app.js"
   },
@@ -16,6 +16,7 @@
   "dependencies": {
     "@apidevtools/swagger-parser": "^12.1.0",
     "cors": "^2.8.6",
+    "eslint": "^10.11.0",
     "express": "^5.2.1",
     "pg": "^8.22.0",
     "swagger-ui-express": "^5.0.1",

@@ -17,4 +17,8 @@ export class UUID {
   toString(): string {
     return this.value;
   }
+
+  static generate(): string {
+    return v7();
+  }
 }

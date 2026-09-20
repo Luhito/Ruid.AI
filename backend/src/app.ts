@@ -1,12 +1,12 @@
 import express from "express";
 import questionRouter from "./routes/questionRouter.js";
+import roomRouter from "./routes/roomRouter.js"
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "node:url";
 import SwaggerParser from "@apidevtools/swagger-parser";
 
 /** サーバー起動処理 */
-let label = 0;
 
 // Expressインスタンス作成
 const app = express();
@@ -15,7 +15,6 @@ app.use(express.json());
 try {
   // CORSの設定
   app.use(cors({
-    // origin: "http://localhost:5173"  //ローカル開発用設定
     origin: true  //開発用設定
   }))
 
@@ -38,7 +37,8 @@ try {
   );
 
   // 以降、アプリ用
-  app.use("/question", questionRouter)  //問題取得用
+  app.use("/questions", questionRouter);  // 問題取得
+  app.use("/rooms", roomRouter);          // ルーム作成/編集
 }
 catch(e) {
   throw new Error("サーバーの起動処理で例外が発生しました")

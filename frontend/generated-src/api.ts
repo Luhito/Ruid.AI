@@ -23,24 +23,11 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-export interface ErrorResponse {
-    /**
-     * エラーコード
-     */
-    'errorCode': string;
-    /**
-     * ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-     */
-    'headers'?: object;
-    'content': ErrorResponseContent;
-}
-export interface ErrorResponseContent {
-    /**
-     * エラーメッセージ
-     */
-    'message': string;
-}
 export interface GetQuestion200Response {
+    /**
+     * Room ID
+     */
+    'room_id': string;
     /**
      * 問題文（Markdown）
      */
@@ -62,8 +49,31 @@ export interface GetQuestion200ResponseChoicesInner {
     'tag': string;
     'text': string;
 }
-export interface PostQuestion201Response {
-    'qid': string;
+export interface GetQuestion400Response {
+    /**
+     * エラーコード
+     */
+    'errorCode': string;
+    /**
+     * ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+     */
+    'headers'?: object;
+    'content': GetQuestion400ResponseContent;
+}
+export interface GetQuestion400ResponseContent {
+    /**
+     * エラーメッセージ
+     */
+    'message': string;
+}
+export interface GetRoom200Response {
+    /**
+     * ルームの端的な説明＝ルーム名
+     */
+    'name': string;
+}
+export interface PostRoom201Response {
+    'room_id': string;
 }
 
 /**
@@ -74,15 +84,15 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
          * @summary 問題取得
-         * @param {string} qid 問題ID(UUID)
+         * @param {string} questionId パスパラメータ内のquestion_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getQuestion: async (qid: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'qid' is not null or undefined
-            assertParamExists('getQuestion', 'qid', qid)
-            const localVarPath = `/question/{qid}`
-                .replace('{qid}', encodeURIComponent(String(qid)));
+        getQuestion: async (questionId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'questionId' is not null or undefined
+            assertParamExists('getQuestion', 'questionId', questionId)
+            const localVarPath = `/questions/{question_id}`
+                .replace('{question_id}', encodeURIComponent(String(questionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -91,36 +101,6 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
             }
 
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
-         * @summary 問題作成
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postQuestion: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/question`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -147,26 +127,14 @@ export const QuestionApiFp = function(configuration?: Configuration) {
         /**
          * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
          * @summary 問題取得
-         * @param {string} qid 問題ID(UUID)
+         * @param {string} questionId パスパラメータ内のquestion_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getQuestion(qid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestion200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getQuestion(qid, options);
+        async getQuestion(questionId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetQuestion200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getQuestion(questionId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuestionApi.getQuestion']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
-         * @summary 問題作成
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postQuestion(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostQuestion201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postQuestion(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['QuestionApi.postQuestion']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -181,21 +149,12 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
         /**
          * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
          * @summary 問題取得
-         * @param {string} qid 問題ID(UUID)
+         * @param {string} questionId パスパラメータ内のquestion_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getQuestion(qid: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestion200Response> {
-            return localVarFp.getQuestion(qid, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
-         * @summary 問題作成
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postQuestion(options?: RawAxiosRequestConfig): AxiosPromise<PostQuestion201Response> {
-            return localVarFp.postQuestion(options).then((request) => request(axios, basePath));
+        getQuestion(questionId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestion200Response> {
+            return localVarFp.getQuestion(questionId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -207,22 +166,170 @@ export class QuestionApi extends BaseAPI {
     /**
      * 指定した問題IDに対応する問題を取得します。  - 問題文 - 選択肢 - 解説 を返します。  問題が存在しない場合は404を返します。 
      * @summary 問題取得
-     * @param {string} qid 問題ID(UUID)
+     * @param {string} questionId パスパラメータ内のquestion_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public getQuestion(qid: string, options?: RawAxiosRequestConfig) {
-        return QuestionApiFp(this.configuration).getQuestion(qid, options).then((request) => request(this.axios, this.basePath));
+    public getQuestion(questionId: string, options?: RawAxiosRequestConfig) {
+        return QuestionApiFp(this.configuration).getQuestion(questionId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * RoomApi - axios parameter creator
+ */
+export const RoomApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoom: async (roomId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'roomId' is not null or undefined
+            assertParamExists('getRoom', 'roomId', roomId)
+            const localVarPath = `/rooms/{room_id}`
+                .replace('{room_id}', encodeURIComponent(String(roomId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary ルーム作成
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postRoom: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/rooms`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * RoomApi - functional programming interface
+ */
+export const RoomApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = RoomApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRoom(roomId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetRoom200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoom(roomId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RoomApi.getRoom']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary ルーム作成
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postRoom(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostRoom201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postRoom(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RoomApi.postRoom']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * RoomApi - factory interface
+ */
+export const RoomApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = RoomApiFp(configuration)
+    return {
+        /**
+         * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoom(roomId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetRoom200Response> {
+            return localVarFp.getRoom(roomId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
+         * @summary ルーム作成
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postRoom(options?: RawAxiosRequestConfig): AxiosPromise<PostRoom201Response> {
+            return localVarFp.postRoom(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * RoomApi - object-oriented interface
+ */
+export class RoomApi extends BaseAPI {
+    /**
+     * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+     * @param {string} roomId パスパラメータ内のroom_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getRoom(roomId: string, options?: RawAxiosRequestConfig) {
+        return RoomApiFp(this.configuration).getRoom(roomId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 指定された条件をもとに新しい問題を作成します。  リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。  作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。 
-     * @summary 問題作成
+     * @summary ルーム作成
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public postQuestion(options?: RawAxiosRequestConfig) {
-        return QuestionApiFp(this.configuration).postQuestion(options).then((request) => request(this.axios, this.basePath));
+    public postRoom(options?: RawAxiosRequestConfig) {
+        return RoomApiFp(this.configuration).postRoom(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

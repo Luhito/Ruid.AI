@@ -15,8 +15,8 @@ const HomePage = () => {
         closeModal: () => setOpen(false),
         onClickCreateQuestion: async () => {
 
-            const qid = await logics.getNewQuestionId();
-            navigate(`/question?id=${qid}`);
+            const question_id = await logics.getNewQuestionId();
+            navigate(`/question?id=${question_id}`);
         }
     }
 

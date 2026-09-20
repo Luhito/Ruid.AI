@@ -1,0 +1,14 @@
+description: ルーム情報を取得しました。
+
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - name
+
+      properties:
+        name:
+          type: string
+          description: ルームの端的な説明＝ルーム名
+          example: 応用情報：ストラテジ分野

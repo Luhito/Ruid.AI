@@ -1,38 +1,38 @@
 INSERT INTO choices (
-    qid,
+    question_id,
     choice_label,
     choice_text
 ) VALUES (
-    '00000000-0000-0000-0001-000000000001',
+    '01a09db5-6b0f-7f0e-b16d-068a3918e430',
     'ア',
     'サンプルchoice 1'
 );
 INSERT INTO choices (
-    qid,
+    question_id,
     choice_label,
     choice_text,
     is_correct
 ) VALUES (
-    '00000000-0000-0000-0001-000000000001',
+    '01a09db5-6b0f-7f0e-b16d-068a3918e430',
     'イ',
     'サンプルchoice 2',
     TRUE
 );
 INSERT INTO choices (
-    qid,
+    question_id,
     choice_label,
     choice_text
 ) VALUES (
-    '00000000-0000-0000-0001-000000000001',
+    '01a09db5-6b0f-7f0e-b16d-068a3918e430',
     'ウ',
     'サンプルchoice 3'
 );
 INSERT INTO choices (
-    qid,
+    question_id,
     choice_label,
     choice_text
 ) VALUES (
-    '00000000-0000-0000-0001-000000000001',
+    '01a09db5-6b0f-7f0e-b16d-068a3918e430',
     'エ',
     'サンプルchoice 4'
 );

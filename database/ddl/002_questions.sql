@@ -1,12 +1,9 @@
 -- DROP TABLE questions;
 
 CREATE TABLE questions (
-    qid                 UUID            NOT NULL,
+    question_id         UUID            NOT NULL,
     create_user_id      UUID            NOT NULL,
-    rid                 UUID,
-    prompt              TEXT            NOT NULL,
-    answer_type         CHAR(1)         NOT NULL,
-    summary             TEXT            NOT NULL,
+    room_id             UUID            NOT NULL,
     question_text       TEXT            NOT NULL,
     explanation_text    TEXT            NOT NULL,
     answered_at         BOOLEAN,
@@ -18,12 +15,9 @@ CREATE TABLE questions (
     created_at          TIMESTAMPTZ     NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT pk_questions
-        PRIMARY KEY (qid),
+        PRIMARY KEY (question_id),
 
     CONSTRAINT fk_questions_create_user
         FOREIGN KEY (create_user_id)
-        REFERENCES users(user_id),
-
-    CONSTRAINT chk_questions_answer_type
-        CHECK (answer_type IN ('N', 'W'))
+        REFERENCES users(user_id)
 );

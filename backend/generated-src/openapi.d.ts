@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-    "/question/{qid}": {
+    "/questions/{question_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -31,7 +31,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/question": {
+    "/rooms": {
         parameters: {
             query?: never;
             header?: never;
@@ -41,14 +41,38 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * 問題作成
+         * ルーム作成
          * @description 指定された条件をもとに新しい問題を作成します。
          *
          *     リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。
          *
          *     作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
          */
-        post: operations["postQuestion"];
+        post: operations["postRoom"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/rooms/{room_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description ルームIDから、ルームの情報を取得します。
+         *
+         *     - ルーム名
+         *     を返します。
+         *
+         *     ルームが存在しない場合は404を返します。
+         */
+        get: operations["getRoom"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -58,27 +82,7 @@ export interface paths {
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        errorResponse: {
-            /**
-             * @description エラーコード
-             * @example VALIDATION_ERROR
-             */
-            errorCode: string;
-            /**
-             * @description ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-             * @example
-             */
-            headers?: Record<string, never>;
-            content: {
-                /**
-                 * @description エラーメッセージ
-                 * @example qidはUUID形式で指定してください。
-                 */
-                message: string;
-            };
-        };
-    };
+    schemas: never;
     responses: {
         ErrorResponse: {
             headers: {
@@ -92,7 +96,13 @@ export interface components {
             };
             content?: never;
         };
-        CreateQuestionResponse: {
+        CreateRoomResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
+        };
+        GetRoomResponse: {
             headers: {
                 [name: string]: unknown;
             };
@@ -105,6 +115,11 @@ export interface components {
             };
             content: {
                 "application/json": {
+                    /**
+                     * Format: uuid
+                     * @description Room ID
+                     */
+                    room_id: string;
                     /**
                      * @description 問題文（Markdown）
                      * @example テスト用問題文
@@ -143,31 +158,64 @@ export interface components {
                 };
             };
         };
-        /** @description 問題を作成しました。 */
-        createQuestionResponse: {
+        /** @description エラー */
+        errorResponse: {
             headers: {
-                Location: components["headers"]["location"];
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": {
+                    /**
+                     * @description エラーコード
+                     * @example VALIDATION_ERROR
+                     */
+                    errorCode: string;
+                    /**
+                     * @description ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+                     * @example
+                     */
+                    headers?: Record<string, never>;
+                    content: {
+                        /**
+                         * @description エラーメッセージ
+                         * @example question_idはUUID形式で指定してください。
+                         */
+                        message: string;
+                    };
+                };
+            };
+        };
+        /** @description 問題を作成しました。 */
+        createRoomResponse: {
+            headers: {
+                /** @description 生成したルームID */
+                Location: string;
                 [name: string]: unknown;
             };
             content: {
                 "application/json": {
                     /** Format: uuid */
-                    qid: string;
+                    room_id: string;
                 };
             };
         };
-        errorResponse: {
+        /** @description ルーム情報を取得しました。 */
+        getRoomResponse: {
             headers: {
                 [name: string]: unknown;
             };
-            content?: never;
+            content: {
+                "application/json": {
+                    /**
+                     * @description ルームの端的な説明＝ルーム名
+                     * @example 応用情報：ストラテジ分野
+                     */
+                    name: string;
+                };
+            };
         };
     };
-    parameters: {
-        Qid: string;
-        /** @description 問題ID(UUID) */
-        qid: string;
-    };
+    parameters: never;
     requestBodies: {
         Qprompt: {
             content: {
@@ -202,98 +250,53 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description 問題ID(UUID) */
-                qid: components["parameters"]["qid"];
+                /** @description パスパラメータ内のquestion_id */
+                question_id: string;
             };
             cookie?: never;
         };
         requestBody?: never;
         responses: {
             200: components["responses"]["getQuestionResponse"];
-            /** @description バリデーションエラー */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
-            /** @description 認証エラー */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
-            /** @description 問題が存在しない */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
-            /** @description Internal server error */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
         };
     };
-    postQuestion: {
+    postRoom: {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        requestBody: components["requestBodies"]["qprompt"];
+        requestBody?: components["requestBodies"]["qprompt"];
         responses: {
-            201: components["responses"]["createQuestionResponse"];
-            /** @description バリデーションエラー */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
+            201: components["responses"]["createRoomResponse"];
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
+        };
+    };
+    getRoom: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description パスパラメータ内のroom_id */
+                room_id: string;
             };
-            /** @description 認証エラー */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
-            /** @description 問題が存在しない */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
-            /** @description Internal server error */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["errorResponse"];
-                };
-            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: components["responses"]["getRoomResponse"];
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
         };
     };
 }

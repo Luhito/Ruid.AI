@@ -9,7 +9,7 @@ tags:
   - name: Question
     description: 問題取得API
 paths:
-  /question/{qid}:
+  /question/{question_id}:
     get:
       tags:
         - Question
@@ -25,7 +25,7 @@ paths:
         問題が存在しない場合は404を返します。
       operationId: getQuestion
       parameters:
-        - $ref: '#/components/parameters/qid'
+        - $ref: '#/components/parameters/question_id'
       responses:
         '200':
           $ref: '#/components/responses/getQuestionResponse'
@@ -96,10 +96,10 @@ paths:
                 $ref: '#/components/schemas/errorResponse'
 components:
   parameters:
-    Qid:
-      $ref: '#/components/parameters/qid'
-    qid:
-      name: qid
+    question_id:
+      $ref: '#/components/parameters/question_id'
+    question_id:
+      name: question_id
       in: path
       description: 問題ID(UUID)
       required: true
@@ -122,7 +122,7 @@ components:
         message:
           type: string
           description: エラーメッセージ
-          example: qidはUUID形式で指定してください。
+          example: question_idはUUID形式で指定してください。
   requestBodies:
     Qprompt:
       $ref: '#/components/requestBodies/qprompt'
@@ -199,9 +199,9 @@ components:
           schema:
             type: object
             required:
-              - qid
+              - question_id
             properties:
-              qid:
+              question_id:
                 type: string
                 format: uuid
   headers:

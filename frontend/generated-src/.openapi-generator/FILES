@@ -4,11 +4,13 @@ api.ts
 base.ts
 common.ts
 configuration.ts
-docs/ErrorResponse.md
-docs/ErrorResponseContent.md
 docs/GetQuestion200Response.md
 docs/GetQuestion200ResponseChoicesInner.md
-docs/PostQuestion201Response.md
+docs/GetQuestion400Response.md
+docs/GetQuestion400ResponseContent.md
+docs/GetRoom200Response.md
+docs/PostRoom201Response.md
 docs/QuestionApi.md
+docs/RoomApi.md
 git_push.sh
 index.ts

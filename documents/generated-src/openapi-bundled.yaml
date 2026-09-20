@@ -8,8 +8,10 @@ servers:
 tags:
   - name: Question
     description: 問題取得API
+  - name: Room
+    description: 問題グループ取得API
 paths:
-  /question/{qid}:
+  /questions/{question_id}:
     get:
       tags:
         - Question
@@ -25,92 +27,86 @@ paths:
         問題が存在しない場合は404を返します。
       operationId: getQuestion
       parameters:
-        - $ref: '#/components/parameters/qid'
+        - name: question_id
+          description: パスパラメータ内のquestion_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           $ref: '#/components/responses/getQuestionResponse'
         '400':
-          description: バリデーションエラー
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '401':
-          description: 認証エラー
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '404':
-          description: 問題が存在しない
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
-  /question:
+          $ref: '#/components/responses/errorResponse'
+  /rooms:
     post:
       tags:
-        - Question
-      summary: 問題作成
+        - Room
+      summary: ルーム作成
       description: |
         指定された条件をもとに新しい問題を作成します。
 
         リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。
 
         作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
-      operationId: postQuestion
+      operationId: postRoom
       requestBody:
         $ref: '#/components/requestBodies/qprompt'
       responses:
         '201':
-          $ref: '#/components/responses/createQuestionResponse'
+          $ref: '#/components/responses/createRoomResponse'
         '400':
-          description: バリデーションエラー
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '401':
-          description: 認証エラー
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '404':
-          description: 問題が存在しない
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
         '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errorResponse'
+          $ref: '#/components/responses/errorResponse'
+  /rooms/{room_id}:
+    get:
+      tags:
+        - Room
+      sumamry: ルーム情報取得
+      description: |
+        ルームIDから、ルームの情報を取得します。
+
+        - ルーム名
+        を返します。
+
+        ルームが存在しない場合は404を返します。
+      operationId: getRoom
+      parameters:
+        - name: room_id
+          description: パスパラメータ内のroom_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          $ref: '#/components/responses/getRoomResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+        '401':
+          $ref: '#/components/responses/errorResponse'
+        '404':
+          $ref: '#/components/responses/errorResponse'
+        '500':
+          $ref: '#/components/responses/errorResponse'
 components:
-  parameters:
-    Qid:
-      $ref: '#/components/parameters/qid'
-    qid:
-      name: qid
-      in: path
-      description: 問題ID(UUID)
-      required: true
-      schema:
-        type: string
-        format: uuid
   requestBodies:
     Qprompt:
       $ref: '#/components/requestBodies/qprompt'
     qprompt:
-      required: true
       content:
         application/json:
           schema:
@@ -125,8 +121,10 @@ components:
       $ref: '#/components/responses/errorResponse'
     GetQuestionResponse:
       $ref: '#/components/responses/getQuestionResponse'
-    CreateQuestionResponse:
-      $ref: '#/components/responses/createQuestionResponse'
+    CreateRoomResponse:
+      $ref: '#/components/responses/createRoomResponse'
+    GetRoomResponse:
+      $ref: '#/components/responses/getRoomResponse'
     getQuestionResponse:
       description: 問題を取得しました。
       content:
@@ -134,11 +132,16 @@ components:
           schema:
             type: object
             required:
+              - room_id
               - question_text
               - choices
               - correct_answer_index
               - explanation_text
             properties:
+              room_id:
+                type: string
+                description: Room ID
+                format: uuid
               question_text:
                 type: string
                 description: 問題文（Markdown）
@@ -174,44 +177,65 @@ components:
                 example: |
                   ここに説明が表示されるはずです
                   **それも、マークダウンで！**
-    createQuestionResponse:
-      description: 問題を作成しました。
-      headers:
-        Location:
-          $ref: '#/components/headers/location'
+    errorResponse:
+      description: エラー
       content:
         application/json:
           schema:
             type: object
             required:
-              - qid
+              - errorCode
+              - content
             properties:
-              qid:
+              errorCode:
+                type: string
+                description: エラーコード
+                example: VALIDATION_ERROR
+              headers:
+                type: object
+                description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+                example: ''
+              content:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    description: エラーメッセージ
+                    example: question_idはUUID形式で指定してください。
+    createRoomResponse:
+      description: 問題を作成しました。
+      headers:
+        Location:
+          description: 生成したルームID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - room_id
+            properties:
+              room_id:
                 type: string
                 format: uuid
-    errorResponse:
-      type: object
-      required:
-        - errorCode
-        - content
-      properties:
-        errorCode:
-          type: string
-          description: エラーコード
-          example: VALIDATION_ERROR
-        headers:
-          type: object
-          description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-          example: ''
-        content:
-          type: object
-          required:
-            - message
-          properties:
-            message:
-              type: string
-              description: エラーメッセージ
-              example: qidはUUID形式で指定してください。
+    getRoomResponse:
+      description: ルーム情報を取得しました。
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name:
+                type: string
+                description: ルームの端的な説明＝ルーム名
+                example: 応用情報：ストラテジ分野
   headers:
     Location:
       $ref: '#/components/headers/location'
@@ -233,27 +257,3 @@ components:
       description: 認証方式と認証エラー情報
       schema:
         type: string
-  schemas:
-    errorResponse:
-      type: object
-      required:
-        - errorCode
-        - content
-      properties:
-        errorCode:
-          type: string
-          description: エラーコード
-          example: VALIDATION_ERROR
-        headers:
-          type: object
-          description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-          example: ''
-        content:
-          type: object
-          required:
-            - message
-          properties:
-            message:
-              type: string
-              description: エラーメッセージ
-              example: qidはUUID形式で指定してください。

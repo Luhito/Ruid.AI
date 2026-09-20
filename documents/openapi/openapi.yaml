@@ -14,6 +14,9 @@ tags:
 
   - name: Question
     description: 問題取得API
+    
+  - name: Room
+    description: 問題グループ取得API
 
 paths:
   # /auth/login:
@@ -22,17 +25,16 @@ paths:
   # /auth/register:
   #   $ref: './paths/register.yaml'
 
-  /question/{qid}:
-    $ref: './paths/question-by-qid.yaml'
+  /questions/{question_id}:
+    $ref: './paths/questions-by-id.yaml'
 
-  /question:
-    $ref: './paths/question.yaml'
+  /rooms:
+    $ref: './paths/rooms.yaml'
+  
+  /rooms/{room_id}:
+    $ref: './paths/rooms-by-id.yaml'
 
 components:
-  parameters:
-    Qid:
-      $ref: './parameters/qid.yaml'
-
   # schemas:
   #   RegisterRequest:
   #     $ref: './schemas/register-request.yaml'
@@ -57,8 +59,11 @@ components:
     GetQuestionResponse:
       $ref: './responses/getQuestionResponse.yaml'
     
-    CreateQuestionResponse:
-      $ref: './responses/createQuestionResponse.yaml'
+    CreateRoomResponse:
+      $ref: './responses/createRoomResponse.yaml'
+
+    GetRoomResponse:
+      $ref: './responses/getRoomResponse.yaml'
     
   headers:
     Location:

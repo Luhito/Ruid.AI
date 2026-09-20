@@ -125,10 +125,10 @@ function App() {
         <section id="spacer"></section>
         <Home />
         <section id="spacer"></section>
-        <button onClick={() => navigate(`/question?id=${sampleQuestionId}`)}>Question Page</button>
+        <button onClick={() => navigate(`/questions/${sampleQuestionId}`)}>Question Page</button>
       </>} />
       <Route path="/home" element={<HomePage />}/>
-      <Route path="/question" element={<QuestionPageContainer />}/>
+      <Route path="/questions/:question_id" element={<QuestionPageContainer />}/>
     </Routes>
   )
 }

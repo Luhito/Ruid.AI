@@ -1,0 +1,35 @@
+get:
+  tags:
+    - Room
+  
+  sumamry: ルーム情報取得
+  description: |
+    ルームIDから、ルームの情報を取得します。
+
+    - ルーム名
+    を返します。
+
+    ルームが存在しない場合は404を返します。
+  
+  operationId: getRoom
+
+  parameters:
+    - name: room_id
+      description: パスパラメータ内のroom_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      
+  responses:
+    '200':
+      $ref: '../openapi.yaml#/components/responses/GetRoomResponse'
+    '400':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '401':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '404':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '500':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'

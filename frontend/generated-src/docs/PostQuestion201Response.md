@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**qid** | **string** |  | [default to undefined]
+**question_id** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { PostQuestion201Response } from './api';
 
 const instance: PostQuestion201Response = {
-    qid,
+    question_id,
 };
 ```
 

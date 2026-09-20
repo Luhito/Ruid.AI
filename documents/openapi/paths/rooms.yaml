@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Room
+
+  summary: ルーム作成
+  description: |
+    指定された条件をもとに新しい問題を作成します。
+
+    リクエストボディには、問題ジャンルや問題形式などの生成条件を指定します。
+
+    作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
+
+  operationId: postRoom
+
+  requestBody:
+    $ref: '../openapi.yaml#/components/requestBodies/Qprompt'
+      
+  responses:
+    '201':
+      $ref: '../openapi.yaml#/components/responses/CreateRoomResponse'
+    '400':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '401':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '404':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '500':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'

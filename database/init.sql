@@ -1,4 +1,3 @@
-\o /database/init.log
 \set ON_ERROR_STOP on
 
 \echo '=== START init.sql ==='
@@ -12,6 +11,9 @@
 \echo '--- DDL: choices ---'
 \i /database/ddl/003_choices.sql
 
+\echo '--- DDL: rooms ---'
+\i /database/ddl/004_rooms.sql
+
 \echo '--- SEED: users ---'
 \i /database/seed/001_users.sql
 
@@ -20,5 +22,8 @@
 
 \echo '--- SEED: choices ---'
 \i /database/seed/003_choices.sql
+
+\echo '--- SEED: rooms ---'
+\i /database/seed/004_rooms.sql
 
 \echo '=== END init.sql ==='

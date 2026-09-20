@@ -5,12 +5,18 @@ content:
     schema:
       type: object
       required:
+        - room_id
         - question_text
         - choices
         - correct_answer_index
         - explanation_text
 
       properties:
+        room_id:
+          type: string
+          description: Room ID
+          format: uuid
+
         question_text:
           type: string
           description: 問題文（Markdown）

@@ -1,19 +1,13 @@
 INSERT INTO questions (
-    qid,
+    question_id,
     create_user_id,
-    rid,
-    prompt,
-    answer_type,
-    summary,
+    room_id,
     question_text,
     explanation_text
 ) VALUES (
-    '00000000-0000-0000-0001-000000000001',
-    '00000000-0000-0000-0000-000000000001',
-    '00000000-0000-0001-0000-000000000001',
-    '応用情報技術者試験の問題を出題してください。ジャンルはマネジメント系に絞ってください。',
-    'N',
-    '応用情報 マネジメント分野',
+    '01a09db5-6b0f-7f0e-b16d-068a3918e430',
+    '01a09db5-6b0f-7b2c-b215-c1a99a0589af',
+    '01a09db5-6b0f-7a9a-9a76-df21bc1cfd0f',
     'DB上のサンプル問題文',
     'DB上のサンプル解説文'
 );

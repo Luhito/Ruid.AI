@@ -12,9 +12,10 @@ const QuestionPage = (arg: { questionId: string }) => {
     const { states, stateSetters } = useQuestionPageStates();
     const { logics } = useQuestionPageLogic(arg.questionId, states, stateSetters);
     const question = logics.question;
+    const room = logics.room;
 
     if (!arg.questionId) {
-        console.error("questionId is not specified. check your request parameter.");
+        console.error("questionId is not specified. check your request URL.");
         return (<ErrorQuestionPage />)
     }
 
@@ -40,6 +41,11 @@ const QuestionPage = (arg: { questionId: string }) => {
                     {states.isGenerationCompleted && (
                         <span className={`${styles.generationStatText} ${styles.generated}`}>
                             {t('generated')}
+                        </span>
+                    )}
+                    {states.isGenerationCompleted && room && (
+                        <span className={`${styles.roomNameText}`}>
+                            {room.name}
                         </span>
                     )}
 

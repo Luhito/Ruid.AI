@@ -1,27 +1,31 @@
-type: object
+description: エラー
+content:
+  application/json:
+    schema:
+      type: object
 
-required:
-  - errorCode
-  - content
+      required:
+        - errorCode
+        - content
 
-properties:
-  errorCode:
-    type: string
-    description: エラーコード
-    example: VALIDATION_ERROR
+      properties:
+        errorCode:
+          type: string
+          description: エラーコード
+          example: VALIDATION_ERROR
 
-  headers:
-    type: object
-    description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-    example: ""
+        headers:
+          type: object
+          description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
+          example: ""
 
-  content:
-    type: object
-    required:
-      - message
-    
-    properties:
-      message:
-        type: string
-        description: エラーメッセージ
-        example: qidはUUID形式で指定してください。
+        content:
+          type: object
+          required:
+            - message
+          
+          properties:
+            message:
+              type: string
+              description: エラーメッセージ
+              example: question_idはUUID形式で指定してください。

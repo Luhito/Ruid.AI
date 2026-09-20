@@ -1,14 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
 import { QuestionPage } from '../question/QuestionPage';
 
 export const QuestionPageContainer = () => {
-    const [searchParams] = useSearchParams();
-    const questionId = searchParams.get("id");
+    const { question_id } = useParams<{ question_id: string }>();
 
-    if (!questionId) {
+    if (!question_id) {
         return <ErrorQuestionPage />;
     }
 
-    return <QuestionPage questionId={questionId} />;
+    return <QuestionPage questionId={question_id} />;
 }
