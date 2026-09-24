@@ -8,6 +8,7 @@ docs/GetQuestion200Response.md
 docs/GetQuestion200ResponseChoicesInner.md
 docs/GetQuestion400Response.md
 docs/GetQuestion400ResponseContent.md
+docs/GetQuestionsByRoomId200ResponseInner.md
 docs/GetRoom200Response.md
 docs/PostRoom201Response.md
 docs/QuestionApi.md

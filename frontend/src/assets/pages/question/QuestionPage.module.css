@@ -6,18 +6,33 @@ header {
   z-index: 1000;
 }
 
-.header-buttons {
+.headerButtonItems {
   margin: env(safe-area-inset-top);
   display: flex;
   justify-content: space-between;
+}
+
+.headerTextItems {
+  margin: env(safe-area-inset-top);
+  display: flex;
 }
 
 .button-back {
   padding: 15px;
 }
 
+.headerRightButtons {
+  margin-right: max(calc(100% - 800px), 0px);
+}
+
 .button-show-explanation {
   padding: 15px;
+}
+
+.questionListButton {
+  all: unset;
+  margin: 15px;
+  cursor: pointer;
 }
 
 main {
@@ -125,10 +140,15 @@ footer {
   color: #3776ff;
 }
 
-.generationStatText {
+.generationStatText, .roomNameText {
   font-weight: bold;
   font-size: 2lvh;
   margin: auto auto;
+  display: flex;
+  position: fixed;
+  top: calc(30px - 1lvh);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .generating {
@@ -166,9 +186,6 @@ footer {
 }
 
 .roomNameText {
-  font-weight: bold;
-  font-size: 2lvh;
-  margin: auto auto;
   animation: roomNameTextFade 3s ease-out forwards;
 }
 @keyframes roomNameTextFade {

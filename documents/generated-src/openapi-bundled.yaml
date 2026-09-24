@@ -102,6 +102,39 @@ paths:
           $ref: '#/components/responses/errorResponse'
         '500':
           $ref: '#/components/responses/errorResponse'
+  /rooms/{room_id}/questions:
+    get:
+      tags:
+        - Room
+      summary: 問題リスト取得
+      description: |
+        指定したルームID内の問題リストを取得します。
+
+        - 問題要約
+        - 問題ID
+        を返します。
+
+        ルームが存在しない場合は404を返します。
+      operationId: getQuestionsByRoomId
+      parameters:
+        - name: room_id
+          description: パスパラメータ内のroom_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          $ref: '#/components/responses/getQuestionsByRoomIdResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+        '401':
+          $ref: '#/components/responses/errorResponse'
+        '404':
+          $ref: '#/components/responses/errorResponse'
+        '500':
+          $ref: '#/components/responses/errorResponse'
 components:
   requestBodies:
     Qprompt:
@@ -125,6 +158,8 @@ components:
       $ref: '#/components/responses/createRoomResponse'
     GetRoomResponse:
       $ref: '#/components/responses/getRoomResponse'
+    GetQuestionsByRoomIdResponse:
+      $ref: '#/components/responses/getQuestionsByRoomIdResponse'
     getQuestionResponse:
       description: 問題を取得しました。
       content:
@@ -230,12 +265,31 @@ components:
           schema:
             type: object
             required:
-              - name
+              - title
             properties:
-              name:
+              title:
                 type: string
                 description: ルームの端的な説明＝ルーム名
                 example: 応用情報：ストラテジ分野
+    getQuestionsByRoomIdResponse:
+      description: 問題リストを取得しました。
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              required:
+                - question_id
+                - summary
+              properties:
+                question_id:
+                  type: string
+                  description: Question ID
+                  format: uuid
+                summary:
+                  type: string
+                  description: 問題要約
   headers:
     Location:
       $ref: '#/components/headers/location'

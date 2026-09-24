@@ -5,8 +5,8 @@ import type { Choice } from "@/types/choice.js";
 import { DBAccessFailed } from "@/errors/DBAccessFailed.js";
 
 /** question_idからchoicesを取得する。通常はChoiceGroupを返すが、検索結果がない場合や正答が検索されなかった場合はnullを返す。 */
-export const findByquestion_id = async (question_id: UUID): Promise<ChoiceGroup | null> => {
-    const dbaccesser_name = "choiceRepository.findByRid";
+export const findByQuestionId = async (question_id: UUID): Promise<ChoiceGroup | null> => {
+    const dbaccesser_name = "choiceRepository.findByQuestionId";
 
     let result = null;
 

@@ -4,12 +4,14 @@ import type { QuestionPageStates, QuestionPageStateSetters } from './QuestionPag
 import { useQuestionAPI } from '@/api/schemas/useQuestionAPI';
 import { useEffect } from 'react';
 import { useRoomAPI } from '@/api/schemas/useRoomAPI';
+import { useQuestionListAPI } from '@/api/schemas/useQuestionListAPI'
 
 export const useQuestionPageLogic = (questionId: string, states: QuestionPageStates, stateSetters: QuestionPageStateSetters) => {
     const navigate = useNavigate();
     const { t } = useTranslation("question");
     const question = useQuestionAPI(questionId, "default");
     const room = useRoomAPI(question.data?.room_id, "default");
+    const questionList = useQuestionListAPI(question.data?.room_id, "default");
 
     const onClick_viewAnswer = () => {
         if (states.isOpenAnswer) return;
@@ -38,6 +40,12 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         }
     }
 
+    const onClick_questionList = () => {
+        if(!states.isQuestionListModalOpen) {
+            stateSetters.setQuestionListModalOpen(true);
+        }
+    }
+
     // (テスト用)LLM生成待ち時間作成
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -54,9 +62,11 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
             status: question.status,
             question: question.data,
             room: room.data,
+            questionList: questionList.data,
             onClick_viewAnswer,
             onClick_back,
-            onClick_answer
+            onClick_answer,
+            onClick_questionList
         }
     }
 }

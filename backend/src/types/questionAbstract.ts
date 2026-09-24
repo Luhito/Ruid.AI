@@ -1,4 +1,6 @@
 import type { UUID } from "./uuid.js";
-export type Room = {
+
+export type QuestionAbstract = {
     title: string;
+    questionId: UUID
 }

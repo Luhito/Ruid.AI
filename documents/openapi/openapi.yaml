@@ -32,7 +32,10 @@ paths:
     $ref: './paths/rooms.yaml'
   
   /rooms/{room_id}:
-    $ref: './paths/rooms-by-id.yaml'
+    $ref: './paths/room-by-id.yaml'
+  
+  /rooms/{room_id}/questions:
+    $ref: './paths/questions-by-room-id.yaml'
 
 components:
   # schemas:
@@ -64,6 +67,9 @@ components:
 
     GetRoomResponse:
       $ref: './responses/getRoomResponse.yaml'
+    
+    GetQuestionsByRoomIdResponse:
+      $ref: './responses/getQuestionsByRoomIdResponse.yaml'
     
   headers:
     Location:

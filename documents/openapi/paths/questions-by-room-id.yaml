@@ -1,0 +1,35 @@
+get:
+  tags:
+    - Room
+
+  summary: 問題リスト取得
+  description: |
+        指定したルームID内の問題リストを取得します。
+
+        - 問題要約
+        - 問題ID
+        を返します。
+
+        ルームが存在しない場合は404を返します。
+  operationId: getQuestionsByRoomId
+
+  parameters:
+    - name: room_id
+      description: パスパラメータ内のroom_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      
+  responses:
+    '200':
+      $ref: '../openapi.yaml#/components/responses/GetQuestionsByRoomIdResponse'
+    '400':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '401':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '404':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'
+    '500':
+      $ref: '../openapi.yaml#/components/responses/ErrorResponse'

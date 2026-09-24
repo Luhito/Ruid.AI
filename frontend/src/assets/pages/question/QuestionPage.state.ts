@@ -5,19 +5,22 @@ export const useQuestionPageStates = () => {
     const [ isCorrect, setCorrect ] = useState(false);
     const [ isGenerating, setGenerating ] = useState(true);
     const [ isGenerationCompleted, setGenerationCompleted ] = useState(false);
+    const [ isQuestionListModalOpen, setQuestionListModalOpen ] = useState(false);
 
     return {
         states : {
             isOpenAnswer,
             isCorrect,
             isGenerating,
-            isGenerationCompleted
+            isGenerationCompleted,
+            isQuestionListModalOpen
         },
         stateSetters: {
             setOpenAnswer,
             setCorrect,
             setGenerating,
-            setGenerationCompleted
+            setGenerationCompleted,
+            setQuestionListModalOpen
         }
     }
 }

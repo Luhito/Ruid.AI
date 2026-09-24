@@ -79,6 +79,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/rooms/{room_id}/questions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * 問題リスト取得
+         * @description 指定したルームID内の問題リストを取得します。
+         *
+         *     - 問題要約
+         *     - 問題ID
+         *     を返します。
+         *
+         *     ルームが存在しない場合は404を返します。
+         */
+        get: operations["getQuestionsByRoomId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -103,6 +129,12 @@ export interface components {
             content?: never;
         };
         GetRoomResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
+        };
+        GetQuestionsByRoomIdResponse: {
             headers: {
                 [name: string]: unknown;
             };
@@ -210,8 +242,25 @@ export interface components {
                      * @description ルームの端的な説明＝ルーム名
                      * @example 応用情報：ストラテジ分野
                      */
-                    name: string;
+                    title: string;
                 };
+            };
+        };
+        /** @description 問題リストを取得しました。 */
+        getQuestionsByRoomIdResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": {
+                    /**
+                     * Format: uuid
+                     * @description Question ID
+                     */
+                    question_id: string;
+                    /** @description 問題要約 */
+                    summary: string;
+                }[];
             };
         };
     };
@@ -293,6 +342,25 @@ export interface operations {
         requestBody?: never;
         responses: {
             200: components["responses"]["getRoomResponse"];
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
+        };
+    };
+    getQuestionsByRoomId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description パスパラメータ内のroom_id */
+                room_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: components["responses"]["getQuestionsByRoomIdResponse"];
             400: components["responses"]["errorResponse"];
             401: components["responses"]["errorResponse"];
             404: components["responses"]["errorResponse"];

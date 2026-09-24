@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | ルームの端的な説明＝ルーム名 | [default to undefined]
+**title** | **string** | ルームの端的な説明＝ルーム名 | [default to undefined]
 
 ## Example
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 import { GetRoom200Response } from './api';
 
 const instance: GetRoom200Response = {
-    name,
+    title,
 };
 ```
 

@@ -5,6 +5,8 @@ import { useQuestionPageStates } from './QuestionPage.state'
 import styles from './QuestionPage.module.css'
 import { Line } from '@/shared-components/Line'
 import { ErrorQuestionPage } from '../errorQuestionPage/ErrorQuestionPage';
+import { List } from "react-feather";
+import { QuestionListModal } from './modals/QuestionListModal';
 
 const QuestionPage = (arg: { questionId: string }) => {
 
@@ -13,6 +15,7 @@ const QuestionPage = (arg: { questionId: string }) => {
     const { logics } = useQuestionPageLogic(arg.questionId, states, stateSetters);
     const question = logics.question;
     const room = logics.room;
+    const questionList = logics.questionList;
 
     if (!arg.questionId) {
         console.error("questionId is not specified. check your request URL.");
@@ -23,15 +26,29 @@ const QuestionPage = (arg: { questionId: string }) => {
         <>
             {/** ヘッダー */}
             <header>
-                <div className={styles["header-buttons"]}>
-                    {/**「戻る」ボタン */}
-                    <div>
+                <div className={styles.headerButtonItems}>
+                    <div className={styles.headerButtonItemsLeft}>
+                        {/**「戻る」ボタン */}
                         <button className={styles["button-back"]} onClick={logics.onClick_back}>
-                            {"<<"}
+                            {"≪"}
                             {t('back')}
                         </button>
-                    </div>
 
+                        {/**「解説を見る」ボタン  */}
+                        {!states.isOpenAnswer && (
+                            <button className={styles["button-show-explanation"]} onClick={() => logics.onClick_viewAnswer()}>
+                                {t('view answer')}
+                            </button>
+                        )}
+                    </div>
+                    <div className={styles.headerButtonItemsRight}>
+                        {/**「問題リスト」ボタン */}
+                        <button type="button" aria-label="questionList" className={styles.questionListButton} onClick={logics.onClick_questionList}>
+                            <List size={30}/>
+                        </button>
+                    </div>
+                </div>
+                <div className={styles.headerTextItems}>
                     {/** 「生成中」 or 「生成完了」 */}
                     {states.isGenerating && (
                         <span className={`${styles.generationStatText} ${styles.generating}`}>
@@ -45,16 +62,7 @@ const QuestionPage = (arg: { questionId: string }) => {
                     )}
                     {states.isGenerationCompleted && room && (
                         <span className={`${styles.roomNameText}`}>
-                            {room.name}
-                        </span>
-                    )}
-
-                    {/**「解説を見る」ボタン  */}
-                    {!states.isOpenAnswer && (
-                        <span className={styles["header-buttons-right"]}>
-                            <button className={styles["button-show-explanation"]} onClick={() => logics.onClick_viewAnswer()}>
-                                {t('view answer')}
-                            </button>
+                            {room.title}
                         </span>
                     )}
                 </div>
@@ -153,6 +161,19 @@ const QuestionPage = (arg: { questionId: string }) => {
                 )}
 
             </footer>
+
+            <QuestionListModal {
+                ...{
+                    hidden: !states.isQuestionListModalOpen,
+                    closeModal: () => stateSetters.setQuestionListModalOpen,
+                    questionList: (questionList ?? []).map((value) => {
+                        return {
+                            title: value.summary,
+                            questionId: value.question_id
+                        }
+                    })
+                }
+            } />
         </>
     )
 }

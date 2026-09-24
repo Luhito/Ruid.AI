@@ -5,7 +5,11 @@ import { NotFoundError } from "@/errors/NotFoundError.js";
 import type { components } from "gen/openapi.js";
 import { UUID } from "@/types/uuid.js";
 
+type ErrorResponseContent = components["responses"]["errorResponse"]["content"]["application/json"]["content"];
+
 export const getRoom = async (req: Request, res: Response) => {
+    type responseContentType = components["responses"]["getRoomResponse"]["content"]["application/json"];
+
     try {
         // パスパラメータのuuidを取得&バリデーション
         const room_id = UUID.create(req.params.room_id);
@@ -17,14 +21,12 @@ export const getRoom = async (req: Request, res: Response) => {
         res.status(200).json(result);
     }
     catch(e) {
-        type ErrorResponse = components["responses"]["errorResponse"]["content"]["application/json"];
-
         // UUIDのバリデーションに失敗
         if(e instanceof UuidValidationError){
             res.status(400)
                 .json({
                     message: `room_id is not valid. room_id: ${req.params.room_id}`
-                } satisfies ErrorResponse["content"])
+                } satisfies ErrorResponseContent)
         }
         // room_idに対応するRoomが見つからなかった
         else if(e instanceof NotFoundError){
@@ -73,5 +75,49 @@ export const postRoom = async (req: Request, res: Response) => {
     }
     catch {
         return res.status(500).json({ error: "internal server error" });
+    }
+}
+
+export const getQuestionsByRoomId = async (req: Request, res: Response) => {
+    type responseContentType = components["responses"]["getQuestionsByRoomIdResponse"]["content"]["application/json"];
+
+    try {
+        // パスパラメータのuuidを取得&バリデーション
+        const room_id = UUID.create(req.params.room_id);
+
+        // 問題リスト取得
+        const result = await services.getQuestionsByRoomId(room_id);
+
+        // 結果をクライアントへ返却
+        res.status(200).json(result.map((value) => {
+            return {
+                question_id: value.questionId.toString(),
+                summary: value.title
+            }
+        }) satisfies responseContentType);
+    }
+    catch(e) {
+        // UUIDのバリデーションに失敗
+        if(e instanceof UuidValidationError){
+            res.status(400)
+                .json({
+                    message: `room_id is not valid. room_id: ${req.params.room_id}`
+                } satisfies ErrorResponseContent)
+        }
+        // room_idに対応する問題が見つからなかった
+        else if(e instanceof NotFoundError){
+            console.error(`Error: Question not found. req: ${req.params.room_id}, meaasge: ${e}`)
+            res.status(404)
+                .json({
+                    message: "question not found"
+                })
+        }
+        else{
+            console.error(`Error: Uncought error occured. log: ${e}`)
+            res.status(500)
+                .json({
+                    message: "Internal server error occurred"
+                })
+        }
     }
 }
