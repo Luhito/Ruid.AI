@@ -151,11 +151,11 @@ const QuestionPage = (arg: { questionId: string }) => {
                     </div>
                 )}
 
-                {/** 「次へ」ボタン（回答後のみ表示） */}
+                {/** 「新しい問題」ボタン（回答後のみ表示） */}
                 {states.isOpenAnswer && (
                     <div className={styles["button-next-container"]}>
                         <button className={styles["button-next"]}>
-                            次へ
+                            新しい問題
                         </button>
                     </div>
                 )}
@@ -165,13 +165,14 @@ const QuestionPage = (arg: { questionId: string }) => {
             <QuestionListModal {
                 ...{
                     hidden: !states.isQuestionListModalOpen,
-                    closeModal: () => stateSetters.setQuestionListModalOpen,
+                    closeModal: () => {stateSetters.setQuestionListModalOpen(false)},
                     questionList: (questionList ?? []).map((value) => {
                         return {
                             title: value.summary,
                             questionId: value.question_id
                         }
-                    })
+                    }),
+                    navigateQuestion: logics.navigateQuestion
                 }
             } />
         </>

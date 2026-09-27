@@ -3,7 +3,7 @@ import { NewQuestionModal } from './Modal/NewQuestionModal';
 import { useState } from 'react';
 import { useHomePageLogic } from './HomePage.logic'
 
-const sampleQuestionId = '00000000-0000-0000-0001-000000000001';
+const sampleQuestionId = '01a09db5-6b0f-7f0e-b16d-068a3918e430';
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const HomePage = () => {
         onClickCreateQuestion: async () => {
 
             const question_id = await logics.getNewQuestionId();
-            navigate(`/question?id=${question_id}`);
+            navigate(`/questions/${question_id}`);
         }
     }
 
@@ -25,7 +25,7 @@ const HomePage = () => {
             <h1>
                 This is a dummy page which navigates to QuestionPage.
             </h1>
-            <button onClick={() => navigate(`/question?id=${sampleQuestionId}`)}>Question Page</button>
+            <button onClick={() => navigate(`/questions/${sampleQuestionId}`)}>Question Page</button>
             <button onClick={() => setOpen(true)}>New Question</button>
             <div className="modal-area">
                 <NewQuestionModal {...menuModalProps}></NewQuestionModal>

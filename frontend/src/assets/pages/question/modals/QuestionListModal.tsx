@@ -8,6 +8,7 @@ export function QuestionListModal(props: {
     title: string;
     questionId: string;
   }[];
+  navigateQuestion: (questionId: string) => void;
 }) {
   return (
     <BaseModal
@@ -18,9 +19,14 @@ export function QuestionListModal(props: {
         <div className={styles.questionListContainer}>
             {props.questionList.map((value) => {
                 return (
-                    <div className={styles.questionListItem} key={value.questionId}>
+                    <button
+                      type="button"
+                      className={styles.questionListItem}
+                      key={value.questionId}
+                      onClick={() => {props.navigateQuestion(value.questionId)}}
+                    >
                         {value.title}
-                    </div>
+                    </button>
                 )
             })}
         </div>

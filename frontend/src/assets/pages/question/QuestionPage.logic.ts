@@ -25,7 +25,7 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
     }
 
     const onClick_back = () => {
-        navigate('/')
+        navigate('/home')
     }
 
     const onClick_answer = (index: number) => {
@@ -44,6 +44,10 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         if(!states.isQuestionListModalOpen) {
             stateSetters.setQuestionListModalOpen(true);
         }
+    }
+
+    const navigateQuestion = (questionId: string) => {
+        navigate(`/questions/${questionId}`);
     }
 
     // (テスト用)LLM生成待ち時間作成
@@ -66,7 +70,8 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
             onClick_viewAnswer,
             onClick_back,
             onClick_answer,
-            onClick_questionList
+            onClick_questionList,
+            navigateQuestion
         }
     }
 }
