@@ -11,8 +11,8 @@ import { QuestionListModal } from './modals/QuestionListModal';
 const QuestionPage = (arg: { questionId: string }) => {
 
     const { t } = useTranslation("question");
-    const { states, stateSetters } = useQuestionPageStates();
-    const { logics } = useQuestionPageLogic(arg.questionId, states, stateSetters);
+    const { states } = useQuestionPageStates();
+    const { logics } = useQuestionPageLogic(arg.questionId, states);
     const question = logics.question;
     const room = logics.room;
     const questionList = logics.questionList;
@@ -165,7 +165,7 @@ const QuestionPage = (arg: { questionId: string }) => {
             <QuestionListModal {
                 ...{
                     hidden: !states.isQuestionListModalOpen,
-                    closeModal: () => {stateSetters.setQuestionListModalOpen(false)},
+                    closeModal: () => {states.setters.setQuestionListModalOpen(false)},
                     questionList: (questionList ?? []).map((value) => {
                         return {
                             title: value.summary,
