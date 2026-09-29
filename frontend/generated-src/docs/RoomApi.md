@@ -4,9 +4,65 @@ All URIs are relative to *http://localhost:3030*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|[**getNewQuestionId**](#getnewquestionid) | **GET** /rooms/{room_id}/questions/next | |
 |[**getQuestionsByRoomId**](#getquestionsbyroomid) | **GET** /rooms/{room_id}/questions | 問題リスト取得|
 |[**getRoom**](#getroom) | **GET** /rooms/{room_id} | |
 |[**postRoom**](#postroom) | **POST** /rooms | ルーム作成|
+
+# **getNewQuestionId**
+> GetNewQuestionId200Response getNewQuestionId()
+
+ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+
+### Example
+
+```typescript
+import {
+    RoomApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new RoomApi(configuration);
+
+let roomId: string; //パスパラメータ内のroom_id (default to undefined)
+
+const { status, data } = await apiInstance.getNewQuestionId(
+    roomId
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **roomId** | [**string**] | パスパラメータ内のroom_id | defaults to undefined|
+
+
+### Return type
+
+**GetNewQuestionId200Response**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | 新しい問題を取得しました。 |  -  |
+|**400** | エラー |  -  |
+|**401** | エラー |  -  |
+|**404** | エラー |  -  |
+|**500** | エラー |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getQuestionsByRoomId**
 > Array<GetQuestionsByRoomId200ResponseInner> getQuestionsByRoomId()

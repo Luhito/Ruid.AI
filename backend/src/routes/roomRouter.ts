@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { postRoom, getRoom, getQuestionsByRoomId } from "../controllers/roomController.js"
+import { postRoom, getRoom, getQuestionsByRoomId, getNewQuestionId } from "../controllers/roomController.js"
 
 const router = Router();
 
@@ -11,5 +11,8 @@ router.post("/", postRoom);
 
 // GET /rooms/:room_id/questions
 router.get("/:room_id/questions", getQuestionsByRoomId)
+
+// GET /rooms/:room_id/questions/next
+router.get("/:room_id/questions/next", getNewQuestionId)
 
 export default router;

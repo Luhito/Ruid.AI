@@ -80,3 +80,37 @@ export const findByRoomId = async (room_id: UUID): Promise<QuestionAbstract[] | 
         }
     })
 }
+
+export const findUnsolvedByRoomId = async (room_id: UUID): Promise<UUID | null> => {
+    const dbaccesser_name = "questionRepository.findUnsolvedByRoomId";
+
+    let result = null;
+
+    try {
+        result = await pool.query(
+            `
+            SELECT
+                question_id
+            FROM
+                questions
+            WHERE
+                room_id = $1 AND
+                answered_flg = false
+            ORDER BY
+                created_at
+            LIMIT 1
+            `, 
+            [room_id.toString()]
+        );
+    }
+    catch(e){
+        throw new DBAccessFailed(dbaccesser_name, e);
+    }
+    
+    // 検索結果0件ならnullを返す
+    if (!(result.rows[0])) {
+        return null;
+    }
+
+    return UUID.create(result.rows[0].question_id)
+}

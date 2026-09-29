@@ -14,6 +14,10 @@ INSERT INTO questions (
     'sample_Q'
 );
 
+UPDATE questions
+SET answered_flg = TRUE
+WHERE question_id = '01a09db5-6b0f-7f0e-b16d-068a3918e430'
+
 INSERT INTO questions (
     question_id,
     create_user_id,

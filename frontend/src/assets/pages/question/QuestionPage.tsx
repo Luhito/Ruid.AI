@@ -154,7 +154,7 @@ const QuestionPage = (arg: { questionId: string }) => {
                 {/** 「新しい問題」ボタン（回答後のみ表示） */}
                 {states.isOpenAnswer && (
                     <div className={styles["button-next-container"]}>
-                        <button className={styles["button-next"]}>
+                        <button className={styles["button-next"]} onClick={logics.navigateNextQuestion}>
                             新しい問題
                         </button>
                     </div>

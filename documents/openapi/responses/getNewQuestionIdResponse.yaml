@@ -1,0 +1,14 @@
+description: 新しい問題を取得しました。
+
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - question_id
+
+      properties:
+        question_id:
+          type: string
+          description: Question ID
+          format: uuid

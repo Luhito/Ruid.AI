@@ -23,6 +23,12 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
+export interface GetNewQuestionId200Response {
+    /**
+     * Question ID
+     */
+    'question_id': string;
+}
 export interface GetQuestion200Response {
     /**
      * Room ID
@@ -193,6 +199,39 @@ export class QuestionApi extends BaseAPI {
 export const RoomApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNewQuestionId: async (roomId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'roomId' is not null or undefined
+            assertParamExists('getNewQuestionId', 'roomId', roomId)
+            const localVarPath = `/rooms/{room_id}/questions/next`
+                .replace('{room_id}', encodeURIComponent(String(roomId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 指定したルームID内の問題リストを取得します。  - 問題要約 - 問題ID を返します。  ルームが存在しない場合は404を返します。 
          * @summary 問題リスト取得
          * @param {string} roomId パスパラメータ内のroom_id
@@ -299,6 +338,18 @@ export const RoomApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RoomApiAxiosParamCreator(configuration)
     return {
         /**
+         * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNewQuestionId(roomId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetNewQuestionId200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNewQuestionId(roomId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RoomApi.getNewQuestionId']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * 指定したルームID内の問題リストを取得します。  - 問題要約 - 問題ID を返します。  ルームが存在しない場合は404を返します。 
          * @summary 問題リスト取得
          * @param {string} roomId パスパラメータ内のroom_id
@@ -345,6 +396,15 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = RoomApiFp(configuration)
     return {
         /**
+         * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @param {string} roomId パスパラメータ内のroom_id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNewQuestionId(roomId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetNewQuestionId200Response> {
+            return localVarFp.getNewQuestionId(roomId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 指定したルームID内の問題リストを取得します。  - 問題要約 - 問題ID を返します。  ルームが存在しない場合は404を返します。 
          * @summary 問題リスト取得
          * @param {string} roomId パスパラメータ内のroom_id
@@ -379,6 +439,16 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
  * RoomApi - object-oriented interface
  */
 export class RoomApi extends BaseAPI {
+    /**
+     * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+     * @param {string} roomId パスパラメータ内のroom_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getNewQuestionId(roomId: string, options?: RawAxiosRequestConfig) {
+        return RoomApiFp(this.configuration).getNewQuestionId(roomId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 指定したルームID内の問題リストを取得します。  - 問題要約 - 問題ID を返します。  ルームが存在しない場合は404を返します。 
      * @summary 問題リスト取得

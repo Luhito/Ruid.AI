@@ -18,7 +18,7 @@ export const getRoom = async (req: Request, res: Response) => {
         const result = await services.getRoom(room_id);
 
         // 結果をクライアントへ返却
-        res.status(200).json(result);
+        res.status(200).json(result satisfies responseContentType);
     }
     catch(e) {
         // UUIDのバリデーションに失敗
@@ -107,6 +107,47 @@ export const getQuestionsByRoomId = async (req: Request, res: Response) => {
         // room_idに対応する問題が見つからなかった
         else if(e instanceof NotFoundError){
             console.error(`Error: Question not found. req: ${req.params.room_id}, meaasge: ${e}`)
+            res.status(404)
+                .json({
+                    message: "question not found"
+                })
+        }
+        else{
+            console.error(`Error: Uncought error occured. log: ${e}`)
+            res.status(500)
+                .json({
+                    message: "Internal server error occurred"
+                })
+        }
+    }
+}
+
+export const getNewQuestionId = async (req: Request, res: Response) => {
+    type responseContentType = components["responses"]["getNewQuestionIdResponse"]["content"]["application/json"];
+
+    try {
+        // パスパラメータのuuidを取得&バリデーション
+        const room_id = UUID.create(req.params.room_id);
+
+        // 問題リスト取得
+        const result = await services.getNewQuestionId(room_id);
+
+        // 結果をクライアントへ返却
+        res.status(200).json({
+            question_id: result.toString()
+        } satisfies responseContentType);
+    }
+    catch(e) {
+        // UUIDのバリデーションに失敗
+        if(e instanceof UuidValidationError){
+            res.status(400)
+                .json({
+                    message: `room_id is not valid. room_id: ${req.params.room_id}`
+                } satisfies ErrorResponseContent)
+        }
+        // room_idに対応する新しい問題が見つからなかった
+        else if(e instanceof NotFoundError){
+            console.error(`Error: New question not found. req: ${req.params.room_id}, meaasge: ${e}`)
             res.status(404)
                 .json({
                     message: "question not found"

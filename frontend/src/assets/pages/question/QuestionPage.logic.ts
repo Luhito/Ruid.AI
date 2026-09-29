@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageStates, QuestionPageStateSetters } from './QuestionPage.state';
-import { useQuestionAPI } from '@/api/schemas/useQuestionAPI';
+import { useQuestionAPI } from '@/api/hooks/useQuestionAPI';
 import { useEffect } from 'react';
-import { useRoomAPI } from '@/api/schemas/useRoomAPI';
-import { useQuestionListAPI } from '@/api/schemas/useQuestionListAPI'
+import { useRoomAPI } from '@/api/hooks/useRoomAPI';
+import { useQuestionListAPI } from '@/api/hooks/useQuestionListAPI'
+import * as requests from '@/api/requests'
 
 export const useQuestionPageLogic = (questionId: string, states: QuestionPageStates, stateSetters: QuestionPageStateSetters) => {
     const navigate = useNavigate();
@@ -50,6 +51,17 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         navigate(`/questions/${questionId}`);
     }
 
+    const navigateNextQuestion = async () => {
+        const nextQuestionId = await requests.getNextQuestion(question.data?.room_id);
+        if (nextQuestionId) {
+            console.log(`navigating: ${nextQuestionId}`);
+            navigate(`/questions/${nextQuestionId}`);
+        }
+        else {
+            console.error(`failed to get next question. id: ${nextQuestionId}`)
+        }
+    }
+
     // (テスト用)LLM生成待ち時間作成
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -71,7 +83,8 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
             onClick_back,
             onClick_answer,
             onClick_questionList,
-            navigateQuestion
+            navigateQuestion,
+            navigateNextQuestion
         }
     }
 }

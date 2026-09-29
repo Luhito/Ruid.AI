@@ -105,6 +105,30 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/rooms/{room_id}/questions/next": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * @description ルームIDから、そのルーム内で未回答の問題を取得します。
+         *
+         *     - 問題ID
+         *     を返します。
+         *
+         *     未回答の問題が存在しない場合は404を返します。
+         */
+        get: operations["getNewQuestionId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -135,6 +159,12 @@ export interface components {
             content?: never;
         };
         GetQuestionsByRoomIdResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
+        };
+        GetNewQuestionIdResponse: {
             headers: {
                 [name: string]: unknown;
             };
@@ -263,6 +293,21 @@ export interface components {
                 }[];
             };
         };
+        /** @description 新しい問題を取得しました。 */
+        getNewQuestionIdResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": {
+                    /**
+                     * Format: uuid
+                     * @description Question ID
+                     */
+                    question_id: string;
+                };
+            };
+        };
     };
     parameters: never;
     requestBodies: {
@@ -361,6 +406,25 @@ export interface operations {
         requestBody?: never;
         responses: {
             200: components["responses"]["getQuestionsByRoomIdResponse"];
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
+        };
+    };
+    getNewQuestionId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description パスパラメータ内のroom_id */
+                room_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: components["responses"]["getNewQuestionIdResponse"];
             400: components["responses"]["errorResponse"];
             401: components["responses"]["errorResponse"];
             404: components["responses"]["errorResponse"];

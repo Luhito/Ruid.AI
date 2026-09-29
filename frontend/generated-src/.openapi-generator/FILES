@@ -4,6 +4,7 @@ api.ts
 base.ts
 common.ts
 configuration.ts
+docs/GetNewQuestionId200Response.md
 docs/GetQuestion200Response.md
 docs/GetQuestion200ResponseChoicesInner.md
 docs/GetQuestion400Response.md

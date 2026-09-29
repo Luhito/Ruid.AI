@@ -36,6 +36,9 @@ paths:
   
   /rooms/{room_id}/questions:
     $ref: './paths/questions-by-room-id.yaml'
+  
+  /rooms/{room_id}/questions/next:
+    $ref: './paths/room-next-question.yaml'
 
 components:
   # schemas:
@@ -70,6 +73,9 @@ components:
     
     GetQuestionsByRoomIdResponse:
       $ref: './responses/getQuestionsByRoomIdResponse.yaml'
+
+    GetNewQuestionIdResponse:
+      $ref: './responses/getNewQuestionIdResponse.yaml'
     
   headers:
     Location:
