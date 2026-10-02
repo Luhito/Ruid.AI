@@ -75,12 +75,20 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         }
     })
 
+    // 未回答の問題のページなら、問題リストに自分の問題を加えて表示させる
+    if (question.data?.answered_flg === false) {
+        if (!(questionList.data?.some((item) => item.question_id === questionId))) {
+            questionList.data?.push({question_id: questionId, summary: question.data?.summary})
+        }
+    }
+
     return {
         logics: {
             status: question.status,
             question: question.data,
             room: room.data,
             questionList: questionList.data,
+            answered_flg: question.data?.answered_flg,
             onClick_viewAnswer,
             onClick_back,
             onClick_answer,

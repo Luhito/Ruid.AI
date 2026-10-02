@@ -8,4 +8,6 @@ export interface QuestionSet {
     choices: Choice[];
     explanation_text: string;
     correct_answer_index: number;
+    answered_flg: boolean;
+    summary: string;
 }

@@ -50,6 +50,14 @@ export interface GetQuestion200Response {
      * 解説文（Markdown）
      */
     'explanation_text': string;
+    /**
+     * 回答済みフラグ
+     */
+    'answered_flg': boolean;
+    /**
+     * 問題の短い説明
+     */
+    'summary': string;
 }
 export interface GetQuestion200ResponseChoicesInner {
     'tag': string;

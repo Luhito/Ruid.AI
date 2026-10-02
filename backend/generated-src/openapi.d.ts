@@ -217,6 +217,10 @@ export interface components {
                      *     **それも、マークダウンで！**
                      */
                     explanation_text: string;
+                    /** @description 回答済みフラグ */
+                    answered_flg: boolean;
+                    /** @description 問題の短い説明 */
+                    summary: string;
                 };
             };
         };

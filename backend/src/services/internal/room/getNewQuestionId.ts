@@ -4,7 +4,7 @@ import { NotFoundError } from "@/errors/NotFoundError.js";
 
 export const getNewQuestionId = async (room_id: UUID): Promise<UUID> => {
     // ■ questionsテーブル検索
-    const repo_questions = await questions.findUnsolvedByRoomId(room_id);
+    const repo_questions = await questions.findSingleUnsolvedQuestionByRoomId(room_id);
     
     // 検索結果が0件ならエラーを返す
     if (!repo_questions){

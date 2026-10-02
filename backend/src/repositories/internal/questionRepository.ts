@@ -17,7 +17,9 @@ export const findByQuestionId = async (question_id: UUID): Promise<RepoQuestion 
             SELECT
                 room_id,
                 question_text,
-                explanation_text
+                explanation_text,
+                answered_flg,
+                summary
             FROM
                 questions
             WHERE
@@ -35,14 +37,10 @@ export const findByQuestionId = async (question_id: UUID): Promise<RepoQuestion 
         return null;
     }
 
-    return {
-        room_id: result.rows[0].room_id,
-        questionText: result.rows[0].question_text,
-        explanationText: result.rows[0].explanation_text,
-    }
+    return result.rows[0];
 }
 
-export const findByRoomId = async (room_id: UUID): Promise<QuestionAbstract[] | null> => {
+export const findSolvedQuestionsByRoomId = async (room_id: UUID): Promise<QuestionAbstract[] | null> => {
     const dbaccesser_name = "questionRepository.findByQuestionId";
 
     let result = null;
@@ -57,7 +55,7 @@ export const findByRoomId = async (room_id: UUID): Promise<QuestionAbstract[] | 
                 questions
             WHERE
                 room_id = $1 AND
-                answered_flg = false
+                answered_flg = true
             ORDER BY
                 updated_at
             `, 
@@ -81,7 +79,7 @@ export const findByRoomId = async (room_id: UUID): Promise<QuestionAbstract[] | 
     })
 }
 
-export const findUnsolvedByRoomId = async (room_id: UUID): Promise<UUID | null> => {
+export const findSingleUnsolvedQuestionByRoomId = async (room_id: UUID): Promise<UUID | null> => {
     const dbaccesser_name = "questionRepository.findUnsolvedByRoomId";
 
     let result = null;

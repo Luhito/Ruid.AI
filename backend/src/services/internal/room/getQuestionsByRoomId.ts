@@ -5,7 +5,7 @@ import type { QuestionAbstract } from '@/types/questionAbstract.js';
 
 export const getQuestionsByRoomId = async (room_id: UUID): Promise<QuestionAbstract[]> => {
     // ■ questionsテーブル検索
-    const repo_questions = await questions.findByRoomId(room_id);
+    const repo_questions = await questions.findSolvedQuestionsByRoomId(room_id);
     
     // 検索結果が0件ならエラーを返す
     if (!repo_questions){

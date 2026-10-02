@@ -206,6 +206,8 @@ components:
               - choices
               - correct_answer_index
               - explanation_text
+              - answered_flg
+              - summary
             properties:
               room_id:
                 type: string
@@ -246,6 +248,12 @@ components:
                 example: |
                   ここに説明が表示されるはずです
                   **それも、マークダウンで！**
+              answered_flg:
+                type: boolean
+                description: 回答済みフラグ
+              summary:
+                type: string
+                description: 問題の短い説明
     errorResponse:
       description: エラー
       content:

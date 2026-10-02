@@ -30,6 +30,8 @@ export const getQuestionSet = async (question_id: UUID): Promise<QuestionSet> =>
         question_text: repo_question.questionText,
         choices: repo_choice.choices,
         explanation_text: repo_question.explanationText,
-        correct_answer_index: repo_choice.correctAnswerIndex
+        correct_answer_index: repo_choice.correctAnswerIndex,
+        answered_flg: repo_question.answered_flg,
+        summary: repo_question.summary
     };
 }

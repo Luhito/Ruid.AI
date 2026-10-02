@@ -5,4 +5,6 @@ export interface RepoQuestion {
     room_id: UUID;
     questionText: string;
     explanationText: string;
+    answered_flg: boolean;
+    summary: string;
 }

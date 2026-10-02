@@ -7,6 +7,8 @@ import { UUID } from "@/types/uuid.js";
 
 export const getQuestion = async (req: Request, res: Response) => {
     try {
+        type retType = components["responses"]["getQuestionResponse"]["content"]["application/json"]
+
         // パスパラメータのuuidを取得&バリデーション
         const question_id = UUID.create(req.params.question_id);
 
@@ -14,7 +16,7 @@ export const getQuestion = async (req: Request, res: Response) => {
         const result = await services.getQuestionSet(question_id);
 
         // 結果をクライアントへ返却
-        res.status(200).json(result);
+        res.status(200).json(result satisfies retType);
     }
     catch(e) {
         type ErrorResponse = components["responses"]["errorResponse"]["content"]["application/json"];
