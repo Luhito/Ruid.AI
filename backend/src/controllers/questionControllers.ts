@@ -13,10 +13,18 @@ export const getQuestion = async (req: Request, res: Response) => {
         const question_id = UUID.create(req.params.question_id);
 
         // 問題取得
-        const result = await services.getQuestionSet(question_id);
+        const result = await services.question.getQuestionSet(question_id);
 
         // 結果をクライアントへ返却
-        res.status(200).json(result satisfies retType);
+        res.status(200).json({
+            room_id: result.room_id.toString(),
+            question_text: result.question_text,
+            choices: result.choices,
+            correct_answer_index: result.correct_answer_index,
+            explanation_text: result.explanation_text,
+            answered_flg: result.answered_flg,
+            summary: result.summary
+        } satisfies retType);
     }
     catch(e) {
         type ErrorResponse = components["responses"]["errorResponse"]["content"]["application/json"];

@@ -1,9 +1,9 @@
-import type { UUID } from "crypto";
 import type { Choice } from "./choice.js";
+import type { UUID } from "./uuid.js";
 
 /** QuestionSet */
 export interface QuestionSet {
-    room_id: UUID;
+    room_id: UUID
     question_text: string;
     choices: Choice[];
     explanation_text: string;

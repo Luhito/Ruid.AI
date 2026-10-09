@@ -18,7 +18,7 @@ export class UUID {
     return this.value;
   }
 
-  static generate(): string {
-    return v7();
+  static generate(): UUID {
+    return new UUID(v7());
   }
 }
