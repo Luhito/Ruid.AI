@@ -1,28 +1,27 @@
-import type { GenerateQuestionCandidateQuery } from "@/types/apiclient/generateQuestionCandidateQuery.js";
-import type { QuestionSet } from "@/types/questionSet.js";
-import { UUID } from "@/types/uuid.js";
+import { UUID } from '@/types/uuid.js';
+import type * as types from './chatGPTClient.types.js'
 
-export const generateQuestionCandidate = async (q: GenerateQuestionCandidateQuery): Promise<QuestionSet|null> => {
+export const generateQuestionCandidate = async (q: types.GenerateQuestionCandidateQuery): Promise<types.GenerateQuestionCandidateResponse | null> => {
     if (!q.query) {
         return null;
     }
 
+    const newQuestionId = UUID.generate();
+
     return {
-        room_id: UUID.create('01a09db5-6b0f-7a9a-9a76-df21bc1cfd0f'),
-        question_text: 'dummy',
+        questionText: 'dummy',
         choices: [
-            {tag: "a", text: "dummy"},
-            {tag: "b", text: "dummy"},
-            {tag: "c", text: "dummy"},
-            {tag: "d", text: "dummy"}
+            {tag: "a", text: "dummy", isCorrect: true},
+            {tag: "b", text: "dummy", isCorrect: false},
+            {tag: "c", text: "dummy", isCorrect: false},
+            {tag: "d", text: "dummy", isCorrect: false},
         ],
-        correct_answer_index: 0,
-        explanation_text: "dummy explanation text",
-        answered_flg: false,
+        correctAnswerIndex: 0,
+        explanationText: "dummy explanation text",
         summary: "dummy question"
     }
 }
 
-export const verifyQuestion = async (question: QuestionSet): Promise<boolean> => {
-    return !!question;
+export const verifyQuestion = async (questionCondidate: types.GenerateQuestionCandidateResponse): Promise<boolean> => {
+    return true;
 }

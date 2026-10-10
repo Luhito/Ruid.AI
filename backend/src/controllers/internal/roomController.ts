@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import * as services from "@/services/index.js"
-import { UuidValidationError } from "@/errors/UuidValidationError.js";
-import { NotFoundError } from "@/errors/NotFoundError.js";
+import { UuidValidationError } from "@/errors/internal/UuidValidationError.js";
+import { NotFoundError } from "@/errors/internal/NotFoundError.js";
 import type { components } from "gen/openapi.js";
 import { UUID } from "@/types/uuid.js";
 
@@ -15,7 +15,7 @@ export const getRoom = async (req: Request, res: Response) => {
         const room_id = UUID.create(req.params.room_id);
 
         // 問題取得
-        const result = await services.room.getRoom(room_id);
+        const result = await services.rooms.getRoom(room_id);
 
         // 結果をクライアントへ返却
         res.status(200).json(result satisfies responseContentType);
@@ -86,7 +86,7 @@ export const getQuestionsByRoomId = async (req: Request, res: Response) => {
         const room_id = UUID.create(req.params.room_id);
 
         // 問題リスト取得
-        const result = await services.room.getQuestionsByRoomId(room_id);
+        const result = await services.rooms.getQuestionsByRoomId(room_id);
 
         // 結果をクライアントへ返却
         res.status(200).json(result.map((value) => {
@@ -130,7 +130,7 @@ export const getNewQuestionId = async (req: Request, res: Response) => {
         const room_id = UUID.create(req.params.room_id);
 
         // 問題リスト取得
-        const result = await services.room.getNewQuestionId(room_id);
+        const result = await services.rooms.getNewQuestionId(room_id);
 
         // 結果をクライアントへ返却
         res.status(200).json({

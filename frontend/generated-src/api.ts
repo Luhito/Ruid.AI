@@ -51,9 +51,9 @@ export interface GetQuestion200Response {
      */
     'explanation_text': string;
     /**
-     * 回答済みフラグ
+     * 回答ステータスフラグ
      */
-    'answered_flg': boolean;
+    'answered_flg': boolean | null;
     /**
      * 問題の短い説明
      */

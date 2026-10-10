@@ -1,10 +1,11 @@
-import type { UUID } from "crypto";
+import type { UUID } from "../uuid.js";
 
 /** RepoQuestion型 */
 export interface RepoQuestion {
-    room_id: UUID;
+    createUserId: UUID;
+    roomId: UUID;
     questionText: string;
     explanationText: string;
-    answered_flg: boolean;
+    answeredFlg: boolean;
     summary: string;
 }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **choices** | [**Array&lt;GetQuestion200ResponseChoicesInner&gt;**](GetQuestion200ResponseChoicesInner.md) | 選択肢配列. 選択肢を表す記号と選択肢の本文のセット | [default to undefined]
 **correct_answer_index** | **number** | 選択肢の中で、正解のインデックス | [default to undefined]
 **explanation_text** | **string** | 解説文（Markdown） | [default to undefined]
-**answered_flg** | **boolean** | 回答済みフラグ | [default to undefined]
+**answered_flg** | **boolean** | 回答ステータスフラグ | [default to undefined]
 **summary** | **string** | 問題の短い説明 | [default to undefined]
 
 ## Example

@@ -1,18 +1,18 @@
 import { Router } from "express";
-import { postRoom, getRoom, getQuestionsByRoomId, getNewQuestionId } from "../controllers/roomController.js"
+import { roomControllers } from "../controllers/index.js"
 
 const router = Router();
 
 // GET /rooms/:room_id
-router.get("/:room_id", getRoom);
+router.get("/:room_id", roomControllers.getRoom);
 
 // POST /room
-router.post("/", postRoom);
+router.post("/", roomControllers.postRoom);
 
 // GET /rooms/:room_id/questions
-router.get("/:room_id/questions", getQuestionsByRoomId)
+router.get("/:room_id/questions", roomControllers.getQuestionsByRoomId)
 
 // GET /rooms/:room_id/questions/next
-router.get("/:room_id/questions/next", getNewQuestionId)
+router.get("/:room_id/questions/next", roomControllers.getNewQuestionId)
 
 export default router;

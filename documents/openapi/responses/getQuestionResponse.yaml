@@ -60,7 +60,8 @@ content:
         
         answered_flg:
           type: boolean
-          description: 回答済みフラグ
+          nullable: true
+          description: 回答ステータスフラグ
 
         summary:
           type: string

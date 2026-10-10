@@ -1,6 +1,6 @@
 import { rooms } from '@/repositories/index.js'
 import { UUID } from "@/types/uuid.js";
-import { NotFoundError } from "@/errors/NotFoundError.js";
+import { NotFoundError } from "@/errors/internal/NotFoundError.js";
 import type { Room } from '@/types/repository/room.js';
 
 export const getRoom = async (room_id: UUID): Promise<Room> => {

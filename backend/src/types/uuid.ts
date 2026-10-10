@@ -1,4 +1,4 @@
-import { UuidValidationError } from "@/errors/UuidValidationError.js";
+import { UuidValidationError } from "@/errors/internal/UuidValidationError.js";
 import { v7, validate, version } from 'uuid'
 
 export class UUID {
