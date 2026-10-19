@@ -6,6 +6,8 @@ export const useQuestionPageStates = () => {
     const [ isGenerating, setGenerating ] = useState(true);
     const [ isGenerationCompleted, setGenerationCompleted ] = useState(false);
     const [ isQuestionListModalOpen, setQuestionListModalOpen ] = useState(false);
+    const [ isLoadingAnswer, setLoadingAnswer ] = useState(false);
+    const [ explanation, setExplanation ] = useState("");
 
     const initAll = () => {
         setOpenAnswer(false);
@@ -22,12 +24,16 @@ export const useQuestionPageStates = () => {
             isGenerating,
             isGenerationCompleted,
             isQuestionListModalOpen,
+            isLoadingAnswer,
+            explanation,
             setters: {
                 setOpenAnswer,
                 setCorrect,
                 setGenerating,
                 setGenerationCompleted,
-                setQuestionListModalOpen
+                setQuestionListModalOpen,
+                setLoadingAnswer,
+                setExplanation
             },
             initAll
         },

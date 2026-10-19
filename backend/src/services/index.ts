@@ -6,6 +6,7 @@ import { getQuestionsByRoomId } from './internal/room/getQuestionsByRoomId.js'
 import { getNewQuestionId } from './internal/room/getNewQuestionId.js'
 import { generateQuestion } from './internal/question/generateQuestion.js'
 import { build } from './internal/question/questionBuilder.js'
+import { judgeAnswer } from './internal/question/judgeAnswer.js';
 
 export * as chatGPTClient from './internal/clients/openai/chatGPTClient.js'
 export type * as chatGPTClientTypes from './internal/clients/openai/chatGPTClient.types.js'
@@ -14,6 +15,7 @@ export const questions = {
     getQuestion,
     generateQuestion,
     build,
+    judgeAnswer
 }
 export const rooms = {
     createQuestion,

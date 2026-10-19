@@ -43,14 +43,6 @@ export interface GetQuestion200Response {
      */
     'choices': Array<GetQuestion200ResponseChoicesInner>;
     /**
-     * 選択肢の中で、正解のインデックス
-     */
-    'correct_answer_index': number;
-    /**
-     * 解説文（Markdown）
-     */
-    'explanation_text': string;
-    /**
      * 回答ステータスフラグ
      */
     'answered_flg': boolean | null;
@@ -99,6 +91,22 @@ export interface GetRoom200Response {
 export interface PostRoom201Response {
     'room_id': string;
 }
+export interface SubmitAnswer200Response {
+    /**
+     * 正解ならtrue、不正解ならfalse
+     */
+    'is_correct': boolean;
+    /**
+     * 解説文（Markdown）
+     */
+    'explanation': string;
+}
+export interface SubmitAnswerRequest {
+    /**
+     * n択問題であれば選択肢ラベル、文章題であれば回答内容
+     */
+    'answer': string;
+}
 
 /**
  * QuestionApi - axios parameter creator
@@ -128,11 +136,56 @@ export const QuestionApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
             localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 指定した問題IDの指定したindexの解答が正しいかを返します。 
+         * @summary 問題に回答
+         * @param {string} questionId パスパラメータ内のquestion_id
+         * @param {SubmitAnswerRequest} [submitAnswerRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        submitAnswer: async (questionId: string, submitAnswerRequest?: SubmitAnswerRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'questionId' is not null or undefined
+            assertParamExists('submitAnswer', 'questionId', questionId)
+            const localVarPath = `/questions/{question_id}/answers`
+                .replace('{question_id}', encodeURIComponent(String(questionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(submitAnswerRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -161,6 +214,20 @@ export const QuestionApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['QuestionApi.getQuestion']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 指定した問題IDの指定したindexの解答が正しいかを返します。 
+         * @summary 問題に回答
+         * @param {string} questionId パスパラメータ内のquestion_id
+         * @param {SubmitAnswerRequest} [submitAnswerRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async submitAnswer(questionId: string, submitAnswerRequest?: SubmitAnswerRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubmitAnswer200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.submitAnswer(questionId, submitAnswerRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['QuestionApi.submitAnswer']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -180,6 +247,17 @@ export const QuestionApiFactory = function (configuration?: Configuration, baseP
         getQuestion(questionId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetQuestion200Response> {
             return localVarFp.getQuestion(questionId, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 指定した問題IDの指定したindexの解答が正しいかを返します。 
+         * @summary 問題に回答
+         * @param {string} questionId パスパラメータ内のquestion_id
+         * @param {SubmitAnswerRequest} [submitAnswerRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        submitAnswer(questionId: string, submitAnswerRequest?: SubmitAnswerRequest, options?: RawAxiosRequestConfig): AxiosPromise<SubmitAnswer200Response> {
+            return localVarFp.submitAnswer(questionId, submitAnswerRequest, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -197,6 +275,18 @@ export class QuestionApi extends BaseAPI {
     public getQuestion(questionId: string, options?: RawAxiosRequestConfig) {
         return QuestionApiFp(this.configuration).getQuestion(questionId, options).then((request) => request(this.axios, this.basePath));
     }
+
+    /**
+     * 指定した問題IDの指定したindexの解答が正しいかを返します。 
+     * @summary 問題に回答
+     * @param {string} questionId パスパラメータ内のquestion_id
+     * @param {SubmitAnswerRequest} [submitAnswerRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public submitAnswer(questionId: string, submitAnswerRequest?: SubmitAnswerRequest, options?: RawAxiosRequestConfig) {
+        return QuestionApiFp(this.configuration).submitAnswer(questionId, submitAnswerRequest, options).then((request) => request(this.axios, this.basePath));
+    }
 }
 
 
@@ -208,6 +298,7 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @summary 次の問題の問題ID取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -227,6 +318,10 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
@@ -262,6 +357,10 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
             localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -275,6 +374,7 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @summary ルーム情報取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -294,6 +394,10 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
             localVarHeaderParameter['Accept'] = 'application/json';
 
@@ -325,6 +429,10 @@ export const RoomApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
             localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -347,6 +455,7 @@ export const RoomApiFp = function(configuration?: Configuration) {
     return {
         /**
          * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @summary 次の問題の問題ID取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -372,6 +481,7 @@ export const RoomApiFp = function(configuration?: Configuration) {
         },
         /**
          * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @summary ルーム情報取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -405,6 +515,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+         * @summary 次の問題の問題ID取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -424,6 +535,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+         * @summary ルーム情報取得
          * @param {string} roomId パスパラメータ内のroom_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -449,6 +561,7 @@ export const RoomApiFactory = function (configuration?: Configuration, basePath?
 export class RoomApi extends BaseAPI {
     /**
      * ルームIDから、そのルーム内で未回答の問題を取得します。  - 問題ID を返します。  未回答の問題が存在しない場合は404を返します。 
+     * @summary 次の問題の問題ID取得
      * @param {string} roomId パスパラメータ内のroom_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -470,6 +583,7 @@ export class RoomApi extends BaseAPI {
 
     /**
      * ルームIDから、ルームの情報を取得します。  - ルーム名 を返します。  ルームが存在しない場合は404を返します。 
+     * @summary ルーム情報取得
      * @param {string} roomId パスパラメータ内のroom_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

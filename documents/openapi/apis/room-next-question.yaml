@@ -1,17 +1,20 @@
 get:
   tags:
     - Room
-
-  summary: 問題リスト取得
+  
+  summary: 次の問題の問題ID取得
   description: |
-        指定したルームID内の問題リストを取得します。
+    ルームIDから、そのルーム内で未回答の問題を取得します。
 
-        - 問題要約
-        - 問題ID
-        を返します。
+    - 問題ID
+    を返します。
 
-        ルームが存在しない場合は404を返します。
-  operationId: getQuestionsByRoomId
+    未回答の問題が存在しない場合は404を返します。
+  
+  operationId: getNewQuestionId
+  
+  security: 
+    - BearerAuth: []
 
   parameters:
     - name: room_id
@@ -24,7 +27,7 @@ get:
       
   responses:
     '200':
-      $ref: '../openapi.yaml#/components/responses/GetQuestionsByRoomIdResponse'
+      $ref: '../openapi.yaml#/components/responses/GetNewQuestionIdResponse'
     '400':
       $ref: '../openapi.yaml#/components/responses/ErrorResponse'
     '401':

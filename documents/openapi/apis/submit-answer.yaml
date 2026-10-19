@@ -1,19 +1,16 @@
-get:
+post:
   tags:
     - Question
-
-  summary: 問題取得
+  
+  summary: 問題に回答
   description: |
-        指定した問題IDに対応する問題を取得します。
-
-        - 問題文
-        - 選択肢
-        - 解説
-        を返します。
-
-        問題が存在しない場合は404を返します。
-  operationId: getQuestion
-
+    指定した問題IDの指定したindexの解答が正しいかを返します。
+  
+  operationId: submitAnswer
+  
+  security: 
+    - BearerAuth: []
+  
   parameters:
     - name: question_id
       description: パスパラメータ内のquestion_id
@@ -22,10 +19,13 @@ get:
       schema:
         type: string
         format: uuid
-      
+  
+  requestBody:
+    $ref: ../requestBodies/submitAnswerBody.yaml
+     
   responses:
     '200':
-      $ref: '../openapi.yaml#/components/responses/GetQuestionResponse'
+      $ref: '../openapi.yaml#/components/responses/SubmitAnswerResponse'
     '400':
       $ref: '../openapi.yaml#/components/responses/ErrorResponse'
     '401':

@@ -31,6 +31,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/questions/{question_id}/answers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * 問題に回答
+         * @description 指定した問題IDの指定したindexの解答が正しいかを返します。
+         */
+        post: operations["submitAnswer"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/rooms": {
         parameters: {
             query?: never;
@@ -63,6 +83,7 @@ export interface paths {
             cookie?: never;
         };
         /**
+         * ルーム情報取得
          * @description ルームIDから、ルームの情報を取得します。
          *
          *     - ルーム名
@@ -113,6 +134,7 @@ export interface paths {
             cookie?: never;
         };
         /**
+         * 次の問題の問題ID取得
          * @description ルームIDから、そのルーム内で未回答の問題を取得します。
          *
          *     - 問題ID
@@ -170,6 +192,12 @@ export interface components {
             };
             content?: never;
         };
+        SubmitAnswerResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content?: never;
+        };
         /** @description 問題を取得しました。 */
         getQuestionResponse: {
             headers: {
@@ -206,17 +234,6 @@ export interface components {
                         tag: string;
                         text: string;
                     }[];
-                    /**
-                     * @description 選択肢の中で、正解のインデックス
-                     * @example 1
-                     */
-                    correct_answer_index: number;
-                    /**
-                     * @description 解説文（Markdown）
-                     * @example ここに説明が表示されるはずです
-                     *     **それも、マークダウンで！**
-                     */
-                    explanation_text: string;
                     /** @description 回答ステータスフラグ */
                     answered_flg: boolean | null;
                     /** @description 問題の短い説明 */
@@ -236,10 +253,7 @@ export interface components {
                      * @example VALIDATION_ERROR
                      */
                     errorCode: string;
-                    /**
-                     * @description ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-                     * @example
-                     */
+                    /** @description ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる） */
                     headers?: Record<string, never>;
                     content: {
                         /**
@@ -248,6 +262,24 @@ export interface components {
                          */
                         message: string;
                     };
+                };
+            };
+        };
+        /** @description 解答の正誤と解説 */
+        submitAnswerResponse: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": {
+                    /** @description 正解ならtrue、不正解ならfalse */
+                    is_correct: boolean;
+                    /**
+                     * @description 解説文（Markdown）
+                     * @example ここに説明が表示されるはずです
+                     *     **それも、マークダウンで！**
+                     */
+                    explanation: string;
                 };
             };
         };
@@ -320,6 +352,19 @@ export interface components {
                 "*/*"?: never;
             };
         };
+        SubmitAnswerBody: {
+            content: {
+                "*/*"?: never;
+            };
+        };
+        submitAnswerBody: {
+            content: {
+                "application/json": {
+                    /** @description n択問題であれば選択肢ラベル、文章題であれば回答内容 */
+                    answer: string;
+                };
+            };
+        };
         qprompt: {
             content: {
                 "application/json": {
@@ -356,6 +401,25 @@ export interface operations {
         requestBody?: never;
         responses: {
             200: components["responses"]["getQuestionResponse"];
+            400: components["responses"]["errorResponse"];
+            401: components["responses"]["errorResponse"];
+            404: components["responses"]["errorResponse"];
+            500: components["responses"]["errorResponse"];
+        };
+    };
+    submitAnswer: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description パスパラメータ内のquestion_id */
+                question_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: components["requestBodies"]["submitAnswerBody"];
+        responses: {
+            200: components["responses"]["submitAnswerResponse"];
             400: components["responses"]["errorResponse"];
             401: components["responses"]["errorResponse"];
             404: components["responses"]["errorResponse"];

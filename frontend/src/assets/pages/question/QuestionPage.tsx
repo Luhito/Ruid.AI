@@ -122,7 +122,7 @@ const QuestionPage = (arg: { questionId: string }) => {
 
                     {/** 解説文 */}
                     <div className={styles['md-text']}>
-                        <MD>{question?.explanation_text || ''}</MD>
+                        <MD>{states.explanation || ''}</MD>
                     </div>
                 </>)}
             </main>

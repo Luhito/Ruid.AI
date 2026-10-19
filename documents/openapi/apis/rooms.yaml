@@ -11,6 +11,9 @@ post:
     作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
 
   operationId: postRoom
+  
+  security: 
+    - BearerAuth: []
 
   requestBody:
     $ref: '../openapi.yaml#/components/requestBodies/Qprompt'

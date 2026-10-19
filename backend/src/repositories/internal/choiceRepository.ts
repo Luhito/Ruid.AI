@@ -31,3 +31,33 @@ export const findByQuestionId = async (questionId: UUID): Promise<Choice[] | nul
         isCorrect: row.is_correct
     }))
 }
+
+export const findByIdAndLabel = async (questionId: UUID, label: string): Promise<Choice | null> => {
+    const result = await pool.query(
+        `
+        SELECT
+            choice_text,
+            is_correct
+        FROM
+            choices
+        WHERE
+            question_id = $1
+            AND choice_label = $2
+        `,
+        [
+            questionId.toString(),
+            label
+        ]
+    )
+
+    if (!(result.rows[0])){
+        return null;
+    }
+    
+    return {
+        questionId: questionId,
+        tag: label,
+        text: result.rows[0].choice_text,
+        isCorrect: result.rows[0].is_correct
+    }
+}

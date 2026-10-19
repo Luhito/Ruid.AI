@@ -14,7 +14,8 @@ export const findByQuestionId = async (questionId: UUID): Promise<RepoQuestion |
             question_text,
             explanation_text,
             answered_flg,
-            summary
+            summary,
+            answer_type
         FROM
             questions
         WHERE
@@ -34,7 +35,8 @@ export const findByQuestionId = async (questionId: UUID): Promise<RepoQuestion |
         questionText: result.rows[0].question_text,
         explanationText: result.rows[0].explanation_text,
         answeredFlg: result.rows[0].answered_flg,
-        summary: result.rows[0].summary
+        summary: result.rows[0].summary,
+        answerType: result.rows[0].answer_type
     } satisfies RepoQuestion;
 }
 
@@ -123,6 +125,7 @@ export const insertQuestion = async (question: Question): Promise<UUID> => {
             question_id,
             create_user_id,
             room_id,
+            answer_type,
             question_text,
             explanation_text,
             summary
@@ -132,13 +135,15 @@ export const insertQuestion = async (question: Question): Promise<UUID> => {
             $3,
             $4,
             $5,
-            $6
+            $6,
+            $7
         )
         `, 
         [
             question.questionId.toString(),
             question.createUserId.toString(),
             question.roomId.toString(),
+            question.answerType,
             question.questionText,
             question.explanationText,
             question.summary

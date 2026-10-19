@@ -1,0 +1,21 @@
+description: 解答の正誤と解説
+
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - is_correct
+        - explanation
+
+      properties:
+        is_correct:
+          type: boolean
+          description: 正解ならtrue、不正解ならfalse
+
+        explanation:
+          type: string
+          description: 解説文（Markdown）
+          example: |
+            ここに説明が表示されるはずです
+            **それも、マークダウンで！**

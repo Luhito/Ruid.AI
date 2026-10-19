@@ -1,0 +1,11 @@
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - answer
+
+      properties:
+        answer:
+          type: string
+          description: n択問題であれば選択肢ラベル、文章題であれば回答内容

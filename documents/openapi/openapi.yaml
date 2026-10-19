@@ -20,25 +20,28 @@ tags:
 
 paths:
   # /auth/login:
-  #   $ref: './paths/login.yaml'
+  #   $ref: './apis/login.yaml'
 
   # /auth/register:
-  #   $ref: './paths/register.yaml'
+  #   $ref: './apis/register.yaml'
 
   /questions/{question_id}:
-    $ref: './paths/questions-by-id.yaml'
+    $ref: './apis/questions/_question_id/questions-by-id.yaml'
+  
+  /questions/{question_id}/answers:
+    $ref: './apis/submit-answer.yaml'
 
   /rooms:
-    $ref: './paths/rooms.yaml'
+    $ref: './apis/rooms.yaml'
   
   /rooms/{room_id}:
-    $ref: './paths/room-by-id.yaml'
+    $ref: './apis/room-by-id.yaml'
   
   /rooms/{room_id}/questions:
-    $ref: './paths/questions-by-room-id.yaml'
+    $ref: './apis/questions-by-room-id.yaml'
   
   /rooms/{room_id}/questions/next:
-    $ref: './paths/room-next-question.yaml'
+    $ref: './apis/room-next-question.yaml'
 
 components:
   # schemas:
@@ -54,6 +57,9 @@ components:
   requestBodies:
     Qprompt:
       $ref: './requestBodies/qprompt.yaml'
+    
+    SubmitAnswerBody:
+      $ref: './requestBodies/submitAnswerBody.yaml'
 
   responses:
     ErrorResponse:
@@ -63,7 +69,7 @@ components:
     #   $ref: './responses/authResponse.yaml'
       
     GetQuestionResponse:
-      $ref: './responses/getQuestionResponse.yaml'
+      $ref: './apis/questions/_question_id/getQuestionResponse.yaml'
     
     CreateRoomResponse:
       $ref: './responses/createRoomResponse.yaml'
@@ -77,6 +83,9 @@ components:
     GetNewQuestionIdResponse:
       $ref: './responses/getNewQuestionIdResponse.yaml'
     
+    SubmitAnswerResponse:
+      $ref: './responses/submitAnswerResponse.yaml'
+    
   headers:
     Location:
       $ref: './headers/location.yaml'
@@ -87,9 +96,9 @@ components:
     WWWAuthenticate:
       $ref: './headers/www-authenticate.yaml'
 
-  # securitySchemes:
-    # BearerAuth:
-    #   type: http
-    #   scheme: bearer
-    #   bearerFormat: JWT
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 

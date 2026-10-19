@@ -13,6 +13,7 @@ export const build = (
         questionId: newQuestionId,
         createUserId: createUserId,
         roomId: roomId,
+        answerType: "N",
         questionText: seed.questionText,
         explanationText: seed.explanationText,
         summary: seed.summary,

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import type { QuestionPageStates } from './QuestionPage.state';
-import { useQuestionAPI } from '@/api/hooks/useQuestionAPI';
 import { useEffect } from 'react';
+import { useQuestionAPI } from '@/api/hooks/useQuestionAPI';
 import { useRoomAPI } from '@/api/hooks/useRoomAPI';
 import { useQuestionListAPI } from '@/api/hooks/useQuestionListAPI'
 import * as requests from '@/api/requests'
@@ -29,15 +29,26 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
         navigate('/home')
     }
 
-    const onClick_answer = (index: number) => {
+    const onClick_answer = async (index: number) => {
+        // questionが未取得なら、何もしない
+        if (!question.data) return;
+        // 今回の画面表示で解答送信済みなら、何もしない
         if (states.isOpenAnswer) return;
 
-        states.setters.setOpenAnswer(true);
-        if (question.data && index === question.data.correct_answer_index) {
-            states.setters.setCorrect(true);
+        // 解答送信中
+        states.setters.setLoadingAnswer(true);
+
+        //
+        try {
+            const submitAnswerResult = await requests.submitAnswer(questionId, question.data.choices[index].tag);
+            if (!submitAnswerResult) throw Error;
+
+            states.setters.setCorrect(submitAnswerResult.is_correct);
+            states.setters.setExplanation(submitAnswerResult.explanation);
+            states.setters.setOpenAnswer(true);
         }
-        else {
-            states.setters.setCorrect(false);
+        finally {
+            states.setters.setLoadingAnswer(false);
         }
     }
 

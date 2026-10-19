@@ -17,7 +17,6 @@ content:
         headers:
           type: object
           description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-          example: ""
 
         content:
           type: object

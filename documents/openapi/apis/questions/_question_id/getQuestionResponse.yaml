@@ -8,8 +8,6 @@ content:
         - room_id
         - question_text
         - choices
-        - correct_answer_index
-        - explanation_text
         - answered_flg
         - summary
 
@@ -45,18 +43,6 @@ content:
               text: choice1
             - tag: B
               text: choice2
-
-        correct_answer_index:
-          type: integer
-          description: 選択肢の中で、正解のインデックス
-          example: 1
-
-        explanation_text:
-          type: string
-          description: 解説文（Markdown）
-          example: |
-            ここに説明が表示されるはずです
-            **それも、マークダウンで！**
         
         answered_flg:
           type: boolean

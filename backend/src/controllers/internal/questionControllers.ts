@@ -20,8 +20,6 @@ export const getQuestion = async (req: Request, res: Response) => {
             room_id: result.roomId.toString(),
             question_text: result.questionText,
             choices: result.choices,
-            correct_answer_index: result.correctAnswerIndex,
-            explanation_text: result.explanationText,
             answered_flg: result.answeredFlg,
             summary: result.summary
         } satisfies retType);
@@ -51,5 +49,27 @@ export const getQuestion = async (req: Request, res: Response) => {
                     message: "Internal server error occurred"
                 })
         }
+    }
+}
+
+export const submitAnswer = async (req: Request, res: Response) => {
+    type retType = components["responses"]["submitAnswerResponse"]["content"]["application/json"];
+
+    try {
+        // パスパラメータの問題IDを取得&バリデーション
+        const questionId = UUID.create(req.params.question_id);
+        // リクエストボディの解答を取得
+        const answer = req.body.answer;
+
+        const result = await services.questions.judgeAnswer(questionId, answer)
+
+        // ★スタブ：いったん、全部正解にする
+        res.status(201).json({
+            is_correct: result.isCorrect,
+            explanation: result.explanation
+        } satisfies retType)
+    }
+    catch (e) {
+
     }
 }

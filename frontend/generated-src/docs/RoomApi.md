@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost:3030*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getNewQuestionId**](#getnewquestionid) | **GET** /rooms/{room_id}/questions/next | |
+|[**getNewQuestionId**](#getnewquestionid) | **GET** /rooms/{room_id}/questions/next | 次の問題の問題ID取得|
 |[**getQuestionsByRoomId**](#getquestionsbyroomid) | **GET** /rooms/{room_id}/questions | 問題リスト取得|
-|[**getRoom**](#getroom) | **GET** /rooms/{room_id} | |
+|[**getRoom**](#getroom) | **GET** /rooms/{room_id} | ルーム情報取得|
 |[**postRoom**](#postroom) | **POST** /rooms | ルーム作成|
 
 # **getNewQuestionId**
@@ -45,7 +45,7 @@ const { status, data } = await apiInstance.getNewQuestionId(
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.getQuestionsByRoomId(
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -155,7 +155,7 @@ const { status, data } = await apiInstance.getRoom(
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
@@ -203,7 +203,7 @@ This endpoint does not have any parameters.
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 

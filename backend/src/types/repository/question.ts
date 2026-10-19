@@ -6,6 +6,7 @@ export type Question = {
     questionId: UUID,
     createUserId: UUID;
     roomId: UUID;
+    answerType: string;
     questionText: string;
     explanationText: string;
     summary: string;

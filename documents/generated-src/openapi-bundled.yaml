@@ -26,6 +26,8 @@ paths:
 
         問題が存在しない場合は404を返します。
       operationId: getQuestion
+      security:
+        - BearerAuth: []
       parameters:
         - name: question_id
           description: パスパラメータ内のquestion_id
@@ -37,6 +39,37 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/getQuestionResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+        '401':
+          $ref: '#/components/responses/errorResponse'
+        '404':
+          $ref: '#/components/responses/errorResponse'
+        '500':
+          $ref: '#/components/responses/errorResponse'
+  /questions/{question_id}/answers:
+    post:
+      tags:
+        - Question
+      summary: 問題に回答
+      description: |
+        指定した問題IDの指定したindexの解答が正しいかを返します。
+      operationId: submitAnswer
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: question_id
+          description: パスパラメータ内のquestion_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: '#/components/requestBodies/submitAnswerBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/submitAnswerResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
         '401':
@@ -57,6 +90,8 @@ paths:
 
         作成に成功した場合は201 Createdを返し、Locationヘッダーに作成した問題のリソースURIを設定します。
       operationId: postRoom
+      security:
+        - BearerAuth: []
       requestBody:
         $ref: '#/components/requestBodies/qprompt'
       responses:
@@ -74,7 +109,7 @@ paths:
     get:
       tags:
         - Room
-      sumamry: ルーム情報取得
+      summary: ルーム情報取得
       description: |
         ルームIDから、ルームの情報を取得します。
 
@@ -83,6 +118,8 @@ paths:
 
         ルームが存在しない場合は404を返します。
       operationId: getRoom
+      security:
+        - BearerAuth: []
       parameters:
         - name: room_id
           description: パスパラメータ内のroom_id
@@ -116,6 +153,8 @@ paths:
 
         ルームが存在しない場合は404を返します。
       operationId: getQuestionsByRoomId
+      security:
+        - BearerAuth: []
       parameters:
         - name: room_id
           description: パスパラメータ内のroom_id
@@ -139,7 +178,7 @@ paths:
     get:
       tags:
         - Room
-      sumamry: 次の問題の問題ID取得
+      summary: 次の問題の問題ID取得
       description: |
         ルームIDから、そのルーム内で未回答の問題を取得します。
 
@@ -148,6 +187,8 @@ paths:
 
         未回答の問題が存在しない場合は404を返します。
       operationId: getNewQuestionId
+      security:
+        - BearerAuth: []
       parameters:
         - name: room_id
           description: パスパラメータ内のroom_id
@@ -171,6 +212,19 @@ components:
   requestBodies:
     Qprompt:
       $ref: '#/components/requestBodies/qprompt'
+    SubmitAnswerBody:
+      $ref: '#/components/requestBodies/submitAnswerBody'
+    submitAnswerBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - answer
+            properties:
+              answer:
+                type: string
+                description: n択問題であれば選択肢ラベル、文章題であれば回答内容
     qprompt:
       content:
         application/json:
@@ -194,6 +248,8 @@ components:
       $ref: '#/components/responses/getQuestionsByRoomIdResponse'
     GetNewQuestionIdResponse:
       $ref: '#/components/responses/getNewQuestionIdResponse'
+    SubmitAnswerResponse:
+      $ref: '#/components/responses/submitAnswerResponse'
     getQuestionResponse:
       description: 問題を取得しました。
       content:
@@ -204,8 +260,6 @@ components:
               - room_id
               - question_text
               - choices
-              - correct_answer_index
-              - explanation_text
               - answered_flg
               - summary
             properties:
@@ -238,16 +292,6 @@ components:
                     text: choice1
                   - tag: B
                     text: choice2
-              correct_answer_index:
-                type: integer
-                description: 選択肢の中で、正解のインデックス
-                example: 1
-              explanation_text:
-                type: string
-                description: 解説文（Markdown）
-                example: |
-                  ここに説明が表示されるはずです
-                  **それも、マークダウンで！**
               answered_flg:
                 type: boolean
                 nullable: true
@@ -272,7 +316,6 @@ components:
               headers:
                 type: object
                 description: ヘッダー（ここでは使わないが、他の正常レスポンスとの共通化をはかる）
-                example: ''
               content:
                 type: object
                 required:
@@ -282,6 +325,25 @@ components:
                     type: string
                     description: エラーメッセージ
                     example: question_idはUUID形式で指定してください。
+    submitAnswerResponse:
+      description: 解答の正誤と解説
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - is_correct
+              - explanation
+            properties:
+              is_correct:
+                type: boolean
+                description: 正解ならtrue、不正解ならfalse
+              explanation:
+                type: string
+                description: 解説文（Markdown）
+                example: |
+                  ここに説明が表示されるはずです
+                  **それも、マークダウンで！**
     createRoomResponse:
       description: 問題を作成しました。
       headers:
@@ -367,3 +429,8 @@ components:
       description: 認証方式と認証エラー情報
       schema:
         type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -14,5 +14,7 @@ docs/GetRoom200Response.md
 docs/PostRoom201Response.md
 docs/QuestionApi.md
 docs/RoomApi.md
+docs/SubmitAnswer200Response.md
+docs/SubmitAnswerRequest.md
 git_push.sh
 index.ts

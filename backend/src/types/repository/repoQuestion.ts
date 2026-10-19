@@ -8,4 +8,5 @@ export interface RepoQuestion {
     explanationText: string;
     answeredFlg: boolean;
     summary: string;
+    answerType: string;
 }
