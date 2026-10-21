@@ -235,7 +235,7 @@ export interface components {
                         text: string;
                     }[];
                     /** @description 回答ステータスフラグ */
-                    answered_flg: boolean | null;
+                    answer_status: boolean | null;
                     /** @description 問題の短い説明 */
                     summary: string;
                 };

@@ -45,7 +45,7 @@ export interface GetQuestion200Response {
     /**
      * 回答ステータスフラグ
      */
-    'answered_flg': boolean | null;
+    'answer_status': boolean | null;
     /**
      * 問題の短い説明
      */

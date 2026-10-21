@@ -29,9 +29,15 @@ export const judgeAnswer = async (
         throw new NotFoundError("choices.findByIdAndLabel");
     }
 
+    // ユーザーは問題に正解したか？
+    const isCorrect = choice.isCorrect;
+
+    // 正誤をTBLに保存
+    await repositories.questions.setAnsweredStatus(questionId, isCorrect);
+
     // questionsとchoiceから判定結果作成
     return {
-        isCorrect: choice.isCorrect,
+        isCorrect: isCorrect,
         explanation: question.explanationText
     };
 }

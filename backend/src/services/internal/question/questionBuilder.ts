@@ -26,6 +26,6 @@ export const build = (
             }
         }),
         correctAnswerIndex: seed.correctAnswerIndex,
-        answeredFlg: null,
+        answerStatus: null,
     }
 }

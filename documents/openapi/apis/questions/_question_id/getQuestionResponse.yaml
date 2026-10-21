@@ -8,7 +8,7 @@ content:
         - room_id
         - question_text
         - choices
-        - answered_flg
+        - answer_status
         - summary
 
       properties:
@@ -44,7 +44,7 @@ content:
             - tag: B
               text: choice2
         
-        answered_flg:
+        answer_status:
           type: boolean
           nullable: true
           description: 回答ステータスフラグ

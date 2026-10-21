@@ -17,7 +17,7 @@ INSERT INTO questions (
 );
 
 UPDATE questions
-SET answered_flg = TRUE
+SET answer_status = TRUE
 WHERE question_id = '01a09db5-6b0f-7f0e-b16d-068a3918e430';
 
 INSERT INTO questions (

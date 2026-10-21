@@ -8,7 +8,7 @@ CREATE TABLE questions (
     question_text       TEXT            NOT NULL,
     explanation_text    TEXT            NOT NULL,
     summary             TEXT            NOT NULL,
-    answered_flg        BOOLEAN         NOT NULL DEFAULT FALSE,
+    answer_status       BOOLEAN                  DEFAULT NULL,
     tokenct_all         INTEGER,
     tokenct_in          INTEGER,
     tokenct_out         INTEGER,

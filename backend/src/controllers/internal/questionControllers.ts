@@ -20,7 +20,7 @@ export const getQuestion = async (req: Request, res: Response) => {
             room_id: result.roomId.toString(),
             question_text: result.questionText,
             choices: result.choices,
-            answered_flg: result.answeredFlg,
+            answer_status: result.answerStatus,
             summary: result.summary
         } satisfies retType);
     }

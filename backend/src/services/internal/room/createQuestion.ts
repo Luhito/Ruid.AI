@@ -8,7 +8,7 @@ const MIN_REMAINING_QUESTION_COUNT = 5;
 export const createQuestion = async (roomId: UUID) => {
     // ■ 問題残数取得
     const remainingQuestionCount = await repositories.rooms.getRemainingQuestionCount(roomId);
-    if (!remainingQuestionCount) {
+    if (remainingQuestionCount == null) {
         throw new CreateQuestionError({message: "result of remainingQuestionCount is null."}, roomId);
     }
 

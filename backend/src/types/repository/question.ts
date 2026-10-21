@@ -12,5 +12,5 @@ export type Question = {
     summary: string;
     choices: Choice[];
     correctAnswerIndex: number;
-    answeredFlg: boolean | null;
+    answerStatus: boolean | null;
 }

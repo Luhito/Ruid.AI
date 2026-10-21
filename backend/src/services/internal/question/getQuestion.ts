@@ -41,7 +41,8 @@ export const getQuestion = async (questionId: UUID): Promise<Question> => {
         choices: choices,
         explanationText: question.explanationText,
         correctAnswerIndex: correctAnswerIndex,
-        answeredFlg: question.answeredFlg,
-        summary: question.summary
+        answerStatus: question.answerStatus,
+        summary: question.summary,
+        answerType: question.answerType
     };
 }

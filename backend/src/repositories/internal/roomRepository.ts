@@ -59,7 +59,7 @@ export const getRemainingQuestionCount = async (roomId: UUID): Promise<number | 
                 questions
             WHERE
                 room_id = $1
-                AND answered_flg = false
+                AND answer_status = false
             `,
             [roomId.toString()]
         )

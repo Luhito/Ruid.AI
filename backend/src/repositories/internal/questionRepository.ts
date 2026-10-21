@@ -13,7 +13,7 @@ export const findByQuestionId = async (questionId: UUID): Promise<RepoQuestion |
             room_id,
             question_text,
             explanation_text,
-            answered_flg,
+            answer_status,
             summary,
             answer_type
         FROM
@@ -34,7 +34,7 @@ export const findByQuestionId = async (questionId: UUID): Promise<RepoQuestion |
         roomId: result.rows[0].room_id,
         questionText: result.rows[0].question_text,
         explanationText: result.rows[0].explanation_text,
-        answeredFlg: result.rows[0].answered_flg,
+        answerStatus: result.rows[0].answer_status,
         summary: result.rows[0].summary,
         answerType: result.rows[0].answer_type
     } satisfies RepoQuestion;
@@ -50,7 +50,7 @@ export const findSolvedQuestionsByRoomId = async (room_id: UUID): Promise<Questi
             questions
         WHERE
             room_id = $1 AND
-            answered_flg = true
+            answer_status = true
         ORDER BY
             updated_at
         `, 
@@ -79,7 +79,7 @@ export const findSingleUnsolvedQuestionByRoomId = async (room_id: UUID): Promise
             questions
         WHERE
             room_id = $1 AND
-            answered_flg = false
+            answer_status = false
         ORDER BY
             created_at
         LIMIT 1
@@ -104,7 +104,7 @@ export const getUnsolvedQuestionCount = async (roomId: UUID): Promise<number | n
             questions
         WHERE
             room_id = $1 AND
-            answered_flg = false
+            answer_status = false
         `, 
         [roomId.toString()]
     );
@@ -151,4 +151,18 @@ export const insertQuestion = async (question: Question): Promise<UUID> => {
     )
 
     return question.questionId;
+}
+
+export const setAnsweredStatus = async (questionId: UUID, isCorrect: boolean) => {
+    await pool.query(
+        `
+        UPDATE questions
+        SET    answer_status = $1
+        WHERE  question_id   = $2
+        `, 
+        [
+            isCorrect,
+            questionId
+        ]
+    )
 }

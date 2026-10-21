@@ -260,7 +260,7 @@ components:
               - room_id
               - question_text
               - choices
-              - answered_flg
+              - answer_status
               - summary
             properties:
               room_id:
@@ -292,7 +292,7 @@ components:
                     text: choice1
                   - tag: B
                     text: choice2
-              answered_flg:
+              answer_status:
                 type: boolean
                 nullable: true
                 description: 回答ステータスフラグ
