@@ -43,7 +43,8 @@ export const getQuestion = async (req: Request, res: Response) => {
                 })
         }
         else{
-            console.error(`Error: Uncought error occured. log: ${e}`)
+            console.error(`Error: Uncought error occured. log below:`)
+            console.error(e)
             res.status(500)
                 .json({
                     message: "Internal server error occurred"

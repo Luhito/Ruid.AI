@@ -66,7 +66,6 @@ export const useQuestionPageLogic = (questionId: string, states: QuestionPageSta
     const navigateNextQuestion = async () => {
         const nextQuestionId = await requests.getNextQuestion(question.data?.room_id);
         if (nextQuestionId) {
-            console.log(`navigating: ${nextQuestionId}`);
             states.initAll();
             navigate(`/questions/${nextQuestionId}`);
         }

@@ -4,13 +4,13 @@ export type GenerateQuestionCandidateQuery = {
     query: string;
     pastQuestionSummaries: string[];
 }
-export type GenerateQuestionChoiceCondidate = {
+export type GenerateQuestionChoiceCandidate = {
     tag: string;
     text: string;
     isCorrect: boolean;
 }
 export type GenerateQuestionCandidateResponse = {
-    choices: GenerateQuestionChoiceCondidate[];
+    choices: GenerateQuestionChoiceCandidate[];
     correctAnswerIndex: number;
     questionText: string;
     explanationText: string;

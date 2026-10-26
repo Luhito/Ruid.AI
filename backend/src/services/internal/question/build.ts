@@ -2,7 +2,7 @@ import type { Question } from '@/types/repository/question.js';
 import type * as types from '../clients/openai/chatGPTClient.types.js'
 import { UUID } from '@/types/uuid.js';
 
-export const build = (
+export const buildFromCandidate = (
     seed: types.GenerateQuestionCandidateResponse,
     createUserId: UUID,
     roomId: UUID,

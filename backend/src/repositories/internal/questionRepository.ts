@@ -79,7 +79,7 @@ export const findSingleUnsolvedQuestionByRoomId = async (room_id: UUID): Promise
             questions
         WHERE
             room_id = $1 AND
-            answer_status = false
+            answer_status IS NULL
         ORDER BY
             created_at
         LIMIT 1
@@ -104,7 +104,7 @@ export const getUnsolvedQuestionCount = async (roomId: UUID): Promise<number | n
             questions
         WHERE
             room_id = $1 AND
-            answer_status = false
+            answer_status IS NULL
         `, 
         [roomId.toString()]
     );
@@ -162,7 +162,7 @@ export const setAnsweredStatus = async (questionId: UUID, isCorrect: boolean) =>
         `, 
         [
             isCorrect,
-            questionId
+            questionId.toString()
         ]
     )
 }

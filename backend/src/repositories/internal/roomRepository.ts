@@ -5,30 +5,21 @@ import { DBAccessFailed } from "@/errors/index.js";
 
 /** question_idからchoicesを取得する。通常はChoiceGroupを返すが、検索結果がない場合や正答が検索されなかった場合はnullを返す。 */
 export const findByRid = async (room_id: UUID): Promise<Room | null> => {
-    const dbaccesser_name = "roomRepository.findByRid";
-
-    let rs = null;
-    
-    try {
-        // ■ roomの各項目を取得
-        rs = await pool.query(
-            `
-            SELECT
-                title,
-                user_id,
-                prompt,
-                answer_type
-            FROM
-                rooms
-            WHERE
-                room_id = $1
-            `,
-            [room_id.toString()]
-        );
-    }
-    catch(e){
-        throw new DBAccessFailed(dbaccesser_name, e);
-    }
+    // ■ roomの各項目を取得
+    const rs = await pool.query(
+        `
+        SELECT
+            title,
+            user_id,
+            prompt,
+            answer_type
+        FROM
+            rooms
+        WHERE
+            room_id = $1
+        `,
+        [room_id.toString()]
+    );
 
     // 検索結果が0件ならnullを返す
     if (!(rs.rows[0])){
@@ -59,7 +50,7 @@ export const getRemainingQuestionCount = async (roomId: UUID): Promise<number | 
                 questions
             WHERE
                 room_id = $1
-                AND answer_status = false
+                AND answer_status IS NULL
             `,
             [roomId.toString()]
         )

@@ -61,3 +61,29 @@ export const findByIdAndLabel = async (questionId: UUID, label: string): Promise
         isCorrect: result.rows[0].is_correct
     }
 }
+
+export const insert = async (choice: Choice) => {
+    await pool.query(
+        `
+        INSERT
+        INTO choices (
+            question_id,
+            choice_label,
+            choice_text,
+            is_correct
+        )
+        VALUES (
+            $1,
+            $2,
+            $3,
+            $4
+        )
+        `,
+        [
+            choice.questionId.toString(),
+            choice.tag,
+            choice.text,
+            choice.isCorrect
+        ]
+    )
+}
